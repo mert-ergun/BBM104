@@ -1,0 +1,133 @@
+LIST	FILMS	BY	COUNTRY	Zambia
+
+No result
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	BEFORE	1930
+
+No result
+
+-----------------------------------------------------------------------------------------------------
+LIST	FILMS	BY	COUNTRY	Italy
+
+Film title: La_meglio_gioventu
+180 min
+Language: Italian
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	AFTER	2014
+
+No result
+
+-----------------------------------------------------------------------------------------------------
+LIST	FILM	SERIES
+
+Friends (1994-2004)
+10 seasons and 236 episodes
+
+Coupling (2000-2004)
+4 seasons and 28 episodes
+
+Lost (2004-2010)
+6 seasons and 121 episodes
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	200	7
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Vozvrashchenie
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	100	8
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: La_meglio_gioventu
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	500	8
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Casablanca
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	113	9
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Amelie
+
+-----------------------------------------------------------------------------------------------------
+LIST	USER	473	RATES
+
+Vozvrashchenie: 7
+La_meglio_gioventu: 8
+Casablanca: 8
+Amelie: 9
+
+-----------------------------------------------------------------------------------------------------
+REMOVE	RATE	473	113
+
+Your film rating was removed successfully
+Film title: Amelie
+
+-----------------------------------------------------------------------------------------------------
+REMOVE	RATE	473	100
+
+Your film rating was removed successfully
+Film title: La_meglio_gioventu
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	301	6
+
+Film rated successfully
+Film type: ShortFilm
+Film title: Two_Soldiers
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	400	9
+
+Film rated successfully
+Film type: Documentary
+Film title: Searching_for_Sugar_Man
+
+-----------------------------------------------------------------------------------------------------
+LIST	USER	473	RATES
+
+Vozvrashchenie: 7
+Casablanca: 8
+Two_Soldiers: 6
+Searching_for_Sugar_Man: 9
+
+-----------------------------------------------------------------------------------------------------
+LIST	ARTISTS	FROM	Turkey
+
+Directors:
+Tolga Ornek Tolga
+
+Writers:
+No result
+
+Actors:
+Zafer Ergin 178 cm
+
+ChildActors:
+No result
+
+StuntPerformers:
+No result
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	AFTER	2011
+
+Film title: Swing (2013)
+180 min
+Language: English
+
+Film title: Silver_Linings_Playbook (2013)
+122 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------

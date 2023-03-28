@@ -1,0 +1,40 @@
+Biscuits:
+I16
+I15
+I9
+I4
+---------------
+Chocolates:
+I27
+I19
+I8
+I5
+I3
+---------------
+Drinks:
+I26
+I25
+---------------
+Crisps:
+I24
+I13
+I10
+I6
+I2
+---------------
+Waters:
+I21
+I14
+I11
+I7
+I1
+---------------
+Token Box:
+T8 Biscuits 1
+T5 biscuits 1
+T2 Chocolates 1
+T7 Drinks 2
+T6 Crisps 2
+T3 Chocolates 2
+T1 Waters 3
+T4 Crisps 3

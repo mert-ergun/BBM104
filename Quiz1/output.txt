@@ -1,0 +1,26 @@
+Armstrong numbers up to 5000:
+153 370 371 407 1634 
+
+Emirp numbers up to 113:
+13 17 31 37 71 73 79 97 107 113 
+
+Abundant numbers up to 61:
+12 18 20 24 30 36 40 42 48 54 56 60 
+
+Ascending order sorting:
+1 
+1 2 
+1 2 3 
+1 2 3 5 
+
+Descending order sorting:
+100 
+100 30 
+100 30 25 
+100 30 25 15 
+100 30 25 15 10 
+
+Abundant numbers up to 30:
+12 18 20 24 30 
+
+Finished...

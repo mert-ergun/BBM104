@@ -1,0 +1,2 @@
+BUY	Biscuits,3	Chocolates,2	Crisps,1
+PUT	Biscuits,I13,I14,I15	Chocolates,I16,I17	Drinks,I18,I19

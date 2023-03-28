@@ -1,0 +1,7 @@
+T1 Biscuits 2
+T2 Chocolates 3
+T3 Chocolates 2
+T4 Drinks 3
+T5 Biscuits 4
+T6 Crisps 2
+T7 Drinks 5

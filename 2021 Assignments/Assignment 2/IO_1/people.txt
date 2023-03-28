@@ -1,0 +1,118 @@
+Actor:	352	Alessio	Boni	Italy	187
+Actor:	353	Luigi	Cascio	Italy	175
+ChildActor:	354	Noah	Schnapp	USA	17
+ChildActor:	355	Jacob	Tremblay	Canada	15
+ChildActor:	356	Millie	Brown	Spain	17
+Director:	357	Marco	Giordana	Italy	Tullio
+Writer:	358	Sandro	Petraglia	Italy	Drama
+Writer:	359	Stefano	Rulli	Italy	Romance
+StuntPerformer:	360	Dar	Robinson	UK	175	353,386,393
+Director:	361	Ramin	Bahrani	USA	Ramin
+Writer:	362	Jenni	Jenkins	USA	Drama
+Actor:	363	Werner	Herzog	Germany	185
+ChildActor:	364	Jaeden	Martell	Philadelphia	18
+Director:	366	Martin	Dennis	UK	Perkins
+Writer:	367	Steven	Moffat	UK	Comedy
+Actor:	368	Jack	Davenport	UK	188
+Actor:	369	Ben	Miles	UK	179
+Actor:	370	Richard	Coyle	UK	183
+ChildActor:	371	Madison	Reyes	NewYork	16
+ChildActor:	372	Isla	Johnston	UK	14
+ChildActor:	373	Sunny	Pawar	Indian	13	
+StuntPerformer:	374	Hal	Needham	USA	180	404,369
+Director:	375	Emad	Burnat	Palestine	Burnat
+Director:	376	Guy	Davidi	Israel	Burnat
+ChildActor:	377	Gibreel	Burnat	Palestine	16
+Actor:	378	Mohammed	Burnat	Palestine	150
+Actor:	379	Yasin	Burnat	Palestine	152
+Director:	381	Quentin	Tarantino	USA	Simpson-Morris
+Writer:	382	Roger	Avary	Canada	Thriller
+Actor:	383	John	Travolta	USA	188
+Actor:	384	Samuel	L.Jackson	USA	189
+Actor:	385	Bruce	Willis	Germany	180
+Actor:	386	Tim	Roth	UK	170
+ChildActor:	387	Archie	Yates	England	12
+ChildActor:	388	Jack	Grazer	USA	18
+Director:	390	Alfred	Hitchcock	USA	Hitchcock
+Writer:	391	John	M.Hayes	USA	Mystery
+Writer:	392	Cornell	Woolrich	USA	Thriller
+Actor:	393	James	Stewart	USA	191
+ChildActor:	394	Elsie	Fisher	USA	18
+Actor:	395	Wendell	Corey	USA	187
+Director:	397	Jack	Bender	USA	Abrams
+Director:	398	Stephen	Williams	Canada	Abrams
+Writer:	399	Damon	Lindelof	USA	Mystery
+Writer:	400	Carlton	Cuse	USA	Adventure
+Writer:	401	Edward	Kitsis	USA	Drama
+Writer:	402	Adam	Horowitz	USA	Fantasy
+Writer:	403	Elizabeth	Sarnoff	USA	Adventure
+Actor:	404	Jorge	Garcia	USA	183
+Actor:	405	Naveen	Andrews	UK	175
+Actor:	406	Matthew	Fox	USA	188
+Actor:	407	Josh	Holloway	USA	187
+ChildActor:	408	Storm	Reid	Canada	18
+ChildActor:	409	Noah	Jupe	England	16
+ChildActor:	410	Julian	Dennison	NewZealand	19
+Director:	412	Tolga	Ornek	Turkey	Tolga
+Actor:	413	Sam	Neill	UK	183
+Actor:	414	Zafer	Ergin	Turkey	178
+Actor:	415	Demetri	Goritsas	USA	183
+StuntPerformer:	416	Buster	Keaton	USA	165	424,430,436
+Director:	417	Kevin	Bright	USA	Crane
+Writer:	418	David	Crane	USA	Romance
+Writer:	419	Marta	Kauffman	USA	Romance
+Writer:	420	Mihael	Curtis	USA	Comedy
+ChildActor:	421	Noelle	Sheldon	USA	29
+ChildActor:	422	Cali	Sheldon	USA	29	
+ChildActor:	423	Dakota	Fanning	USA	27
+Actor:	424	Matt	LeBlanc	USA	178
+Actor:	425	Matthew	Perry	USA	183
+Actor:	426	David	Schwimmer	USA	185
+Director:	428	Richard	Linklater	USA	Richard
+Writer:	429	Kim	Krizan	USA	Romance
+Actor:	430	Ethan	Hawke	USA	180
+ChildActor:	431	Jackson	Scott	UK	13
+Director:	433	Woody	Allen	USA	Allen
+Writer:	434	Marshall	Brickman	Brazil	Romance
+ChildActor:	435	Aidan	Gallagher	USA	18
+Actor:	436	Tony	Roberts	USA	185
+Director:	438	Ha	Yoo	Korea	HeYa
+Writer:	439	Ha	DiYoom	Korea	Action
+ChildActor:	440	Judah	Lewis	USA	20
+Actor:	441	Chun	Ho-jin	Korea	173
+Actor:	442	Ku	Jin	Korea	172
+Director:	444	David	O.Russell	USA	Russell
+Writer:	445	Matthew	Quick	USA	Comedy
+Actor:	446	Bradley	Cooper	USA	185
+ChildActor:	447	Daan	Liebrenz	Germany	15
+Actor:	448	Robert	DeNiro	USA	177
+ChildActor:	449	Scarlett	Estevez	UK	14
+Director:	451	Jean-Pierre	Jeunet	France	Pierre
+Writer:	452	Guillaume	Laurant	France	Romance
+ChildActor:	453	Skylar	Gaertner	USA	17
+Actor:	454	Mathieu	Kassovitz	France	177
+Director:	456	Francis-Ford	Coppola	USA	Coppola
+Writer:	457	Mario	Puzo	USA	Crime
+Actor:	458	Marlon	Brando	USA	175
+Actor:	459	Al	Pacino	USA	170
+Actor:	460	James	Caan	USA	176
+Actor:	461	Robert	Duvall	USA	174
+StuntPerformer:	462	Joi	Harris	USA	175	454,467,466
+Director:	463	David	Fincher	USA	Fincher
+Writer:	464	Chuck	Palahniuk	USA	Fiction
+Writer:	465	Jim	Uhls	USA	Drama
+Actor:	466	Edward	Norton	USA	183
+Actor:	467	Brad	Pitt	USA	180
+ChildActor:	468	Aidan	Wojtak-Hissong	Canada	14
+StuntPerformer:	469	John	Bernecker	USA	185	446,466
+User:	470	Ahmet	Yapar	Turkey
+User:	471	Murat	Talay	Turkey
+User:	472	Elisabet	Belo	Spain
+User:	473	John	Emmio�lu	USA
+User:	474	Isabelle	Merad	France
+User:	475	Roseking	Singleban	USA
+User:	476	Bastian	Schweinsteiger	Germany
+User:	477	Alessandro	Del-Piero	Italy
+User:	478	Ysuhio	Sallamasko	Japan
+User:	479	Gu	Wang	Korea
+User:	480	Susan	Walker	UK

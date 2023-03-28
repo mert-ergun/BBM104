@@ -1,0 +1,364 @@
+---------------------------------------------------List-------------------------------------
+Author:101				
+
+Author:102	Horst_Bischof	HUN	Computer_Engineering	horst@cs.hacettepe.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
+
+Author:103	Pietro_Perona	METU	Computer_Science	pietro@ce.metu.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1032019	HEAT:Iterative_Relevance_Feedback_with_One_Million_Images	CVPR	2013
+
+Author:104	Nadia_Payet	METU	Computer_Engineering	nadia@ce.metu.edu.tr
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1042020	Unsupervised_Learning_of_a_Scene-Specific_Coarse_Gaze_Estimator	CVPR	2013
++1042010	Learning_to_Predict_the_Perceived_Visual_Quality_of_Photos	ICCV	2012
++1042008	Revisiting_Radiometric_Calibration_for_Color_Computer_Vision	ICCV	2012
+
+Author:100	Olivier_Duchenne	MIT	Computer_Science	oliver@mit.edu
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1002007	Variational_Stereo_in_Dynamic_Illumination	ICCV	2012
++1002012	Source_Constrained_Clustering	ICCV	2012
++1002018	Content-Based_Photo_Quality_Assessment	CVPR	2013
+
+Author:105	Blake_Johnson	HARVARD	Computer_Science	blake@harvard.edu
+
+Author:108	Ken_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:109	Rich_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:110	Sam_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:111	Charles_A_Abels_Assessor	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:112	Matt_Abernathy	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:113	Alex_Abramovici	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:114	Mark_Abrams	HU	Computer_Enginnering	a@hacettepe.edu.tr
+--------------------------------------End--------------------------------------
+*****************************completeAll Successful****************************
+--------------------------------------List-------------------------------------
+Author:101				
++1012013	Inferring_Social_Relations_from_Visual_Concepts	ICCV	2013
++1012014	Maximizing_All_Margins:Pushing_Face_Recognition_with_Kernel_Plurality	CVPR	2013
+
+Author:102	Horst_Bischof	HUN	Computer_Engineering	horst@cs.hacettepe.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1022002	Domain_Adaptation_for_Object_Recognition:An_Unsupervised_Approach	ICCV	2012
++1022005	Non-stationary_Correction_of_Optical_Aberrations	ICCV	2012
++1022015	DTAM:Dense_Tracking_and_Mapping_in_Real-Time	CVPR	2013
++1022016	Kernel_Non-Rigid_Structure_from_Motion	CVPR	2013
+
+Author:103	Pietro_Perona	METU	Computer_Science	pietro@ce.metu.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1032019	HEAT:Iterative_Relevance_Feedback_with_One_Million_Images	CVPR	2013
++1032003	Decision_Tree_Fields	ICCV	2012
++1032011	HMDB:A_Large_Video_Database_for_Human_Motion_Recognition	ICCV	2012
++1032017	A_Dimensionality_Result_for_Multiple_Homography_Matrices	CVPR	2013
+
+Author:104	Nadia_Payet	METU	Computer_Engineering	nadia@ce.metu.edu.tr
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1042020	Unsupervised_Learning_of_a_Scene-Specific_Coarse_Gaze_Estimator	CVPR	2013
++1042010	Learning_to_Predict_the_Perceived_Visual_Quality_of_Photos	ICCV	2012
++1042008	Revisiting_Radiometric_Calibration_for_Color_Computer_Vision	ICCV	2012
++1042006	Linear_stereo_matching	ICCV	2012
+
+Author:100	Olivier_Duchenne	MIT	Computer_Science	oliver@mit.edu
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1002007	Variational_Stereo_in_Dynamic_Illumination	ICCV	2012
++1002012	Source_Constrained_Clustering	ICCV	2012
++1002018	Content-Based_Photo_Quality_Assessment	CVPR	2013
+
+Author:105	Blake_Johnson	HARVARD	Computer_Science	blake@harvard.edu
+
+Author:108	Ken_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:109	Rich_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:110	Sam_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:111	Charles_A_Abels_Assessor	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:112	Matt_Abernathy	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:113	Alex_Abramovici	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:114	Mark_Abrams	HU	Computer_Enginnering	a@hacettepe.edu.tr
+--------------------------------------End--------------------------------------
+--------------------------------------List-------------------------------------
+Author:101				
++1012013	Inferring_Social_Relations_from_Visual_Concepts	ICCV	2013
++1012014	Maximizing_All_Margins:Pushing_Face_Recognition_with_Kernel_Plurality	CVPR	2013
+
+Author:102	Horst_Bischof	HUN	Computer_Engineering	horst@cs.hacettepe.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1022002	Domain_Adaptation_for_Object_Recognition:An_Unsupervised_Approach	ICCV	2012
++1022005	Non-stationary_Correction_of_Optical_Aberrations	ICCV	2012
++1022015	DTAM:Dense_Tracking_and_Mapping_in_Real-Time	CVPR	2013
++1022016	Kernel_Non-Rigid_Structure_from_Motion	CVPR	2013
+
+Author:103	Pietro_Perona	METU	Computer_Science	pietro@ce.metu.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1032019	HEAT:Iterative_Relevance_Feedback_with_One_Million_Images	CVPR	2013
++1032003	Decision_Tree_Fields	ICCV	2012
++1032011	HMDB:A_Large_Video_Database_for_Human_Motion_Recognition	ICCV	2012
++1032017	A_Dimensionality_Result_for_Multiple_Homography_Matrices	CVPR	2013
+
+Author:104	Nadia_Payet	METU	Computer_Engineering	nadia@ce.metu.edu.tr
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1042020	Unsupervised_Learning_of_a_Scene-Specific_Coarse_Gaze_Estimator	CVPR	2013
++1042010	Learning_to_Predict_the_Perceived_Visual_Quality_of_Photos	ICCV	2012
++1042008	Revisiting_Radiometric_Calibration_for_Color_Computer_Vision	ICCV	2012
++1042006	Linear_stereo_matching	ICCV	2012
+
+Author:100	Olivier_Duchenne	MIT	Computer_Science	oliver@mit.edu
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1002007	Variational_Stereo_in_Dynamic_Illumination	ICCV	2012
++1002012	Source_Constrained_Clustering	ICCV	2012
++1002018	Content-Based_Photo_Quality_Assessment	CVPR	2013
+
+Author:105	Blake_Johnson	HARVARD	Computer_Science	blake@harvard.edu
+
+Author:108	Ken_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:109	Rich_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:110	Sam_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:111	Charles_A_Abels_Assessor	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:112	Matt_Abernathy	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:113	Alex_Abramovici	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:114	Mark_Abrams	HU	Computer_Enginnering	a@hacettepe.edu.tr
+--------------------------------------End--------------------------------------
+*********************************del Successful********************************
+--------------------------------------List-------------------------------------
+Author:101				
++1012013	Inferring_Social_Relations_from_Visual_Concepts	ICCV	2013
++1012014	Maximizing_All_Margins:Pushing_Face_Recognition_with_Kernel_Plurality	CVPR	2013
+
+Author:103	Pietro_Perona	METU	Computer_Science	pietro@ce.metu.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1032019	HEAT:Iterative_Relevance_Feedback_with_One_Million_Images	CVPR	2013
++1032003	Decision_Tree_Fields	ICCV	2012
++1032011	HMDB:A_Large_Video_Database_for_Human_Motion_Recognition	ICCV	2012
++1032017	A_Dimensionality_Result_for_Multiple_Homography_Matrices	CVPR	2013
+
+Author:104	Nadia_Payet	METU	Computer_Engineering	nadia@ce.metu.edu.tr
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1042020	Unsupervised_Learning_of_a_Scene-Specific_Coarse_Gaze_Estimator	CVPR	2013
++1042010	Learning_to_Predict_the_Perceived_Visual_Quality_of_Photos	ICCV	2012
++1042008	Revisiting_Radiometric_Calibration_for_Color_Computer_Vision	ICCV	2012
++1042006	Linear_stereo_matching	ICCV	2012
+
+Author:100	Olivier_Duchenne	MIT	Computer_Science	oliver@mit.edu
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1002007	Variational_Stereo_in_Dynamic_Illumination	ICCV	2012
++1002012	Source_Constrained_Clustering	ICCV	2012
++1002018	Content-Based_Photo_Quality_Assessment	CVPR	2013
+
+Author:105	Blake_Johnson	HARVARD	Computer_Science	blake@harvard.edu
+
+Author:108	Ken_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:109	Rich_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:110	Sam_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:111	Charles_A_Abels_Assessor	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:112	Matt_Abernathy	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:113	Alex_Abramovici	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:114	Mark_Abrams	HU	Computer_Enginnering	a@hacettepe.edu.tr
+--------------------------------------End--------------------------------------
+*****************************completeAll Successful****************************
+--------------------------------------List-------------------------------------
+Author:101				
++1012013	Inferring_Social_Relations_from_Visual_Concepts	ICCV	2013
++1012014	Maximizing_All_Margins:Pushing_Face_Recognition_with_Kernel_Plurality	CVPR	2013
+
+Author:103	Pietro_Perona	METU	Computer_Science	pietro@ce.metu.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1032019	HEAT:Iterative_Relevance_Feedback_with_One_Million_Images	CVPR	2013
++1032003	Decision_Tree_Fields	ICCV	2012
++1032011	HMDB:A_Large_Video_Database_for_Human_Motion_Recognition	ICCV	2012
++1032017	A_Dimensionality_Result_for_Multiple_Homography_Matrices	CVPR	2013
+
+Author:104	Nadia_Payet	METU	Computer_Engineering	nadia@ce.metu.edu.tr
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1042020	Unsupervised_Learning_of_a_Scene-Specific_Coarse_Gaze_Estimator	CVPR	2013
++1042010	Learning_to_Predict_the_Perceived_Visual_Quality_of_Photos	ICCV	2012
++1042008	Revisiting_Radiometric_Calibration_for_Color_Computer_Vision	ICCV	2012
++1042006	Linear_stereo_matching	ICCV	2012
+
+Author:100	Olivier_Duchenne	MIT	Computer_Science	oliver@mit.edu
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1002007	Variational_Stereo_in_Dynamic_Illumination	ICCV	2012
++1002012	Source_Constrained_Clustering	ICCV	2012
++1002018	Content-Based_Photo_Quality_Assessment	CVPR	2013
+
+Author:105	Blake_Johnson	HARVARD	Computer_Science	blake@harvard.edu
++1052021	Tracking_by_Sampling_Trackers	ICCV	2012
++1052022	Domain_Adaptation_for_Object_Recognition:An_Supervised_Approach	ICCV	2012
+
+Author:108	Ken_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:109	Rich_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:110	Sam_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:111	Charles_A_Abels_Assessor	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:112	Matt_Abernathy	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:113	Alex_Abramovici	HU	Computer_Enginnering	a@hacettepe.edu.tr
+
+Author:114	Mark_Abrams	HU	Computer_Enginnering	a@hacettepe.edu.tr
+--------------------------------------End--------------------------------------
+*****************************completeAll Successful****************************
+--------------------------------------List-------------------------------------
+Author:101				
++1012013	Inferring_Social_Relations_from_Visual_Concepts	ICCV	2013
++1012014	Maximizing_All_Margins:Pushing_Face_Recognition_with_Kernel_Plurality	CVPR	2013
+
+Author:103	Pietro_Perona	METU	Computer_Science	pietro@ce.metu.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1032019	HEAT:Iterative_Relevance_Feedback_with_One_Million_Images	CVPR	2013
++1032003	Decision_Tree_Fields	ICCV	2012
++1032011	HMDB:A_Large_Video_Database_for_Human_Motion_Recognition	ICCV	2012
++1032017	A_Dimensionality_Result_for_Multiple_Homography_Matrices	CVPR	2013
+
+Author:104	Nadia_Payet	METU	Computer_Engineering	nadia@ce.metu.edu.tr
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1042020	Unsupervised_Learning_of_a_Scene-Specific_Coarse_Gaze_Estimator	CVPR	2013
++1042010	Learning_to_Predict_the_Perceived_Visual_Quality_of_Photos	ICCV	2012
++1042008	Revisiting_Radiometric_Calibration_for_Color_Computer_Vision	ICCV	2012
++1042006	Linear_stereo_matching	ICCV	2012
+
+Author:100	Olivier_Duchenne	MIT	Computer_Science	oliver@mit.edu
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1002007	Variational_Stereo_in_Dynamic_Illumination	ICCV	2012
++1002012	Source_Constrained_Clustering	ICCV	2012
++1002018	Content-Based_Photo_Quality_Assessment	CVPR	2013
+
+Author:105	Blake_Johnson	HARVARD	Computer_Science	blake@harvard.edu
++1052021	Tracking_by_Sampling_Trackers	ICCV	2012
++1052022	Domain_Adaptation_for_Object_Recognition:An_Supervised_Approach	ICCV	2012
++1053002	Subchannel_Flow_Distributions_in_CANDU_Fuel_Channels_Following_Deformations	Montreal	1983
++1053003	The_Assessment_of_Tornado_Missile_Hazard_to_Nuclear_Power_Plants	Montreal	1983
++1053004	Accuracy_and_Efficiency_of_Monte_Carlo_Method	Montreal	1983
+
+Author:108	Ken_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1083000	Development_and_Application_of_Computer_Codes_for_Multidimensional	Montreal	1983
++1083001	Recent_Developments_in_the_ROCS-MC_Code_for_Retrieving	Montreal	1983
++1083002	Rational_Mapping_RAM_of_In-Core_Data	Montreal	1983
+
+Author:109	Rich_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1093000	The_Advantages_and_Limitations_of_the_Sets_Method	Montreal	1983
++1093001	A_Critical_Review_of_Homogenization_Techniques_in_Reactor_Lattices	Montreal	1983
++1093002	Possible_Use_of_Measurements_to_Ament_Cross_Section_Tables_PUMA	Montreal	1983
+
+Author:110	Sam_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1103000	RELAP5-MOD2:_For_PWR_Transient_Analysis	Montreal	1983
++1103001	A_Simple_Stability_Criterion_for_CANDU_Figure-of-Eight_Flow_Oscillations	Montreal	1983
++1103002	On_the_Theory_of_Interface_Flux_Nodal_Method	Montreal	1983
+
+Author:111	Charles_A_Abels_Assessor	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1113000	Progress_in_Modelling_Separated_Flow_Effects_in_the_Refilling_of_Horizontal_Heated_Channels	Montreal	1983
++1113001	Two_Dimensional_Analysis_of_Conduction-Controlled_Rewetting_with_Internal_Heat_Generation	Montreal	1983
++1113002	Nested_Element_Method_in_Multidimensional_Neutron_Diffusion_Calculations	Montreal	1983
+
+Author:112	Matt_Abernathy	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1123000	Anomalies_in_One-Dimensional_Thermal_Hydraulics_Calculations	Montreal	1983
++1123001	Verification_of_SOPHT_for_Parallel_Channel_Flow_Stability	Montreal	1983
++1123002	Numerical_Simulation_of_Two-Phase_Flow_in_Horizontal_Interconnected_Subchannels	Montreal	1983
+
+Author:113	Alex_Abramovici	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1133000	Neutronics_Calculations_in_Large_Symbiotic_Spallation-Fission-Reactor-Assemblies	Montreal	1983
++1133001	Turbulence_Modeling_of_Thermal_and_Fluid_Mixing_in_PWRs	Montreal	1983
++1133002	ASSERT_and_COBRA_Predictions_of_Flow_Distribution_in_Vertical_Bundles	Montreal	1983
+
+Author:114	Mark_Abrams	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1143000	Variational_Methods_in_Steady_State_Diffusion_Problems	Montreal	1983
++1143001	An_Assessment_of_Finite_Element_Synthesis_Model_Using_3D_FEM	Montreal	1983
++1143002	A_Numerical_Technique_for_Reactor_Subchannel_Analysis	Montreal	1983
+--------------------------------------End--------------------------------------
+******************************SortedAll Successful*****************************
+--------------------------------------List-------------------------------------
+Author:101				
++1012013	Inferring_Social_Relations_from_Visual_Concepts	ICCV	2013
++1012014	Maximizing_All_Margins:Pushing_Face_Recognition_with_Kernel_Plurality	CVPR	2013
+
+Author:103	Pietro_Perona	METU	Computer_Science	pietro@ce.metu.edu.tr
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1032003	Decision_Tree_Fields	ICCV	2012
++1032011	HMDB:A_Large_Video_Database_for_Human_Motion_Recognition	ICCV	2012
++1032017	A_Dimensionality_Result_for_Multiple_Homography_Matrices	CVPR	2013
++1032019	HEAT:Iterative_Relevance_Feedback_with_One_Million_Images	CVPR	2013
+
+Author:104	Nadia_Payet	METU	Computer_Engineering	nadia@ce.metu.edu.tr
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1042006	Linear_stereo_matching	ICCV	2012
++1042008	Revisiting_Radiometric_Calibration_for_Color_Computer_Vision	ICCV	2012
++1042010	Learning_to_Predict_the_Perceived_Visual_Quality_of_Photos	ICCV	2012
++1042020	Unsupervised_Learning_of_a_Scene-Specific_Coarse_Gaze_Estimator	CVPR	2013
+
+Author:100	Olivier_Duchenne	MIT	Computer_Science	oliver@mit.edu
++1002001	A_Graph-matching_Kernel_for_Object_Categorization	ICCV	2012
++1002004	From_Contours_to_3D_Object_Detection_and_Pose_Estimation	ICCV	2012
++1002007	Variational_Stereo_in_Dynamic_Illumination	ICCV	2012
++1002012	Source_Constrained_Clustering	ICCV	2012
++1002018	Content-Based_Photo_Quality_Assessment	CVPR	2013
+
+Author:105	Blake_Johnson	HARVARD	Computer_Science	blake@harvard.edu
++1052021	Tracking_by_Sampling_Trackers	ICCV	2012
++1052022	Domain_Adaptation_for_Object_Recognition:An_Supervised_Approach	ICCV	2012
++1053002	Subchannel_Flow_Distributions_in_CANDU_Fuel_Channels_Following_Deformations	Montreal	1983
++1053003	The_Assessment_of_Tornado_Missile_Hazard_to_Nuclear_Power_Plants	Montreal	1983
++1053004	Accuracy_and_Efficiency_of_Monte_Carlo_Method	Montreal	1983
+
+Author:108	Ken_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1083000	Development_and_Application_of_Computer_Codes_for_Multidimensional	Montreal	1983
++1083001	Recent_Developments_in_the_ROCS-MC_Code_for_Retrieving	Montreal	1983
++1083002	Rational_Mapping_RAM_of_In-Core_Data	Montreal	1983
+
+Author:109	Rich_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1093000	The_Advantages_and_Limitations_of_the_Sets_Method	Montreal	1983
++1093001	A_Critical_Review_of_Homogenization_Techniques_in_Reactor_Lattices	Montreal	1983
++1093002	Possible_Use_of_Measurements_to_Ament_Cross_Section_Tables_PUMA	Montreal	1983
+
+Author:110	Sam_Abbott	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1103000	RELAP5-MOD2:_For_PWR_Transient_Analysis	Montreal	1983
++1103001	A_Simple_Stability_Criterion_for_CANDU_Figure-of-Eight_Flow_Oscillations	Montreal	1983
++1103002	On_the_Theory_of_Interface_Flux_Nodal_Method	Montreal	1983
+
+Author:111	Charles_A_Abels_Assessor	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1113000	Progress_in_Modelling_Separated_Flow_Effects_in_the_Refilling_of_Horizontal_Heated_Channels	Montreal	1983
++1113001	Two_Dimensional_Analysis_of_Conduction-Controlled_Rewetting_with_Internal_Heat_Generation	Montreal	1983
++1113002	Nested_Element_Method_in_Multidimensional_Neutron_Diffusion_Calculations	Montreal	1983
+
+Author:112	Matt_Abernathy	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1123000	Anomalies_in_One-Dimensional_Thermal_Hydraulics_Calculations	Montreal	1983
++1123001	Verification_of_SOPHT_for_Parallel_Channel_Flow_Stability	Montreal	1983
++1123002	Numerical_Simulation_of_Two-Phase_Flow_in_Horizontal_Interconnected_Subchannels	Montreal	1983
+
+Author:113	Alex_Abramovici	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1133000	Neutronics_Calculations_in_Large_Symbiotic_Spallation-Fission-Reactor-Assemblies	Montreal	1983
++1133001	Turbulence_Modeling_of_Thermal_and_Fluid_Mixing_in_PWRs	Montreal	1983
++1133002	ASSERT_and_COBRA_Predictions_of_Flow_Distribution_in_Vertical_Bundles	Montreal	1983
+
+Author:114	Mark_Abrams	HU	Computer_Enginnering	a@hacettepe.edu.tr
++1143000	Variational_Methods_in_Steady_State_Diffusion_Problems	Montreal	1983
++1143001	An_Assessment_of_Finite_Element_Synthesis_Model_Using_3D_FEM	Montreal	1983
++1143002	A_Numerical_Technique_for_Reactor_Subchannel_Analysis	Montreal	1983
+--------------------------------------End--------------------------------------

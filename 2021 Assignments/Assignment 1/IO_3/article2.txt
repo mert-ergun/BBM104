@@ -1,0 +1,2 @@
+ARTICLE 1052021 Tracking_by_Sampling_Trackers ICCV 2012
+ARTICLE 1052022 Domain_Adaptation_for_Object_Recognition:An_Supervised_Approach ICCV 2012

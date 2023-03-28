@@ -1,0 +1,23 @@
+FeatureFilm:	200	Vozvrashchenie	Russian	505	105	Russia	500,501,502	Drama,Mystery,Thriller	25.06.2003	503,504	50000
+ShortFilm:	301	Two_Soldiers	English	610	40	USA	612,613,614	Drama,War	01.08.2003	611
+FeatureFilm:	111	Biyeolhan_Geori	Korean	438	141	South_Korea	440,441,442	Action,Crime,Thriller	15.06.2006	439	4700000
+FeatureFilm:	100	La_meglio_gioventu	Italian	357	180	Italy	352,353,354,355,356	Drama,Romance	22.06.2003	358,359	240000
+Documentary:	401	Man_on_Wire	French	640	94	UK	642,643,644	22.01.2008
+TVSeries:	108	Friends	English	417	22	USA	421,422,423,424,425,426	Comedy,Romance	418,419,420	22.09.1994	06.05.2004	10	236
+FeatureFilm:	500	Casablanca	English	650	102	USA	653,654,655	Drama,Romance,War	26.11.1942	651,652	650000
+FeatureFilm:	666	Swing	English	381	180	Spain	448,467,386	Drama,Thriller	24.05.2013	392,359	10000
+TVSeries:	102	Coupling	English	366	30	UK	368,369,370,371,372,373	Comedy	367	12.05.2000	14.06.2004	4	28
+Documentary:	103	5_Broken_Cameras	Hebrew	375,376	94	Palestine	377,378,379	20.02.2013
+FeatureFilm:	104	Pulp_Fiction	English	381	154	USA	383,384,385,386,387,388	Crime,Thriller	14.04.1994	382	8000000
+FeatureFilm:	105	Rear_Window	English	390	112	USA	393,394,395	Mystery,Thriller	01.04.1956	391,392	1000000
+ShortFilm:	302	Holiday_Romance	English	620	19	UK	622,623	Comedy	01.01.1998	621
+FeatureFilm:	109	Before_Sunrise	English	428	105	USA	430,431	Drama,Romance	19.05.1995	429	2500000
+ShortFilm:	101	Plastic_Bag	English	361	18	USA	363,364	Drama	07.09.2009	362
+FeatureFilm:	110	Annie_Hall	English	433	93	USA	435,436	Comedy,Drama,Romance	20.04.1977	434	4000000
+Documentary:	107	Gelibolu	Turkish	412	114	Turkey	413,414,415	18.03.2005
+FeatureFilm:	112	Silver_Linings_Playbook	English	444	122	USA	446,447,448,449	Comedy,Drama,Romance	04.01.2013	445	21000000
+FeatureFilm:	113	Amelie	French	451	122	France	453,454	Comedy,Romance	25.04.2001	452	10000000
+TVSeries:	106	Lost	English	397,398	42	USA	404,405,406,407,408,409,410	Adventure,Drama,Fantasy	399,400,401,402,403	22.09.2004	23.05.2010	6	121
+FeatureFilm:	114	The_Godfather	English	456	175	USA	458,459,460,461	Crime,Drama	05.10.1973	457	6000000
+ShortFilm:	300	The_Strange_Ones	English	600	14	USA	602,603,604	Drama,Mystery	20.01.2011	601
+Documentary:	400	Searching_for_Sugar_Man	English	630	86	Sweden	632,633	19.01.2012

@@ -1,0 +1,583 @@
+RATE	470	113	9
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Amelie
+
+-----------------------------------------------------------------------------------------------------
+RATE	470	113	9
+
+This film was earlier rated
+
+-----------------------------------------------------------------------------------------------------
+RATE	454	113	8
+
+Command Failed
+User ID: 454
+Film ID: 113
+
+-----------------------------------------------------------------------------------------------------
+ADD	FEATUREFILM	115	Fight_Club	English	463	139	USA	466,467	Drama	10.12.1999	464,465	63000000
+
+FeatureFilm added successfully
+Film ID: 115
+Film title: Fight_Club
+
+-----------------------------------------------------------------------------------------------------
+ADD	FEATUREFILM	115	Night_Club	English	463	139	USA	466,467	Drama	10.12.1999	464,465	63000000
+
+Command Failed
+Film ID: 115
+Film title: Night_Club
+
+-----------------------------------------------------------------------------------------------------
+ADD	FEATUREFILM	116	Right_Club	English	463	139	USA	466,999	Drama	10.12.1999	464,465	63000000
+
+Command Failed
+Film ID: 116
+Film title: Right_Club
+
+-----------------------------------------------------------------------------------------------------
+RATE	475	115	10
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Fight_Club
+
+-----------------------------------------------------------------------------------------------------
+RATE	477	115	9
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Fight_Club
+
+-----------------------------------------------------------------------------------------------------
+RATE	480	111	9
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Biyeolhan_Geori
+
+-----------------------------------------------------------------------------------------------------
+RATE	477	111	7
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Biyeolhan_Geori
+
+-----------------------------------------------------------------------------------------------------
+RATE	476	114	10
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: The_Godfather
+
+-----------------------------------------------------------------------------------------------------
+RATE	474	114	10
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: The_Godfather
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	114	9
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: The_Godfather
+
+-----------------------------------------------------------------------------------------------------
+RATE	472	112	8
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Silver_Linings_Playbook
+
+-----------------------------------------------------------------------------------------------------
+RATE	472	103	8
+
+Film rated successfully
+Film type: Documentary
+Film title: 5_Broken_Cameras
+
+-----------------------------------------------------------------------------------------------------
+RATE	472	101	6
+
+Film rated successfully
+Film type: ShortFilm
+Film title: Plastic_Bag
+
+-----------------------------------------------------------------------------------------------------
+RATE	471	102	10
+
+Film rated successfully
+Film type: TVSeries
+Film title: Coupling
+
+-----------------------------------------------------------------------------------------------------
+RATE	479	102	9
+
+Film rated successfully
+Film type: TVSeries
+Film title: Coupling
+
+-----------------------------------------------------------------------------------------------------
+RATE	478	100	9
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: La_meglio_gioventu
+
+-----------------------------------------------------------------------------------------------------
+RATE	478	109	9
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Before_Sunrise
+
+-----------------------------------------------------------------------------------------------------
+RATE	476	104	9
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Pulp_Fiction
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	106	9
+
+Film rated successfully
+Film type: TVSeries
+Film title: Lost
+
+-----------------------------------------------------------------------------------------------------
+RATE	472	106	8
+
+Film rated successfully
+Film type: TVSeries
+Film title: Lost
+
+-----------------------------------------------------------------------------------------------------
+RATE	471	106	7
+
+Film rated successfully
+Film type: TVSeries
+Film title: Lost
+
+-----------------------------------------------------------------------------------------------------
+RATE	478	106	10
+
+Film rated successfully
+Film type: TVSeries
+Film title: Lost
+
+-----------------------------------------------------------------------------------------------------
+VIEWFILM	115
+
+Fight_Club (1999)
+Drama
+Writers: Chuck Palahniuk, Jim Uhls
+Directors: David Fincher
+Stars: Edward Norton, Brad Pitt
+Ratings: 9,5/10 from 2 users
+
+-----------------------------------------------------------------------------------------------------
+VIEWFILM	101
+
+Plastic_Bag (2009)
+Drama
+Writers: Jenni Jenkins
+Directors: Ramin Bahrani
+Stars: Werner Herzog, Jaeden Martell
+Ratings: 6/10 from 1 users
+
+-----------------------------------------------------------------------------------------------------
+RATE	470	115	9
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Fight_Club
+
+-----------------------------------------------------------------------------------------------------
+RATE	479	115	8
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Fight_Club
+
+-----------------------------------------------------------------------------------------------------
+RATE	478	115	8
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Fight_Club
+
+-----------------------------------------------------------------------------------------------------
+RATE	470	108	8
+
+Film rated successfully
+Film type: TVSeries
+Film title: Friends
+
+-----------------------------------------------------------------------------------------------------
+VIEWFILM	115
+
+Fight_Club (1999)
+Drama
+Writers: Chuck Palahniuk, Jim Uhls
+Directors: David Fincher
+Stars: Edward Norton, Brad Pitt
+Ratings: 8,8/10 from 5 users
+
+-----------------------------------------------------------------------------------------------------
+LIST	USER	470	RATES
+
+Amelie: 9
+Fight_Club: 9
+Friends: 8
+
+-----------------------------------------------------------------------------------------------------
+LIST	USER	476	RATES
+
+The_Godfather: 10
+Pulp_Fiction: 9
+
+-----------------------------------------------------------------------------------------------------
+LIST	USER	444	RATES
+
+Command Failed
+User ID: 444
+
+-----------------------------------------------------------------------------------------------------
+EDIT	RATE	470	115	10
+
+New ratings done successfully
+Film title: Fight_Club
+Your rating: 10
+
+-----------------------------------------------------------------------------------------------------
+EDIT	RATE	470	109	10
+
+Command Failed
+User ID: 470
+Film ID: 109
+
+-----------------------------------------------------------------------------------------------------
+VIEWFILM	103
+
+5_Broken_Cameras (2013)
+
+Directors: Emad Burnat, Guy Davidi
+Stars: Gibreel Burnat, Mohammed Burnat, Yasin Burnat
+Ratings: 8/10 from 1 users
+
+-----------------------------------------------------------------------------------------------------
+LIST	ARTISTS	FROM	Turkey
+
+Directors:
+Tolga Ornek Tolga
+
+Writers:
+No result
+
+Actors:
+Zafer Ergin 178 cm
+
+ChildActors:
+No result
+
+StuntPerformers:
+No result
+
+-----------------------------------------------------------------------------------------------------
+EDIT	RATE	470	222	10
+
+Command Failed
+User ID: 470
+Film ID: 222
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	AFTER	1995
+
+Film title: La_meglio_gioventu (2003)
+180 min
+Language: Italian
+
+Film title: Before_Sunrise (1995)
+105 min
+Language: English
+
+Film title: Biyeolhan_Geori (2006)
+141 min
+Language: Korean
+
+Film title: Silver_Linings_Playbook (2013)
+122 min
+Language: English
+
+Film title: Amelie (2001)
+122 min
+Language: French
+
+Film title: Fight_Club (1999)
+139 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
+EDIT	RATE	475	109	10
+
+Command Failed
+User ID: 475
+Film ID: 109
+
+-----------------------------------------------------------------------------------------------------
+VIEWFILM	108
+
+Friends (1994-2004)
+10 seasons, 236 episodes
+Comedy, Romance
+Writers: David Crane, Marta Kauffman, Mihael Curtis
+Directors: Kevin Bright
+Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
+Ratings: 8/10 from 1 users
+
+-----------------------------------------------------------------------------------------------------
+RATE	470	100	10
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: La_meglio_gioventu
+
+-----------------------------------------------------------------------------------------------------
+RATE	473	113	8
+
+Film rated successfully
+Film type: FeatureFilm
+Film title: Amelie
+
+-----------------------------------------------------------------------------------------------------
+REMOVE	RATE	470	108
+
+Your film rating was removed successfully
+Film title: Friends
+
+-----------------------------------------------------------------------------------------------------
+VIEWFILM	108
+
+Friends (1994-2004)
+10 seasons, 236 episodes
+Comedy, Romance
+Writers: David Crane, Marta Kauffman, Mihael Curtis
+Directors: Kevin Bright
+Stars: Noelle Sheldon, Cali Sheldon, Dakota Fanning, Matt LeBlanc, Matthew Perry, David Schwimmer
+Awaiting for votes
+
+-----------------------------------------------------------------------------------------------------
+REMOVE	RATE	470	109
+
+Command Failed
+User ID: 470
+Film ID: 109
+
+-----------------------------------------------------------------------------------------------------
+LIST	USER	470	RATES
+
+Amelie: 9
+Fight_Club: 10
+La_meglio_gioventu: 10
+
+-----------------------------------------------------------------------------------------------------
+LIST	FILM	SERIES
+
+Coupling (2000-2004)
+4 seasons and 28 episodes
+
+Lost (2004-2010)
+6 seasons and 121 episodes
+
+Friends (1994-2004)
+10 seasons and 236 episodes
+
+-----------------------------------------------------------------------------------------------------
+VIEWFILM	106
+
+Lost (2004-2010)
+6 seasons, 121 episodes
+Adventure, Drama, Fantasy
+Writers: Damon Lindelof, Carlton Cuse, Edward Kitsis, Adam Horowitz, Elizabeth Sarnoff
+Directors: Jack Bender, Stephen Williams
+Stars: Jorge Garcia, Naveen Andrews, Matthew Fox, Josh Holloway, Storm Reid, Noah Jupe, Julian Dennison
+Ratings: 8,5/10 from 4 users
+
+-----------------------------------------------------------------------------------------------------
+LIST	FILMS	BY	COUNTRY	Japan
+
+No result
+
+-----------------------------------------------------------------------------------------------------
+LIST	FILMS	BY	COUNTRY	USA
+
+Film title: Plastic_Bag
+18 min
+Language: English
+
+Film title: Pulp_Fiction
+154 min
+Language: English
+
+Film title: Rear_Window
+112 min
+Language: English
+
+Film title: Lost
+42 min
+Language: English
+
+Film title: Friends
+22 min
+Language: English
+
+Film title: Before_Sunrise
+105 min
+Language: English
+
+Film title: Annie_Hall
+93 min
+Language: English
+
+Film title: Silver_Linings_Playbook
+122 min
+Language: English
+
+Film title: The_Godfather
+175 min
+Language: English
+
+Film title: Fight_Club
+139 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	BEFORE	1995
+
+Film title: Pulp_Fiction (1994)
+154 min
+Language: English
+
+Film title: Rear_Window (1956)
+112 min
+Language: English
+
+Film title: Annie_Hall (1977)
+93 min
+Language: English
+
+Film title: The_Godfather (1973)
+175 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	BEFORE	1920
+
+No result
+
+-----------------------------------------------------------------------------------------------------
+LIST	FILMS	BY	RATE	DEGREE
+
+FeatureFilm:
+The_Godfather (1973) Ratings: 9,7/10 from 3 users
+La_meglio_gioventu (2003) Ratings: 9,5/10 from 2 users
+Pulp_Fiction (1994) Ratings: 9/10 from 1 users
+Before_Sunrise (1995) Ratings: 9/10 from 1 users
+Fight_Club (1999) Ratings: 9/10 from 5 users
+Amelie (2001) Ratings: 8,5/10 from 2 users
+Biyeolhan_Geori (2006) Ratings: 8/10 from 2 users
+Silver_Linings_Playbook (2013) Ratings: 8/10 from 1 users
+Rear_Window (1956) Ratings: 0/10 from 0 users
+Annie_Hall (1977) Ratings: 0/10 from 0 users
+
+ShortFilm:
+Plastic_Bag (2009) Ratings: 6/10 from 1 users
+
+Documentary:
+5_Broken_Cameras (2013) Ratings: 8/10 from 1 users
+Gelibolu (2005) Ratings: 0/10 from 0 users
+
+TVSeries:
+Coupling (2000-2004) Ratings: 9,5/10 from 2 users
+Lost (2004-2010) Ratings: 8,5/10 from 4 users
+Friends (1994-2004) Ratings: 0/10 from 0 users
+
+-----------------------------------------------------------------------------------------------------
+LIST	ARTISTS	FROM	USA
+
+Directors:
+Ramin Bahrani Ramin
+Quentin Tarantino Simpson-Morris
+Alfred Hitchcock Hitchcock
+Jack Bender Abrams
+Kevin Bright Crane
+Richard Linklater Richard
+Woody Allen Allen
+David O.Russell Russell
+Francis-Ford Coppola Coppola
+David Fincher Fincher
+
+Writers:
+Jenni Jenkins Drama
+John M.Hayes Mystery
+Cornell Woolrich Thriller
+Damon Lindelof Mystery
+Carlton Cuse Adventure
+Edward Kitsis Drama
+Adam Horowitz Fantasy
+Elizabeth Sarnoff Adventure
+David Crane Romance
+Marta Kauffman Romance
+Mihael Curtis Comedy
+Kim Krizan Romance
+Matthew Quick Comedy
+Mario Puzo Crime
+Chuck Palahniuk Fiction
+Jim Uhls Drama
+
+Actors:
+John Travolta 188 cm
+Samuel L.Jackson 189 cm
+James Stewart 191 cm
+Wendell Corey 187 cm
+Jorge Garcia 183 cm
+Matthew Fox 188 cm
+Josh Holloway 187 cm
+Demetri Goritsas 183 cm
+Matt LeBlanc 178 cm
+Matthew Perry 183 cm
+David Schwimmer 185 cm
+Ethan Hawke 180 cm
+Tony Roberts 185 cm
+Bradley Cooper 185 cm
+Robert DeNiro 177 cm
+Marlon Brando 175 cm
+Al Pacino 170 cm
+James Caan 176 cm
+Robert Duvall 174 cm
+Edward Norton 183 cm
+Brad Pitt 180 cm
+
+ChildActors:
+Noah Schnapp 17
+Jack Grazer 18
+Elsie Fisher 18
+Noelle Sheldon 29
+Cali Sheldon 29
+Dakota Fanning 27
+Aidan Gallagher 18
+Judah Lewis 20
+Skylar Gaertner 17
+
+StuntPerformers:
+Hal NeedHam 180 cm
+Buster Keaton 165 cm
+Joi Harris 175 cm
+John Bernecker 185 cm
+
+-----------------------------------------------------------------------------------------------------

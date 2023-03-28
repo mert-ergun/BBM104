@@ -1,0 +1,97 @@
+LIST	FILM	SERIES
+
+Friends (1994-2004)
+10 seasons and 236 episodes
+
+Coupling (2000-2004)
+4 seasons and 28 episodes
+
+Lost (2004-2010)
+6 seasons and 121 episodes
+
+-----------------------------------------------------------------------------------------------------
+LIST	FILMS	BY	COUNTRY	UK
+
+Film title: Man_on_Wire
+94 min
+Language: French
+
+Film title: Coupling
+30 min
+Language: English
+
+Film title: Holiday_Romance
+19 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
+LIST	FILMS	BY	COUNTRY	Russia
+
+Film title: Vozvrashchenie
+105 min
+Language: Russian
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	AFTER	2009
+
+Film title: Swing (2013)
+180 min
+Language: English
+
+Film title: Silver_Linings_Playbook (2013)
+122 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	BEFORE	1980
+
+Film title: Casablanca (1942)
+102 min
+Language: English
+
+Film title: Rear_Window (1956)
+112 min
+Language: English
+
+Film title: Annie_Hall (1977)
+93 min
+Language: English
+
+Film title: The_Godfather (1973)
+175 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	BEFORE	1960
+
+Film title: Casablanca (1942)
+102 min
+Language: English
+
+Film title: Rear_Window (1956)
+112 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
+LIST	FEATUREFILMS	AFTER	2004
+
+Film title: Biyeolhan_Geori (2006)
+141 min
+Language: Korean
+
+Film title: Swing (2013)
+180 min
+Language: English
+
+Film title: Silver_Linings_Playbook (2013)
+122 min
+Language: English
+
+-----------------------------------------------------------------------------------------------------
+LIST	FILMS	BY	COUNTRY	France
+
+Film title: Amelie
+122 min
+Language: French
+
+-----------------------------------------------------------------------------------------------------

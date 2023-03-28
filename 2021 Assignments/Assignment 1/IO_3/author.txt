@@ -1,0 +1,13 @@
+AUTHOR 101
+AUTHOR 102 Horst_Bischof HUN Computer_Engineering horst@cs.hacettepe.edu.tr 1002004
+AUTHOR 103 Pietro_Perona METU Computer_Science pietro@ce.metu.edu.tr 1002004 1032019
+AUTHOR 104 Nadia_Payet METU Computer_Engineering nadia@ce.metu.edu.tr 1002001 1042020 1042010 1042008
+AUTHOR 100 Olivier_Duchenne MIT Computer_Science oliver@mit.edu 1002001 1002004 1002007 1002012 1002018
+AUTHOR 105 Blake_Johnson HARVARD Computer_Science blake@harvard.edu
+AUTHOR 108 Ken_Abbott HU Computer_Enginnering a@hacettepe.edu.tr
+AUTHOR 109 Rich_Abbott HU Computer_Enginnering a@hacettepe.edu.tr
+AUTHOR 110 Sam_Abbott HU Computer_Enginnering a@hacettepe.edu.tr
+AUTHOR 111 Charles_A_Abels_Assessor HU Computer_Enginnering a@hacettepe.edu.tr
+AUTHOR 112 Matt_Abernathy HU Computer_Enginnering a@hacettepe.edu.tr
+AUTHOR 113 Alex_Abramovici HU Computer_Enginnering a@hacettepe.edu.tr
+AUTHOR 114 Mark_Abrams HU Computer_Enginnering a@hacettepe.edu.tr

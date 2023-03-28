@@ -1,0 +1,3 @@
+PUT	Drinks,I17,I18	Chocolates,I19	Biscuits,I20	Waters,I21,I22,I23	Crisps,I24
+BUY	Drinks,3	Biscuits,1	Waters,2
+PUT	Drinks,I25,I26	Chocolates,I27
