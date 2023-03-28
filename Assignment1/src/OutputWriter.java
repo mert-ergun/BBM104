@@ -1,10 +1,12 @@
 import java.io.*;
 
 public class OutputWriter {
+    static final char WHITE_BALL = '*';
+    static final char HOLE = 'H';
     // Write the output to the file.
-    public static void writeOutput(String filename, int score, int whiteRow, int whiteCol, int numRows, 
-    int numCols, String[] mainMoves, char[][] board, char[][] initBoard, char WHITE_BALL, char HOLE, boolean gameOver) throws IOException {
-        Writer writer = new OutputStreamWriter(new FileOutputStream(filename),"UTF-8");
+    public static void writeOutput(int score, int whiteRow, int whiteCol, int numRows, 
+    int numCols, String[] mainMoves, char[][] board, char[][] initBoard, boolean gameOver) throws IOException {
+        Writer writer = new OutputStreamWriter(new FileOutputStream("output.txt"),"UTF-8");
         
 
         writer.write("Game Board:\n");

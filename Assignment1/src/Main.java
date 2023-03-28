@@ -243,6 +243,6 @@ public class Main {
         }
 
         // Print the final board
-        OutputWriter.writeOutput("output.txt", score, whiteBall.getRow(), whiteBall.getCol(), numRows, numCols , moves, board, initBoard, WHITE_BALL, HOLE, isOver);
+        OutputWriter.writeOutput(score, whiteBall.getRow(), whiteBall.getCol(), numRows, numCols , moves, board, initBoard, isOver);
     }
 }
