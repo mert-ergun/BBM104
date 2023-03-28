@@ -1,8 +1,10 @@
 import java.io.*;
 
 public class OutputWriter {
+    // Setting up the constants
     static final char WHITE_BALL = '*';
     static final char HOLE = 'H';
+
     // Write the output to the file.
     public static void writeOutput(int score, int whiteRow, int whiteCol, int numRows, 
     int numCols, String[] mainMoves, char[][] board, char[][] initBoard, boolean gameOver) throws IOException {
