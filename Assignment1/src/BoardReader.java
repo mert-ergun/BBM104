@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
-public class ReadBoard {
+public class BoardReader {
     // Read the board from the file and return it as a 2D array of characters.
     public static char[][] readBoard(String filename) throws IOException {
         Scanner boardScanner = new Scanner(new File(filename));

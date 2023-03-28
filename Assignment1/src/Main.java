@@ -83,12 +83,12 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         // Read the input board file
-        char[][] board = ReadBoard.readBoard("board.txt");
-        char[][] initBoard = ReadBoard.readBoard("board.txt");
-        int numRows = ReadBoard.getNumRows(board);  // Call the getNumRows method from ReadBoard class to get the number of rows
-        int numCols = ReadBoard.getNumCols(board);  // Call the getNumCols method from ReadBoard class to get the number of columns
-        int whiteRow = ReadBoard.getWhiteRow(board);  // Call the getwhiteBall.getRow() method from ReadBoard class to get the row of the white ball
-        int whiteCol = ReadBoard.getWhiteCol(board);  // Call the getwhiteBall.getCol() method from ReadBoard class to get the column of the white ball
+        char[][] board = BoardReader.readBoard("board.txt");
+        char[][] initBoard = BoardReader.readBoard("board.txt");
+        int numRows = BoardReader.getNumRows(board);  // Call the getNumRows method from ReadBoard class to get the number of rows
+        int numCols = BoardReader.getNumCols(board);  // Call the getNumCols method from ReadBoard class to get the number of columns
+        int whiteRow = BoardReader.getWhiteRow(board);  // Call the getwhiteBall.getRow() method from ReadBoard class to get the row of the white ball
+        int whiteCol = BoardReader.getWhiteCol(board);  // Call the getwhiteBall.getCol() method from ReadBoard class to get the column of the white ball
         WhiteBall whiteBall = new WhiteBall(whiteRow, whiteCol, numRows, numCols);  // Create a new white ball object
         boolean isMoved = false;  // Check if the white ball is moved
         boolean isDropped = false;  // Check if the white ball is dropped from the board
