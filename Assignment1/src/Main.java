@@ -96,7 +96,7 @@ public class Main {
         
 
         // Read the input move file and execute the moves
-        String[] moves = ReadMoves.readMoves("move.txt");
+        String[] moves = MoveReader.readMoves("move.txt");
         int score = 0;  
 
         // Execute the moves

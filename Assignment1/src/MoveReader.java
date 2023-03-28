@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class ReadMoves {
+public class MoveReader {
     // Read the moves from the file and return them as an array of strings.
     public static String[] readMoves(String filename) throws IOException {
         Scanner moveScanner = new Scanner(new File(filename));
