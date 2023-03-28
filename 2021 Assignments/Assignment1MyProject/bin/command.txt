@@ -1,8 +1,0 @@
-read article1.txt
-list
-completeAll
-list
-sortedAll
-list
-del 100
-list
