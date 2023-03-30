@@ -98,10 +98,12 @@ public class Main {
         // Read the input move file and execute the moves
         String[] moves = MoveReader.readMoves("move.txt");
         int score = 0;  
+        String[] playedMoves = new String[moves.length];  // Store the moves that are played
 
         // Execute the moves
         for (int i = 0; i < moves.length; i++) {  
             if (moves[i] != null) {
+                playedMoves[i] = moves[i];  // Store the moves that are played
                 isMoved = false;  // Reset the isMoved variable to false
                 int oldWhiteRow = whiteBall.getRow();  // Store the old row of the white ball
                 int oldWhiteCol = whiteBall.getCol();  // Store the old column of the white ball
@@ -243,6 +245,6 @@ public class Main {
         }
 
         // Print the final board
-        OutputWriter.writeOutput(score, whiteBall.getRow(), whiteBall.getCol(), numRows, numCols , moves, board, initBoard, isOver);
+        OutputWriter.writeOutput(score, whiteBall.getRow(), whiteBall.getCol(), numRows, numCols , playedMoves, board, initBoard, isOver);
     }
 }
