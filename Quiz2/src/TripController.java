@@ -1,6 +1,3 @@
-import java.util.Date;
-import java.util.Arrays;
-
 public class TripController implements DepartureController, ArrivalController {
     protected TripSchedule trip_schedule;
 
@@ -12,7 +9,8 @@ public class TripController implements DepartureController, ArrivalController {
         for (int i = 0; i < trip_schedule.trips.length - 1; i++) {
             int min_idx = i;
             for (int j = i + 1; j < trip_schedule.trips.length; j++) {
-                if (trip_schedule.trips[j].arrivalTime.before(trip_schedule.trips[min_idx].arrivalTime)) {
+                if(trip_schedule.trips[j] == null) break;
+                if (trip_schedule.trips[j].getArrivalTime() < trip_schedule.trips[min_idx].getArrivalTime()) {
                     min_idx = j;
                 }
             }
@@ -25,7 +23,7 @@ public class TripController implements DepartureController, ArrivalController {
 
         for (int i = 0; i < trip_schedule.trips.length; i++) {
             if (trip_schedule.trips[i] != null) {
-                System.out.println(trip_schedule.trips[i].tripName + " arrive at" + trip_schedule.trips[i].parseArrivalTime() + "\tTrip State :" + trip_schedule.trips[i].state);
+                System.out.println(trip_schedule.trips[i].tripName + " arrive at " + trip_schedule.trips[i].parseArrivalTime() + "\tTrip State :" + trip_schedule.trips[i].state);
             }
         }
     }
@@ -34,7 +32,8 @@ public class TripController implements DepartureController, ArrivalController {
         for (int i = 0; i < trip_schedule.trips.length - 1; i++) {
             int min_idx = i;
             for (int j = i + 1; j < trip_schedule.trips.length; j++) {
-                if (trip_schedule.trips[j].departureTime.before(trip_schedule.trips[min_idx].departureTime)) {
+                if (trip_schedule.trips[j] == null) break;
+                if (trip_schedule.trips[j].getArrivalTime() < trip_schedule.trips[min_idx].getArrivalTime()) {
                     min_idx = j;
                 }
             }
@@ -47,7 +46,7 @@ public class TripController implements DepartureController, ArrivalController {
 
         for (int i = 0; i < trip_schedule.trips.length; i++) {
             if (trip_schedule.trips[i] != null) {
-                System.out.println(trip_schedule.trips[i].tripName + " depart at" + trip_schedule.trips[i].parseDepartureTime() + "\tTrip State :" + trip_schedule.trips[i].state);
+                System.out.println(trip_schedule.trips[i].tripName + " depart at " + trip_schedule.trips[i].parseDepartureTime() + "\tTrip State :" + trip_schedule.trips[i].state);
             }
         }
     }

@@ -9,7 +9,7 @@ public class Main {
                 System.out.println(trip.tripName + " depart at " + trip.parseDepartureTime() + " arrive at " + trip.parseArrivalTime() + "\tTrip State :" + trip.state);
             }
         }
-        tripController.ArrivalSchedule(tripController.trip_schedule);
         tripController.DepartureSchedule(tripController.trip_schedule);
+        tripController.ArrivalSchedule(tripController.trip_schedule);
     }
 }

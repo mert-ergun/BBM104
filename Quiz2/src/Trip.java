@@ -14,7 +14,7 @@ public class Trip {
         this.departureTime = dateFormat.parse(departureTime);
         this.duration = Integer.parseInt(duration);
         this.state = "Idle";
-        this.arrivalTime = calculateArrival();
+        this.arrivalTime = dateFormat.parse(dateFormat.format(calculateArrival()));
     }
 
     public String parseDepartureTime() {
