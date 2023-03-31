@@ -1,19 +1,11 @@
 Game Board:
-B W O H D B
-G R R B Y Y
-G Y Y W P N
-W L L D D W
-L R Y R * W
+H R Y R W *
 
 Your movement is:
-L R R U L U U R U 
+L 
 
 Your output is:
-B W O H D B
-G R X   Y Y
-G Y X W P N
-W L X L D W
-L R Y D X W
+H R Y R W  
 
 Game Over!
-Score: 20
+Score: 0
