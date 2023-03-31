@@ -1,3 +1,3 @@
-abstract class Smart {
-    
+public abstract class Smart {
+    private boolean isOn;
 }
