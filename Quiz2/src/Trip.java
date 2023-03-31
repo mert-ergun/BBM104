@@ -13,7 +13,7 @@ public class Trip {
         this.tripName = tripName;
         this.departureTime = dateFormat.parse(departureTime);
         this.duration = Integer.parseInt(duration);
-        this.state = "Idle";
+        this.state = "IDLE";
         this.arrivalTime = dateFormat.parse(dateFormat.format(calculateArrival()));
     }
 

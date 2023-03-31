@@ -6,10 +6,12 @@ public class Main {
         for (Trip trip : trips) {
             if (trip != null) {
                 tripController.trip_schedule.addTrip(trip);
-                System.out.println(trip.tripName + " depart at " + trip.parseDepartureTime() + " arrive at " + trip.parseArrivalTime() + "\tTrip State :" + trip.state);
             }
         }
+
+        System.out.println("Departure Order:");
         tripController.DepartureSchedule(tripController.trip_schedule);
+        System.out.println("Arrival Order:");
         tripController.ArrivalSchedule(tripController.trip_schedule);
     }
 }
