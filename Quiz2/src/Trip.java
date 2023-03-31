@@ -7,7 +7,7 @@ public class Trip {
     public String tripName, state;
     public Date departureTime, arrivalTime;
     public int duration;
-    private static DateFormat dateFormat = new SimpleDateFormat("HH:MM");
+    private static DateFormat dateFormat = new SimpleDateFormat("HH:mm");
     
     public Trip(String tripName, String departureTime, String duration) throws ParseException {
         this.tripName = tripName;
@@ -22,11 +22,15 @@ public class Trip {
     }
 
     public int getDepartureTime() {
-        return departureTime.getDate();
+        return departureTime.getHours() * 60 + departureTime.getMinutes();
     }
 
     public int getArrivalTime() {
-        return arrivalTime;
+        return arrivalTime.getHours() * 60 + arrivalTime.getMinutes();
+    }
+
+    public String parseArrivalTime() {
+        return dateFormat.format(arrivalTime);
     }
 
     public String getState() {
