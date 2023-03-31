@@ -1,3 +1,3 @@
-public class DepartureController {
-    
+public interface DepartureController {
+    public void DepartureSchedule(TripSchedule trip_schedule);
 }
