@@ -21,6 +21,7 @@ public class TripController implements DepartureController, ArrivalController {
         OutputWriter.clearOutput();
         DepartureSchedule(trip_schedule);
         ArrivalSchedule(trip_schedule);
+        this.trip_schedule = trip_schedule;
     }
 
     /**
