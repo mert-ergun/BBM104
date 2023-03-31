@@ -1,3 +1,3 @@
-public class Smart {
+abstract class Smart {
     
 }
