@@ -19,19 +19,13 @@ public class Main {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        TripController tripController = new TripController();
         Trip[] trips = InputReader.readInput();
-        tripController.trip_schedule = new TripSchedule();
+        TripSchedule trip_schedule = new TripSchedule();
         for (Trip trip : trips) {
             if (trip != null) {
-                tripController.trip_schedule.addTrip(trip);
+                trip_schedule.addTrip(trip);
             }
         }
-
-        OutputWriter.clearOutput();  
-        OutputWriter.writeOutput("Departure Order:");
-        tripController.DepartureSchedule(tripController.trip_schedule);
-        OutputWriter.writeOutput("Arrival Order:");
-        tripController.ArrivalSchedule(tripController.trip_schedule);
+        TripController tripController = new TripController(trip_schedule);
     }
 }

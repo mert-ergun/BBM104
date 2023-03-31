@@ -17,8 +17,10 @@ public class TripController implements DepartureController, ArrivalController {
      * Constructor for the TripController class.
      * @param trip_schedule The trip schedule object.
      */
-    public TripController() {
-        trip_schedule = new TripSchedule();
+    public TripController(TripSchedule trip_schedule) throws Exception {
+        OutputWriter.clearOutput();
+        DepartureSchedule(trip_schedule);
+        ArrivalSchedule(trip_schedule);
     }
 
     /**
@@ -43,7 +45,7 @@ public class TripController implements DepartureController, ArrivalController {
                 }
             }
         }
-
+        OutputWriter.writeOutput("Arrival Order:");
         for (int i = 0; i < trip_schedule.trips.length; i++) {
             if (trip_schedule.trips[i] != null) {
                 for (int j = i + 1; j < trip_schedule.trips.length; j++) {
@@ -81,7 +83,7 @@ public class TripController implements DepartureController, ArrivalController {
                 }
             }
         }
-
+        OutputWriter.writeOutput("Departure Order:");
         for (int i = 0; i < trip_schedule.trips.length; i++) {
             if (trip_schedule.trips[i] != null) {
                 for (int j = i + 1; j < trip_schedule.trips.length; j++) {
