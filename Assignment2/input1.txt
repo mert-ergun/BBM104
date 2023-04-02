@@ -1,0 +1,100 @@
+
+
+SetInitialTime	2023-03-31_14:00:00
+Nop
+Add	SmartPlug	Plug1
+
+
+
+Add	SmartPlug	Plug1
+Add	SmartPlug	Plug2	On
+Add	SmartPlug	Plug3	Off
+ILLEGAL_COMMAND
+
+
+Add	SmartPlug	Plug4	On	5.7
+Add	SmartPlug	Plug5	On	-0.1
+Add	SmartPlug	Plug5	On	3
+Add	SmartCamera	Plug1
+Add	SmartCamera	Camera1	120
+Add	SmartCamera	Camera2	-30
+Add	SmartCamera	Camera2	300	On
+Add	SmartCamera	Camera3	150	Off
+Add	SmartLamp	Plug1
+Add	SmartLamp	Lamp1
+Add	SmartLamp	Lamp2	On
+Add	SmartLamp	Lamp3	Bom
+Add	SmartLamp	Lamp3	On	1000	90
+Add	SmartLamp	Lamp3	On	3900	110
+Add	SmartLamp	Lamp3	On	2000	50
+Add	SmartColorLamp	Plug1
+Add	SmartColorLamp	CLamp1
+Add	SmartColorLamp	CLamp2	On
+Add	SmartColorLamp	CLamp3	On	2000	50
+Add	SmartColorLamp	CLamp4	On	0x00GG00	30
+Add	SmartColorLamp	CLamp4	On	0xFFFFFFF	100
+Add	SmartColorLamp	CLamp4	On	0x00FF00	70
+Add	SmartColorLamp	ABCDEFG
+Remove	CLamp1
+Add	SmartColorLamp	CLamp1
+Switch	Plug15	On
+Switch	Plug2	On
+PlugIn	Plug2	-3
+PlugIn	Plug2	10
+PlugIn	Plug2	7
+SetTime	2023-03-31_14:05:00
+SetInitialTime	2023-03-31_14:15:00
+Switch	Plug2	Off
+SkipMinutes	5
+Switch	Plug2	On
+SkipMinutes	5
+Switch	Plug2	Off
+PlugOut	Plug2
+PlugOut	Plug2
+PlugIn	Camera1	10
+Switch	Plug2	On
+SetKelvin	Camera1	2700
+SetKelvin	Lamp1	2700
+SetKelvin	Lamp1	1900
+SetBrightness	Camera1	2700
+SetColorCode	Camera1	0xFFAAFF
+SetColorCode	Camera1	Hello
+SetColorCode	Camera1	2700
+SetColorCode	Lamp1	2700
+SetWhite	Camera1	2700	100
+SetColor	Camera1	0xFFFFFF	100
+SetColor	CLamp1	0xFFFFFF	100
+SetColor	CLamp1	0xFFGGHH	100
+SetColor	CLamp1	0x001100	120
+SetWhite	CLamp2	6600	100
+SetWhite	CLamp2	6500	120
+SetWhite	CLamp2	2000	55
+SetWhite	CLamp2	6600	120
+PlugIn	Plug1	20
+SkipMinutes	5
+ZReport
+ChangeName	Plug1	CLamp1
+ChangeName	Plug1	Plug1
+ChangeName	Plug1	Plug10
+ChangeName	Plug10
+ChangeName	Plug100	Plug100
+PlugOut	Plug10
+ZReport
+SetSwitchTime	Plug10	2023-03-31_15:00:00
+ZReport
+SetTime	2023-03-31_14:05:00
+SetSwitchTime	Camera1	2023-03-31_15:10:00
+ZReport
+SetSwitchTime	Lamp3	2023-03-31_15:01:00
+ZReport
+SetSwitchTime	Lamp1	2023-03-31_15:00:00
+ZReport
+SetSwitchTime	Lamp2	2023-04-01_00:00:00
+ZReport
+SetTime	2023-03-31_15:99:00
+SetTime	2023-03-31_15:05:00
+ZReport
+Nop
+ZReport
+Nop
+ZReport

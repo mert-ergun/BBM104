@@ -21,6 +21,11 @@ public class TripController implements DepartureController, ArrivalController {
         OutputWriter.clearOutput(outputFile);
         DepartureSchedule(trip_schedule, outputFile);
         OutputWriter.writeOutput("", outputFile);
+        for (int i = 0; i < trip_schedule.trips.length; i++) {
+            if (trip_schedule.trips[i] != null) {
+                trip_schedule.trips[i].setState("IDLE");
+            }
+        }
         ArrivalSchedule(trip_schedule, outputFile);
         this.trip_schedule = trip_schedule;
     }
@@ -58,7 +63,7 @@ public class TripController implements DepartureController, ArrivalController {
                         }
                     }
                 }
-                OutputWriter.writeOutput(trip_schedule.trips[i].tripName + " arrive at " + trip_schedule.trips[i].parseArrivalTime() + "\tTrip State :" + trip_schedule.trips[i].state, outputFile);
+                OutputWriter.writeOutput(trip_schedule.trips[i].tripName + " arrive at " + trip_schedule.trips[i].parseArrivalTime() + "   Trip State:" + trip_schedule.trips[i].state, outputFile);
             }
         }
     }
@@ -96,7 +101,7 @@ public class TripController implements DepartureController, ArrivalController {
                         }
                     }
                 }
-                OutputWriter.writeOutput(trip_schedule.trips[i].tripName + " depart at " + trip_schedule.trips[i].parseDepartureTime() + "\tTrip State :" + trip_schedule.trips[i].state, outputFile);
+                OutputWriter.writeOutput(trip_schedule.trips[i].tripName + " depart at " + trip_schedule.trips[i].parseDepartureTime() + "   Trip State:" + trip_schedule.trips[i].state, outputFile);
             }
         }
     }

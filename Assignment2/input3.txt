@@ -1,0 +1,8 @@
+SetInitialTime	2023-03-31_14:00:00
+Add	SmartPlug	sc1	On
+PlugIn	sc1	1
+SetTime	2023-03-31_14:10:00
+Switch	sc1	Off
+SetSwitchTime	sc1	2023-03-31_15:00:00
+ZReport
+Nop

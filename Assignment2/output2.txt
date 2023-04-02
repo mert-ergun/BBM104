@@ -1,0 +1,2 @@
+COMMAND: Add	SmartPlug	Plug1
+ERROR: First command must be set initial time! Program is going to terminate!
