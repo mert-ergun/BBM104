@@ -3,6 +3,7 @@ S22ZT depart at 04:20	Trip State :IDLE
 S22K4 depart at 05:00	Trip State :IDLE
 S22KM depart at 05:30	Trip State :IDLE
 S22TP depart at 13:30	Trip State :IDLE
+
 Arrival Order:
 S22K4 arrive at 06:40	Trip State :DELAYED
 S22KM arrive at 06:40	Trip State :DELAYED

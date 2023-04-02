@@ -56,16 +56,20 @@ public class Trip {
      * Returns the departure time of the trip in minutes. For use in the sorting algorithm.
      * @return int departureTime
      */
-    public int getDepartureTime() {
-        return departureTime.getHours() * 60 + departureTime.getMinutes();  
+    public Date getDepartureTime() {
+        return departureTime;  
+    }
+
+    public int getDepartureInt() {
+        return departureTime.getHours() * 60 + departureTime.getMinutes();
     }
 
     /**
      * Returns the arrival time of the trip in minutes. For use in the sorting algorithm.
      * @return int arrivalTime
      */
-    public int getArrivalTime() {
-        return arrivalTime.getHours() * 60 + arrivalTime.getMinutes(); 
+    public Date getArrivalTime() {
+        return arrivalTime; 
     }
 
     /**
@@ -74,6 +78,10 @@ public class Trip {
      */
     public String parseArrivalTime() {
         return dateFormat.format(arrivalTime);
+    }
+
+    public int getArrivalInt() {
+        return arrivalTime.getHours() * 60 + arrivalTime.getMinutes();
     }
 
     /**

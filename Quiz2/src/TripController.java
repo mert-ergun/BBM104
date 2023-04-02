@@ -20,6 +20,7 @@ public class TripController implements DepartureController, ArrivalController {
     public TripController(TripSchedule trip_schedule, String outputFile) throws Exception {
         OutputWriter.clearOutput(outputFile);
         DepartureSchedule(trip_schedule, outputFile);
+        OutputWriter.writeOutput("", outputFile);
         ArrivalSchedule(trip_schedule, outputFile);
         this.trip_schedule = trip_schedule;
     }
@@ -37,7 +38,7 @@ public class TripController implements DepartureController, ArrivalController {
             if (trip_schedule.trips[i] != null) {
                 for (int j = 0; j < trip_schedule.trips.length - 1 - i; j++) {
                     if (trip_schedule.trips[j] != null && trip_schedule.trips[j + 1] != null) {
-                        if (trip_schedule.trips[j].getArrivalTime() > trip_schedule.trips[j + 1].getArrivalTime()) {
+                        if (trip_schedule.trips[j].getArrivalTime().after(trip_schedule.trips[j + 1].getArrivalTime())) {
                             Trip temp = trip_schedule.trips[j];
                             trip_schedule.trips[j] = trip_schedule.trips[j + 1];
                             trip_schedule.trips[j + 1] = temp;
@@ -46,12 +47,12 @@ public class TripController implements DepartureController, ArrivalController {
                 }
             }
         }
-        OutputWriter.writeOutput("Arrival Order:", outputFile);
+        OutputWriter.writeOutput("Arrival order:", outputFile);
         for (int i = 0; i < trip_schedule.trips.length; i++) {
             if (trip_schedule.trips[i] != null) {
                 for (int j = i + 1; j < trip_schedule.trips.length; j++) {
                     if (trip_schedule.trips[j] != null) {
-                        if (trip_schedule.trips[i].getArrivalTime() == trip_schedule.trips[j].getArrivalTime()) {
+                        if (trip_schedule.trips[i].getArrivalInt() == trip_schedule.trips[j].getArrivalInt()) {
                             trip_schedule.trips[i].setState("DELAYED");
                             trip_schedule.trips[j].setState("DELAYED");
                         }
@@ -75,7 +76,7 @@ public class TripController implements DepartureController, ArrivalController {
             if (trip_schedule.trips[i] != null) {
                 for (int j = 0; j < trip_schedule.trips.length - 1 - i; j++) {
                     if (trip_schedule.trips[j] != null && trip_schedule.trips[j + 1] != null) {
-                        if (trip_schedule.trips[j].getDepartureTime() > trip_schedule.trips[j + 1].getDepartureTime()) {
+                        if (trip_schedule.trips[j].getDepartureTime().after(trip_schedule.trips[j + 1].getDepartureTime())) {
                             Trip temp = trip_schedule.trips[j];
                             trip_schedule.trips[j] = trip_schedule.trips[j + 1];
                             trip_schedule.trips[j + 1] = temp;
@@ -84,12 +85,12 @@ public class TripController implements DepartureController, ArrivalController {
                 }
             }
         }
-        OutputWriter.writeOutput("Departure Order:", outputFile);
+        OutputWriter.writeOutput("Departure order:", outputFile);
         for (int i = 0; i < trip_schedule.trips.length; i++) {
             if (trip_schedule.trips[i] != null) {
                 for (int j = i + 1; j < trip_schedule.trips.length; j++) {
                     if (trip_schedule.trips[j] != null) {
-                        if (trip_schedule.trips[i].getDepartureTime() == trip_schedule.trips[j].getDepartureTime()) {
+                        if (trip_schedule.trips[i].getDepartureInt() == trip_schedule.trips[j].getDepartureInt()) {
                             trip_schedule.trips[i].setState("DELAYED");
                             trip_schedule.trips[j].setState("DELAYED");
                         }
