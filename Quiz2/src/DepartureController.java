@@ -8,5 +8,5 @@
  * @since 2023-03-31
  */
 public interface DepartureController {
-    public void DepartureSchedule(TripSchedule trip_schedule) throws Exception;
+    public void DepartureSchedule(TripSchedule trip_schedule, String outputFile) throws Exception;
 }

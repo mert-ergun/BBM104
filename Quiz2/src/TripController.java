@@ -17,10 +17,10 @@ public class TripController implements DepartureController, ArrivalController {
      * Constructor for the TripController class.
      * @param trip_schedule The trip schedule object.
      */
-    public TripController(TripSchedule trip_schedule) throws Exception {
-        OutputWriter.clearOutput();
-        DepartureSchedule(trip_schedule);
-        ArrivalSchedule(trip_schedule);
+    public TripController(TripSchedule trip_schedule, String outputFile) throws Exception {
+        OutputWriter.clearOutput(outputFile);
+        DepartureSchedule(trip_schedule, outputFile);
+        ArrivalSchedule(trip_schedule, outputFile);
         this.trip_schedule = trip_schedule;
     }
 
@@ -32,7 +32,7 @@ public class TripController implements DepartureController, ArrivalController {
      * @param trip_schedule The trip schedule object.
      * @throws Exception
      */
-    public void ArrivalSchedule(TripSchedule trip_schedule) throws Exception {
+    public void ArrivalSchedule(TripSchedule trip_schedule, String outputFile) throws Exception {
         for (int i = 0; i < trip_schedule.trips.length - 1; i++) {
             if (trip_schedule.trips[i] != null) {
                 for (int j = 0; j < trip_schedule.trips.length - 1 - i; j++) {
@@ -46,7 +46,7 @@ public class TripController implements DepartureController, ArrivalController {
                 }
             }
         }
-        OutputWriter.writeOutput("Arrival Order:");
+        OutputWriter.writeOutput("Arrival Order:", outputFile);
         for (int i = 0; i < trip_schedule.trips.length; i++) {
             if (trip_schedule.trips[i] != null) {
                 for (int j = i + 1; j < trip_schedule.trips.length; j++) {
@@ -57,7 +57,7 @@ public class TripController implements DepartureController, ArrivalController {
                         }
                     }
                 }
-                OutputWriter.writeOutput(trip_schedule.trips[i].tripName + " arrive at " + trip_schedule.trips[i].parseArrivalTime() + "\tTrip State :" + trip_schedule.trips[i].state);
+                OutputWriter.writeOutput(trip_schedule.trips[i].tripName + " arrive at " + trip_schedule.trips[i].parseArrivalTime() + "\tTrip State :" + trip_schedule.trips[i].state, outputFile);
             }
         }
     }
@@ -70,7 +70,7 @@ public class TripController implements DepartureController, ArrivalController {
      * @param trip_schedule The trip schedule object.
      * @throws Exception
      */
-    public void DepartureSchedule(TripSchedule trip_schedule) throws Exception {
+    public void DepartureSchedule(TripSchedule trip_schedule, String outputFile) throws Exception {
         for (int i = 0; i < trip_schedule.trips.length - 1; i++) {
             if (trip_schedule.trips[i] != null) {
                 for (int j = 0; j < trip_schedule.trips.length - 1 - i; j++) {
@@ -84,7 +84,7 @@ public class TripController implements DepartureController, ArrivalController {
                 }
             }
         }
-        OutputWriter.writeOutput("Departure Order:");
+        OutputWriter.writeOutput("Departure Order:", outputFile);
         for (int i = 0; i < trip_schedule.trips.length; i++) {
             if (trip_schedule.trips[i] != null) {
                 for (int j = i + 1; j < trip_schedule.trips.length; j++) {
@@ -95,7 +95,7 @@ public class TripController implements DepartureController, ArrivalController {
                         }
                     }
                 }
-                OutputWriter.writeOutput(trip_schedule.trips[i].tripName + " depart at " + trip_schedule.trips[i].parseDepartureTime() + "\tTrip State :" + trip_schedule.trips[i].state);
+                OutputWriter.writeOutput(trip_schedule.trips[i].tripName + " depart at " + trip_schedule.trips[i].parseDepartureTime() + "\tTrip State :" + trip_schedule.trips[i].state, outputFile);
             }
         }
     }

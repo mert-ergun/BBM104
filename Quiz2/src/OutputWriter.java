@@ -10,14 +10,14 @@ import java.io.*;
  * @since 2023-03-31
  */
 public class OutputWriter {
-    public static void clearOutput() throws Exception {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("output.txt"))) {
+    public static void clearOutput(String outputFile) throws Exception {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile))) {
             bw.write("");
         }
     }
 
-    public static void writeOutput(String output) throws Exception {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("output.txt", true))) {
+    public static void writeOutput(String output, String outputFile) throws Exception {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile, true))) {
             bw.write(output);
             bw.newLine();
         }

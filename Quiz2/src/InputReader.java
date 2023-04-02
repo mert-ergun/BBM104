@@ -10,8 +10,8 @@ import java.io.*;
  * @since 2023-03-31
  */
 public class InputReader {
-    public static Trip[] readInput() throws Exception {
-        try (BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
+    public static Trip[] readInput(String inputFile) throws Exception {
+        try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
             String line;
             Trip[] trips = new Trip[100];
             while ((line = br.readLine()) != null) {

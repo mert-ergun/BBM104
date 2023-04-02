@@ -19,13 +19,13 @@ public class Main {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        Trip[] trips = InputReader.readInput();
+        Trip[] trips = InputReader.readInput(args[0]);
         TripSchedule trip_schedule = new TripSchedule();
         for (Trip trip : trips) {
             if (trip != null) {
                 trip_schedule.addTrip(trip);
             }
         }
-        TripController tripController = new TripController(trip_schedule);
+        TripController tripController = new TripController(trip_schedule, args[1]);
     }
 }
