@@ -94,10 +94,18 @@ public class InputReader{
         // TODO nop
     }
 
-    public static void AddCommands(String deviceClass) {
+    public static void AddCommands(String deviceClass, Object ... args) {
         switch (deviceClass) {
             case "SmartPlug":
                 //TODO
+                if (args.length == 3) {
+                    Plug plug = new Plug((String) args[2]);
+                    
+                } else if (args.length == 4){
+                    Plug plug = new Plug((String) args[2], (String) args[3]);
+                } else if (args.length == 5) {
+                    Plug plug = new Plug((String) args[2], (String) args[3], (double) args[4]);
+                }
                 break;
             case "SmartCamera":
                 //TODO
@@ -137,7 +145,7 @@ public class InputReader{
         // TODO plug out device
     }
 
-    public static void LampCommands(String input) {
+    public static void LampCommands(String input, String deviceParameters) {
         switch (input) {
             case "SetBrightness":
                 //TODO

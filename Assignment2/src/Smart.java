@@ -1,3 +1,4 @@
 public abstract class Smart {
-    private boolean isOn;
+    protected String name;
+    protected boolean isOn;
 }

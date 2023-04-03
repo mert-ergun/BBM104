@@ -1,20 +1,47 @@
 public class Plug extends Smart {
-    private int totalEnergy;
-    private int ampere;
+    private static int totalPlugs = 0;
+    private double totalEnergy;
+    private double ampere;
     private boolean isPlugged;
     private final int VOLTAGE = 220;
 
-    public Plug() {
+    public Plug(String name) {
+        super.name = name;
         this.totalEnergy = 0;
         this.isPlugged = false;
+        totalPlugs++;
     }
 
-    public Plug(boolean isPlugged) {
+    public Plug(String name, String isOn) {
+        super.name = name;
         this.totalEnergy = 0;
-        this.isPlugged = isPlugged;
+        if (isOn.equals("On")) {
+            this.isOn = true;
+        } else if (isOn.equals("Off")) {
+            this.isOn = false;
+        } else {
+            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
+        }
+        totalPlugs++;
     }
 
-    public int calculateEnergy(int ampere, int time) {
+    public Plug(String name, String isOn, double ampere) {
+        super.name = name;
+        this.totalEnergy = 0;
+        if (isOn.equals("On")) {
+            this.isOn = true;
+        } else if (isOn.equals("Off")) {
+            this.isOn = false;
+        } else {
+            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
+        }
+        if (ampere < 0) {
+            throw new IllegalArgumentException("Ampere must be greater than 0");
+        } this.ampere = ampere;
+        totalPlugs++;
+    }
+
+    public double calculateEnergy(double ampere, int time) {
         return ampere * VOLTAGE * time;
     }
 }
