@@ -1,5 +1,5 @@
 public class Lamp extends Smart {
-    private int kelvin, brightness;
+    protected int kelvin, brightness;
 
     public Lamp() {
         super.name = "Lamp";
@@ -55,8 +55,47 @@ class ColoredLamp extends Lamp {
         this.isColorOn = false;
     }
 
-    public ColoredLamp(String name, String color) {
+    public ColoredLamp(String name, String isOn) {
         super.name = name;
+        if (isOn.equals("On")) {
+            this.isOn = true;
+        } else if (isOn.equals("Off")) {
+            this.isOn = false;
+        } else {
+            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
+        }
+        this.color = "FFFFFF";
+        this.isColorOn = false;
+    }
+
+    public ColoredLamp(String name, String isOn, int kelvin, int brightness) {
+        super.name = name;
+        if (isOn.equals("On")) {
+            this.isOn = true;
+        } else if (isOn.equals("Off")) {
+            this.isOn = false;
+        } else {
+            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
+        }
+        if (kelvin < 2000 || kelvin > 6500) {
+            throw new IllegalArgumentException("Kelvin must be between 0 and 10000");
+        } this.kelvin = kelvin;
+        if (brightness < 0 || brightness > 100) {
+            throw new IllegalArgumentException("Brightness must be between 0 and 100");
+        } this.brightness = brightness;
+        this.color = "FFFFFF";
+        this.isColorOn = false;
+    }
+
+    public ColoredLamp(String name, String isOn, String color, int brightness) {
+        super.name = name;
+        if (isOn.equals("On")) {
+            this.isOn = true;
+        } else if (isOn.equals("Off")) {
+            this.isOn = false;
+        } else {
+            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
+        }
         if (color.length() != 6) {
             throw new IllegalArgumentException("Color must be a 6-digit hexadecimal number");
         } else if (color.matches("[0-9A-Fa-f]+") == false) {
@@ -64,5 +103,8 @@ class ColoredLamp extends Lamp {
         } 
         this.color = color;
         this.isColorOn = true;
+        if (brightness < 0 || brightness > 100) {
+            throw new IllegalArgumentException("Brightness must be between 0 and 100");
+        } this.brightness = brightness;
     }
 }
