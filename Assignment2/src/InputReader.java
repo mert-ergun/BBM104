@@ -165,8 +165,23 @@ public class InputReader{
         // TODO set switch time for device
     }
 
-    public static void SwitchDeviceCommand(String deviceName) {
-        // TODO switch device
+    public static void SwitchDeviceCommand(String deviceName, String state) {
+        for (Smart device : Main.smartList) {
+            if (device.getName().equals(deviceName)) {
+                if (state.equals("On")) {
+                    if (device.isOn() == false)
+                        (device).setOn(true);
+                    else if (device.isOn() == true);
+                        // TODO throw exception 
+                } else if (state.equals("Off")) {
+                    if (device.isOn() == true)
+                        (device).setOn(false);
+                    else if (device.isOn() == false);
+                        // TODO throw exception
+                } 
+                break;
+            }
+        }
     }
 
     public static void ChangeNameCommand(String deviceName, String newName) {
