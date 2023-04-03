@@ -24,4 +24,20 @@ public class Camera extends Smart {
         }
         this.storage = 0;
     }
+
+    public int getStorage() {
+        return storage;
+    }
+
+    public void setStorage(int storage) {
+        this.storage = storage;
+    }
+
+    public int getMbps() {
+        return mbps;
+    }
+
+    public void setMbps(int mbps) {
+        this.mbps = mbps;
+    }
 }
