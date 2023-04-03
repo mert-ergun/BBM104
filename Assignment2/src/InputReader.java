@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class InputReader{
@@ -10,6 +11,7 @@ public class InputReader{
         List<String> lines = new ArrayList<String>();
         while ((line = br.readLine()) != null) {
             String[] split = line.split("\t");
+            DetermineCommand(split[0]);
             for (String s : split) {
                 lines.add(s);
             }
@@ -18,9 +20,9 @@ public class InputReader{
         return lines;
     }
 
-    public static void TimeCommands(String input) throws Exception{
-        switch (input) {
-            case "SetInitalTime":
+    public static void DetermineCommand(String command) {
+        switch (command) {
+            case "SetInitialTime":
                 //TODO
                 break;
             case "SetTime":
@@ -32,9 +34,64 @@ public class InputReader{
             case "Nop":
                 //TODO
                 break;
+            case "Add":
+                //TODO
+                break;
+            case "Remove":
+                //TODO
+                break;
+            case "SetSwitchTime":
+                //TODO
+                break;
+            case "Switch":
+                //TODO
+                break;
+            case "ChangeName":
+                //TODO
+                break;
+            case "PlugIn":
+                //TODO
+                break;
+            case "PlugOut":
+                //TODO
+                break;
+            case "SetBrightness":
+                //TODO
+                break;
+            case "SetKelvin":
+                //TODO
+                break;
+            case "SetColorCode":
+                //TODO
+                break;
+            case "SetWhite":
+                //TODO
+                break;
+            case "Color":
+                //TODO
+                break;
+            case "ZReport":
+                //TODO
+                break;
             default:
                 break;
         }
+    }
+
+    public static void SetInitialTimeCommand(Calendar time) {
+        // TODO set initial time
+    }
+
+    public static void SetTimeCommand(Calendar time) {
+        // TODO set time
+    }
+
+    public static void SkipMinutesCommand(int minutes) {
+        // TODO skip minutes
+    }
+
+    public static void NopCommand() {
+        // TODO nop
     }
 
     public static void AddCommands(String deviceClass) {
