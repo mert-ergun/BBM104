@@ -44,4 +44,40 @@ public class Plug extends Smart {
     public double calculateEnergy(double ampere, int time) {
         return ampere * VOLTAGE * time;
     }
+
+    public static int getTotalPlugs() {
+        return totalPlugs;
+    }
+
+    public static void setTotalPlugs(int totalPlugs) {
+        Plug.totalPlugs = totalPlugs;
+    }
+
+    public double getTotalEnergy() {
+        return totalEnergy;
+    }
+
+    public void setTotalEnergy(double totalEnergy) {
+        this.totalEnergy = totalEnergy;
+    }
+
+    public double getAmpere() {
+        return ampere;
+    }
+
+    public void setAmpere(double ampere) {
+        this.ampere = ampere;
+    }
+
+    public boolean isPlugged() {
+        return isPlugged;
+    }
+
+    public void setPlugged(boolean isPlugged) {
+        this.isPlugged = isPlugged;
+    }
+
+    public int getVOLTAGE() {
+        return VOLTAGE;
+    }
 }

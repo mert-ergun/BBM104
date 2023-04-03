@@ -170,7 +170,6 @@ public class InputReader{
     }
 
     public static void ChangeNameCommand(String deviceName, String newName) {
-        // TODO change device name
         for (Smart device : Main.smartList) {
             if (device.getName().equals(deviceName)) {
                 device.setName(newName);
@@ -179,12 +178,27 @@ public class InputReader{
         }
     }
 
-    public static void PlugInCommand(String plugName) {
-        // TODO plug in device
+    public static void PlugInCommand(String plugName, double ampere) {
+        for (Smart device : Main.smartList) {
+            if (device.getName().equals(plugName)) {
+                if (device instanceof Plug) {
+                    ((Plug) device).setAmpere(ampere);
+                    ((Plug) device).setPlugged(true);
+                    break;
+                }
+            }
+        }
     }
 
     public static void PlugOutCommand(String plugName) {
-        // TODO plug out device
+        for (Smart device : Main.smartList) {
+            if (device.getName().equals(plugName)) {
+                if (device instanceof Plug) {
+                    ((Plug) device).setPlugged(false);
+                    break;
+                }
+            }
+        }
     }
 
     public static void LampCommands(String input, String deviceParameters) {
