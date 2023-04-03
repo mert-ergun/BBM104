@@ -42,6 +42,22 @@ public class Lamp extends Smart {
             throw new IllegalArgumentException("Brightness must be between 0 and 100");
         } this.brightness = brightness;
     }
+
+    public int getKelvin() {
+        return kelvin;
+    }
+
+    public void setKelvin(int kelvin) {
+        this.kelvin = kelvin;
+    }
+
+    public int getBrightness() {
+        return brightness;
+    }
+
+    public void setBrightness(int brightness) {
+        this.brightness = brightness;
+    }
 }
 
 class ColoredLamp extends Lamp {
@@ -106,5 +122,29 @@ class ColoredLamp extends Lamp {
         if (brightness < 0 || brightness > 100) {
             throw new IllegalArgumentException("Brightness must be between 0 and 100");
         } this.brightness = brightness;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getDecimalColor() {
+        return decimalColor;
+    }
+
+    public void setDecimalColor(int decimalColor) {
+        this.decimalColor = decimalColor;
+    }
+
+    public boolean isColorOn() {
+        return isColorOn;
+    }
+
+    public void setColorOn(boolean isColorOn) {
+        this.isColorOn = isColorOn;
     }
 }
