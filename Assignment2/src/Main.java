@@ -4,6 +4,7 @@ import java.util.List;
 public class Main {
     public static List<Smart> smartList = new ArrayList<Smart>();
     public static TimeChecker timeChecker = new TimeChecker();
+    public static SwitchChecker switchChecker = new SwitchChecker();
     public static void main(String[] args) {
         try {
             InputReader.ReadInput("input1.txt");

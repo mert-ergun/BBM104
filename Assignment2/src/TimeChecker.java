@@ -6,6 +6,7 @@ public class TimeChecker {
     Calendar initDate;
     Calendar currentDate;
     Calendar oldDate; 
+    SwitchChecker switchChecker = Main.switchChecker;
 
     public void SetInitialTime(String time) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
@@ -21,11 +22,13 @@ public class TimeChecker {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(formatter.parse(time));
         currentDate = calendar;
+        switchChecker.SwitchTimesBetweenDates();
     }
 
     public void SkipMinutes(int minutes) {
         oldDate = currentDate;
         currentDate.add(Calendar.MINUTE, minutes);
+        switchChecker.SwitchTimesBetweenDates();
     }
 
     public Calendar getInitDate() {
