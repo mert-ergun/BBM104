@@ -169,8 +169,14 @@ public class InputReader{
         // TODO switch device
     }
 
-    public static void ChangeNameCommand(String deviceName) {
+    public static void ChangeNameCommand(String deviceName, String newName) {
         // TODO change device name
+        for (Smart device : Main.smartList) {
+            if (device.getName().equals(deviceName)) {
+                device.setName(newName);
+                break;
+            }
+        }
     }
 
     public static void PlugInCommand(String plugName) {
