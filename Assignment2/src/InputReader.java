@@ -5,13 +5,13 @@ import java.util.Calendar;
 import java.util.List;
 
 public class InputReader{
-    public static List<String> ReadInput() throws Exception{
-        BufferedReader br = new BufferedReader(new BufferedReader(new FileReader("input.txt")));
+    public static List<String> ReadInput(String fileName) throws Exception{
+        BufferedReader br = new BufferedReader(new BufferedReader(new FileReader(fileName)));
         String line;
         List<String> lines = new ArrayList<String>();
         while ((line = br.readLine()) != null) {
             String[] split = line.split("\t");
-            DetermineCommand(split[0]);
+            DetermineCommand(line);
             for (String s : split) {
                 lines.add(s);
             }
@@ -20,7 +20,9 @@ public class InputReader{
         return lines;
     }
 
-    public static void DetermineCommand(String command) {
+    public static void DetermineCommand(String line) {
+        String[] split = line.split("\t");
+        String command = split[0];
         switch (command) {
             case "SetInitialTime":
                 //TODO
@@ -35,40 +37,64 @@ public class InputReader{
                 //TODO
                 break;
             case "Add":
-                //TODO
+                List<String> args = new ArrayList<String>();
+                for (int i = 1; i < split.length; i++) {
+                    args.add(split[i]);
+                }
+                AddCommands(args.get(0), args.toArray());
                 break;
             case "Remove":
-                //TODO
+                RemoveCommand(split[1]);
                 break;
             case "SetSwitchTime":
                 //TODO
                 break;
             case "Switch":
-                //TODO
+                SwitchDeviceCommand(split[1], split[2]);
                 break;
             case "ChangeName":
-                //TODO
+                ChangeNameCommand(split[1], split[2]);
                 break;
             case "PlugIn":
-                //TODO
+                PlugInCommand(split[1], Double.parseDouble(split[2]));
                 break;
             case "PlugOut":
-                //TODO
+                PlugOutCommand(split[1]);
                 break;
             case "SetBrightness":
-                //TODO
+                args = new ArrayList<String>();
+                for (int i = 1; i < split.length; i++) {
+                    args.add(split[i]);
+                }
+                LampCommands(command, args.toArray());
                 break;
             case "SetKelvin":
-                //TODO
+                args = new ArrayList<String>();
+                for (int i = 1; i < split.length; i++) {
+                    args.add(split[i]);
+                }
+                LampCommands(command, args.toArray());
                 break;
             case "SetColorCode":
-                //TODO
+                args = new ArrayList<String>();
+                for (int i = 1; i < split.length; i++) {
+                    args.add(split[i]);
+                }
+                LampCommands(command, args.toArray());
                 break;
             case "SetWhite":
-                //TODO
+                args = new ArrayList<String>();
+                for (int i = 1; i < split.length; i++) {
+                    args.add(split[i]);
+                }
+                LampCommands(command, args.toArray());
                 break;
             case "Color":
-                //TODO
+                args = new ArrayList<String>();
+                for (int i = 1; i < split.length; i++) {
+                    args.add(split[i]);
+                }
+                LampCommands(command, args.toArray());
                 break;
             case "ZReport":
                 //TODO
