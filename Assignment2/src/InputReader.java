@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -25,16 +26,23 @@ public class InputReader{
         String command = split[0];
         switch (command) {
             case "SetInitialTime":
-                //TODO
+                try {
+                    Main.timeChecker.SetInitialTime((String) split[1]);
+                } catch (Exception e){
+                    System.out.println("Invalid time format");}
                 break;
             case "SetTime":
-                //TODO
+                try {
+                    Main.timeChecker.SetTime(split[1]);
+                } catch (Exception e) {
+                    System.out.println("Invalid time format");
+                }
                 break;
             case "SkipMinutes":
-                //TODO
+                Main.timeChecker.SkipMinutes(Integer.parseInt(split[1]));
                 break;
             case "Nop":
-                //TODO
+                Main.switchChecker.JumpToNop();
                 break;
             case "Add":
                 List<String> args = new ArrayList<String>();
@@ -47,7 +55,13 @@ public class InputReader{
                 RemoveCommand(split[1]);
                 break;
             case "SetSwitchTime":
-                //TODO
+                Calendar switchDate = Calendar.getInstance();
+                try {
+                    switchDate.setTime(TimeChecker.formatter.parse(split[2]));
+                } catch (Exception e) {
+                    System.out.println("Invalid time format");
+                }
+                Main.switchChecker.SetSwitchTimes(split[1], switchDate);
                 break;
             case "Switch":
                 SwitchDeviceCommand(split[1], split[2]);
@@ -102,22 +116,6 @@ public class InputReader{
             default:
                 break;
         }
-    }
-
-    public static void SetInitialTimeCommand(Calendar time) {
-        // TODO set initial time
-    }
-
-    public static void SetTimeCommand(Calendar time) {
-        // TODO set time
-    }
-
-    public static void SkipMinutesCommand(int minutes) {
-        // TODO skip minutes
-    }
-
-    public static void NopCommand() {
-        // TODO nop
     }
 
     public static void AddCommands(String deviceClass, Object ... args) {

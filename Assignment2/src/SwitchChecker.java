@@ -13,7 +13,7 @@ public class SwitchChecker {
     public void UpdateSwitchTimes() {
         for (Smart device : Main.smartList) {
             if (device.switchTime != null) {
-                SetSwitchTimes(device, device.switchTime);
+                SetSwitchTimes(device.getName(), device.switchTime);
             } else {
                 switchTimes.add(new Tuple<Smart, Calendar>(device, null));
             }
@@ -48,14 +48,21 @@ public class SwitchChecker {
         }
     }
 
-    public void SetSwitchTimes(Smart device, Calendar switchTime) {
+    public void SetSwitchTimes(String name, Calendar switchTime) {
+        Smart smartDevice = null;
+        for (Smart device : Main.smartList) {
+            if (device.getName().equals(name)) {
+                smartDevice = device;
+            } 
+        }
+        if (smartDevice == null) return;
         for (Tuple<Smart, Calendar> switchTimes : switchTimes) {
-            if (switchTimes.getX().getName().equals(device.getName())) {
+            if (switchTimes.getX().getName().equals(smartDevice.getName())) {
                 switchTimes.setY(switchTime);
                 return;
             } 
         }
-        switchTimes.add(new Tuple<Smart, Calendar>(device, switchTime));
+        switchTimes.add(new Tuple<Smart, Calendar>(smartDevice, switchTime));
         UpdateSwitchTimes();
     }
     
