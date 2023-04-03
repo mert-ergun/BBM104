@@ -201,22 +201,68 @@ public class InputReader{
         }
     }
 
-    public static void LampCommands(String input, String deviceParameters) {
+    public static void LampCommands(String input, Object ... args) {
+        String name = (String) args[1];
         switch (input) {
             case "SetBrightness":
-                //TODO
+                String brightness = (String) args[2];
+                for (Smart device : Main.smartList) {
+                    if (device.getName().equals(name)) {
+                        if (device instanceof Lamp) {
+                            ((Lamp) device).setBrightness(Integer.parseInt(brightness));
+                            break;
+                        }
+                    }
+                }
                 break;
             case "SetKelvin":
-                //TODO
+                String kelvin = (String) args[2];
+                for (Smart device : Main.smartList) {
+                    if (device.getName().equals(name)) {
+                        if (device instanceof Lamp) {
+                            ((Lamp) device).setKelvin(Integer.parseInt(kelvin));
+                            break;
+                        }
+                    }
+                }
                 break;
             case "SetColorCode":
-                //TODO
+                String colorCode = (String) args[2];
+                for (Smart device : Main.smartList) {
+                    if (device.getName().equals(name)) {
+                        if (device instanceof ColoredLamp && colorCode.startsWith("0x") && colorCode.length() == 8 && colorCode.matches("[0-9a-fA-F]+")) {
+                            ((ColoredLamp) device).setColor(colorCode);
+                            break;
+                        }
+                    }
+                }
                 break;
             case "SetColor":
-                //TODO
+                String color = (String) args[2];
+                brightness = (String) args[3];
+                for (Smart device : Main.smartList) {
+                    if (device.getName().equals(name)) {
+                        if (device instanceof ColoredLamp && color.startsWith("0x") && color.length() == 8 && color.matches("[0-9a-fA-F]+")) {
+                            ((ColoredLamp) device).setColor(color);
+                            ((ColoredLamp) device).setBrightness(Integer.parseInt(brightness));
+                            break;
+                        }
+                    }
+                }
                 break;
             case "SetWhite":
-                //TODO
+                kelvin = (String) args[2];
+                brightness = (String) args[3];
+                for (Smart device : Main.smartList) {
+                    if (device.getName().equals(name)) {
+                        if (device instanceof ColoredLamp) {
+                            ((ColoredLamp) device).setKelvin(Integer.parseInt(kelvin));
+                            ((ColoredLamp) device).setBrightness(Integer.parseInt(brightness));
+                            ((ColoredLamp) device).setColor("0xFFFFFF");
+                            break;
+                        }
+                    }
+                }
                 break;
             default:
                 break;
