@@ -27,4 +27,28 @@ public class TimeChecker {
         oldDate = currentDate;
         currentDate.add(Calendar.MINUTE, minutes);
     }
+
+    public Calendar getInitDate() {
+        return initDate;
+    }
+
+    public void setInitDate(Calendar initDate) {
+        this.initDate = initDate;
+    }
+
+    public Calendar getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(Calendar currentDate) {
+        this.currentDate = currentDate;
+    }
+
+    public Calendar getOldDate() {
+        return oldDate;
+    }
+
+    public void setOldDate(Calendar oldDate) {
+        this.oldDate = oldDate;
+    }
 }
