@@ -13,8 +13,28 @@ public class Lamp extends Smart {
         this.brightness = 100;
     }
 
-    public Lamp(String name, int kelvin, int brightness) {
+    public Lamp(String name, String isOn) {
         super.name = name;
+        if (isOn.equals("On")) {
+            this.isOn = true;
+        } else if (isOn.equals("Off")) {
+            this.isOn = false;
+        } else {
+            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
+        }
+        this.kelvin = 4000;
+        this.brightness = 100;
+    }
+
+    public Lamp(String name, String isOn, int kelvin, int brightness) {
+        super.name = name;
+        if (isOn.equals("On")) {
+            this.isOn = true;
+        } else if (isOn.equals("Off")) {
+            this.isOn = false;
+        } else {
+            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
+        }
         if (kelvin < 2000 || kelvin > 6500) {
             throw new IllegalArgumentException("Kelvin must be between 0 and 10000");
         } this.kelvin = kelvin;

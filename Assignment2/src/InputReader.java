@@ -97,10 +97,8 @@ public class InputReader{
     public static void AddCommands(String deviceClass, Object ... args) {
         switch (deviceClass) {
             case "SmartPlug":
-                //TODO
                 if (args.length == 3) {
                     Plug plug = new Plug((String) args[2]);
-                    
                 } else if (args.length == 4){
                     Plug plug = new Plug((String) args[2], (String) args[3]);
                 } else if (args.length == 5) {
@@ -108,10 +106,21 @@ public class InputReader{
                 }
                 break;
             case "SmartCamera":
-                //TODO
+                if (args.length == 4) {
+                    Camera camera = new Camera((String) args[2], (int) args[3]);
+                } else if (args.length == 5) {
+                    Camera camera = new Camera((String) args[2], (int) args[3], (String) args[4]);
+                }
                 break;
             case "SmartLamp":
                 //TODO
+                if (args.length == 3) {
+                    Lamp lamp = new Lamp((String) args[2]);
+                } else if (args.length == 4) {
+                    Lamp lamp = new Lamp((String) args[2], (String) args[3]);
+                } else if (args.length == 6) {
+                    Lamp lamp = new Lamp((String) args[2], (String) args[3], (int) args[4], (int) args[5]);
+                }
                 break;
             case "SmartColoredLamp":
                 //TODO
