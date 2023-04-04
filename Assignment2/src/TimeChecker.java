@@ -7,6 +7,8 @@ public class TimeChecker {
     Calendar currentDate;
     Calendar oldDate; 
     SwitchChecker switchChecker = Main.switchChecker;
+    boolean isInit = false;
+
     public static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
 
     public void SetInitialTime(String time) throws ParseException {
@@ -14,6 +16,7 @@ public class TimeChecker {
         calendar.setTime(formatter.parse(time));
         initDate = calendar;
         currentDate = calendar;
+        isInit = true;
     }
 
     public void SetTime(String time) throws ParseException {

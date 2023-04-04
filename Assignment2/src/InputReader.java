@@ -9,11 +9,28 @@ public class InputReader{
         BufferedReader br = new BufferedReader(new BufferedReader(new FileReader(fileName)));
         String line;
         List<String> lines = new ArrayList<String>();
+        String firstLine = null;
+        while (((line = br.readLine()) != null) && firstLine == null) {
+            if (!line.isEmpty())
+                firstLine = line;
+        }
+        sender.CommandCommand(firstLine);
+        String[] firstLineSplit = firstLine.split("\t");
+        if (firstLineSplit[0].equals("SetInitialTime")) {
+            try {
+                Main.timeChecker.SetInitialTime((String) firstLineSplit[1]);
+                sender.SetInitTimeCommand(firstLineSplit[1]);
+            } catch (Exception e){
+                sender.InitErrorCommand("timeFormat");
+            }
+        } else {
+            sender.InitErrorCommand("initFalse");
+        }
         while ((line = br.readLine()) != null)  {
             if (line.equals("")) continue;
             sender.CommandCommand(line);
             String[] split = line.split("\t");
-            DetermineCommand(line);
+            DetermineCommand(line, sender);
             for (String s : split) {
                 lines.add(s);
             }
@@ -22,28 +39,40 @@ public class InputReader{
         return lines;
     }
 
-    public static void DetermineCommand(String line) {
+    public static void DetermineCommand(String line, OutputSender sender) throws Exception {
         String[] split = line.split("\t");
         String command = split[0];
         switch (command) {
             case "SetInitialTime":
+                if (Main.timeChecker.isInit == true) {
+                    sender.InitErrorCommand("initTrue");
+                    break;
+                }
                 try {
                     Main.timeChecker.SetInitialTime((String) split[1]);
                 } catch (Exception e){
-                    System.out.println("Invalid time format");}
+                    sender.InitErrorCommand("timeFormat");
+                    break;
+                }
                 break;
             case "SetTime":
                 try {
                     Main.timeChecker.SetTime(split[1]);
                 } catch (Exception e) {
-                    System.out.println("Invalid time format");
+                    sender.SetTimeErrorCommand();
                 }
                 break;
             case "SkipMinutes":
-                Main.timeChecker.SkipMinutes(Integer.parseInt(split[1]));
+                if (split[1] == null || Integer.parseInt(split[1]) < 0) {
+                    sender.SetTimeErrorCommand();
+                } else 
+                    Main.timeChecker.SkipMinutes(Integer.parseInt(split[1]));
                 break;
             case "Nop":
-                Main.switchChecker.JumpToNop();
+                if (!Main.switchChecker.CheckSwitchTimes()) {
+                    sender.NopErrorCommand();
+                } else
+                    Main.switchChecker.JumpToNop();
                 break;
             case "Add":
                 List<String> args = new ArrayList<String>();
@@ -51,32 +80,136 @@ public class InputReader{
                     args.add(split[i]);
                 }
                 AddCommands(args.get(0), args.toArray());
+                //TODO: AddDeviceError
                 break;
             case "Remove":
                 RemoveCommand(split[1]);
+                sender.RemoveDeviceCommand(split[1]);
                 break;
             case "SetSwitchTime":
+                boolean found = false;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    sender.SetSwitchTimeErrorCommand();
+                    break;
+                }
                 Calendar switchDate = Calendar.getInstance();
                 try {
                     switchDate.setTime(TimeChecker.formatter.parse(split[2]));
                 } catch (Exception e) {
-                    System.out.println("Invalid time format");
+                    sender.SetTimeErrorCommand();
                 }
                 Main.switchChecker.SetSwitchTimes(split[1], switchDate);
                 break;
             case "Switch":
-                SwitchDeviceCommand(split[1], split[2]);
+                found = false;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    sender.SwitchErrorCommand("noDevice");
+                    break;
+                }
+                SwitchDeviceCommand(split[1], split[2], sender);
                 break;
             case "ChangeName":
+                if (split[1] == split[2]) {
+                    sender.ChangeNameErrorCommand("sameName");
+                    break;
+                }
+                found = false;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    sender.ChangeNameErrorCommand("noDevice");
+                    break;
+                }
+                found = false;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[2])) {
+                        found = true;
+                    }
+                }
+                if (found) {
+                    sender.ChangeNameErrorCommand("alreadyExists");
+                    break;
+                }
                 ChangeNameCommand(split[1], split[2]);
                 break;
             case "PlugIn":
+                Smart smart = null;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        smart = s;
+                    }
+                }
+                if (smart == null) {
+                    sender.PlugInErrorCommand("noDevice");
+                    break;
+                }
+                if (!(smart instanceof Plug)) {
+                    sender.PlugInErrorCommand("notPlug");
+                    break;
+                }
+                if (((Plug) smart).isPlugged()) {
+                    sender.PlugInErrorCommand("alreadyPlugged");
+                    break;
+                }
+                if (Integer.parseInt(split[2]) < 0) {
+                    sender.PlugInErrorCommand("negativeAmpere");
+                    break;
+                }
                 PlugInCommand(split[1], Double.parseDouble(split[2]));
                 break;
             case "PlugOut":
+                smart = null;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        smart = s;
+                    }
+                }
+                if (smart == null) {
+                    sender.PlugInErrorCommand("noDevice");
+                    break;
+                }
+                if (!(smart instanceof Plug)) {
+                    sender.PlugInErrorCommand("notPlug");
+                    break;
+                }
+                if (!(((Plug) smart).isPlugged())) {
+                    sender.PlugInErrorCommand("notPlugged");
+                    break;
+                }
                 PlugOutCommand(split[1]);
                 break;
             case "SetBrightness":
+                smart = null;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        smart = s;
+                    }
+                }
+                if (smart == null) {
+                    sender.LampErrorCommand("noDevice");
+                    break;
+                }
+                if (!(smart instanceof Lamp)) {
+                    sender.LampErrorCommand("notLamp");
+                    break;
+                }
+                if (Integer.parseInt(split[2]) < 0 || Integer.parseInt(split[2]) > 100) {
+                    sender.LampErrorCommand("invalidBrightness");
+                    break;
+                }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
@@ -84,6 +217,24 @@ public class InputReader{
                 LampCommands(command, args.toArray());
                 break;
             case "SetKelvin":
+                smart = null;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        smart = s;
+                    }
+                }
+                if (smart == null) {
+                    sender.LampErrorCommand("noDevice");
+                    break;
+                }
+                if (!(smart instanceof Lamp)) {
+                    sender.LampErrorCommand("notLamp");
+                    break;
+                }
+                if (Integer.parseInt(split[2]) < 2000 || Integer.parseInt(split[2]) > 6500) {
+                    sender.LampErrorCommand("invalidKelvin");
+                    break;
+                }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
@@ -91,6 +242,24 @@ public class InputReader{
                 LampCommands(command, args.toArray());
                 break;
             case "SetColorCode":
+                smart = null;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        smart = s;
+                    }
+                }
+                if (smart == null) {
+                    sender.LampErrorCommand("noDevice");
+                    break;
+                }
+                if (!(smart instanceof ColoredLamp)) {
+                    sender.LampErrorCommand("notColorLamp");
+                    break;
+                }
+                if (Integer.parseInt(split[2], 16) < 0 || Integer.parseInt(split[2], 16) > 16777215) {
+                    sender.LampErrorCommand("invalidColorCode");
+                    break;
+                }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
@@ -98,6 +267,28 @@ public class InputReader{
                 LampCommands(command, args.toArray());
                 break;
             case "SetWhite":
+                smart = null;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        smart = s;
+                    }
+                }
+                if (smart == null) {
+                    sender.LampErrorCommand("noDevice");
+                    break;
+                }
+                if (!(smart instanceof ColoredLamp)) {
+                    sender.LampErrorCommand("notColorLamp");
+                    break;
+                }
+                if (Integer.parseInt(split[2]) < 2000 || Integer.parseInt(split[2]) > 6500) {
+                    sender.LampErrorCommand("invalidKelvin");
+                    break;
+                }
+                if (Integer.parseInt(split[3]) < 0 || Integer.parseInt(split[2]) > 100) {
+                    sender.LampErrorCommand("invalidBrightness");
+                    break;
+                }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
@@ -105,6 +296,28 @@ public class InputReader{
                 LampCommands(command, args.toArray());
                 break;
             case "Color":
+                smart = null;
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        smart = s;
+                    }
+                }
+                if (smart == null) {
+                    sender.LampErrorCommand("noDevice");
+                    break;
+                }
+                if (!(smart instanceof ColoredLamp)) {
+                    sender.LampErrorCommand("notColorLamp");
+                    break;
+                }
+                if (Integer.parseInt(split[3]) < 0 || Integer.parseInt(split[3]) > 100) {
+                    sender.LampErrorCommand("invalidBrightness");
+                    break;
+                }
+                if (Integer.parseInt(split[2], 16) < 0 || Integer.parseInt(split[2], 16) > 16777215) {
+                    sender.LampErrorCommand("invalidColorCode");
+                    break;
+                }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
@@ -115,6 +328,7 @@ public class InputReader{
                 //TODO
                 break;
             default:
+                sender.ErroneousCommand();
                 break;
         }
     }
@@ -186,23 +400,19 @@ public class InputReader{
         }
     }
 
-    public static void SetSwitchCommand(String deviceName) {
-        // TODO set switch time for device
-    }
-
-    public static void SwitchDeviceCommand(String deviceName, String state) {
+    public static void SwitchDeviceCommand(String deviceName, String state, OutputSender sender) throws Exception {
         for (Smart device : Main.smartList) {
             if (device.getName().equals(deviceName)) {
                 if (state.equals("On")) {
                     if (device.isOn() == false)
                         (device).setOn(true);
                     else if (device.isOn() == true);
-                        // TODO throw exception 
+                        sender.SwitchErrorCommand("alreadyOn");
                 } else if (state.equals("Off")) {
                     if (device.isOn() == true)
                         (device).setOn(false);
                     else if (device.isOn() == false);
-                        // TODO throw exception
+                        sender.SwitchErrorCommand("alreadyOff");
                 } 
                 break;
             }

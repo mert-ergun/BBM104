@@ -77,5 +77,14 @@ public class SwitchChecker {
             }
         }
     }
+
+    public boolean CheckSwitchTimes() {
+        sortSwitchTimes();
+        for (Tuple<Smart, Calendar> switchTime : switchTimes) {
+            if (switchTime.getY() == null) continue;
+            return true;
+        }
+        return false;
+    }
     
 }

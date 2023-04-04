@@ -1,8 +1,9 @@
 COMMAND: SetInitialTime	2023-03-31_14:00:00
-COMMAND: Nop
+SUCCESS: Time has been set to 2023-03-31_14:00:00!
 COMMAND: Add	SmartPlug	Plug1
 COMMAND: Add	SmartPlug	Plug1
 COMMAND: Add	SmartPlug	Plug2	On
 COMMAND: Add	SmartPlug	Plug3	Off
 COMMAND: ILLEGAL_COMMAND
+ERROR: Erroneous command!
 COMMAND: Add	SmartPlug	Plug4	On	5.7
