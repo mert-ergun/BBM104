@@ -21,6 +21,7 @@ public class SwitchChecker {
     }
 
     public void SwitchTimesBetweenDates() {
+        timeChecker = Main.timeChecker;
         Calendar currentDate = timeChecker.getCurrentDate();
         Calendar oldDate = timeChecker.getOldDate();
         
@@ -32,6 +33,7 @@ public class SwitchChecker {
     }
 
     public void JumpToNop() {
+        timeChecker = Main.timeChecker;
         Calendar currentDate = timeChecker.getCurrentDate();
         Calendar nextSwitch = null;
         for (Tuple<Smart, Calendar> switchTime : switchTimes) {

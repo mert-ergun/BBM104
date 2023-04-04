@@ -654,10 +654,10 @@ public class InputReader{
     }
 
     public static void LampCommands(String input, Object ... args) {
-        String name = (String) args[1];
+        String name = (String) args[0];
         switch (input) {
             case "SetBrightness":
-                String brightness = (String) args[2];
+                String brightness = (String) args[1];
                 for (Smart device : Main.smartList) {
                     if (device.getName().equals(name)) {
                         if (device instanceof Lamp) {
@@ -668,7 +668,7 @@ public class InputReader{
                 }
                 break;
             case "SetKelvin":
-                String kelvin = (String) args[2];
+                String kelvin = (String) args[1];
                 for (Smart device : Main.smartList) {
                     if (device.getName().equals(name)) {
                         if (device instanceof Lamp) {
@@ -679,7 +679,7 @@ public class InputReader{
                 }
                 break;
             case "SetColorCode":
-                String colorCode = (String) args[2];
+                String colorCode = (String) args[1];
                 for (Smart device : Main.smartList) {
                     if (device.getName().equals(name)) {
                         if (device instanceof ColoredLamp && colorCode.startsWith("0x") && colorCode.length() == 8 && colorCode.matches("[0-9a-fA-F]+")) {
@@ -690,8 +690,8 @@ public class InputReader{
                 }
                 break;
             case "SetColor":
-                String color = (String) args[2];
-                brightness = (String) args[3];
+                String color = (String) args[1];
+                brightness = (String) args[2];
                 for (Smart device : Main.smartList) {
                     if (device.getName().equals(name)) {
                         if (device instanceof ColoredLamp && color.startsWith("0x") && color.length() == 8 && color.matches("[0-9a-fA-F]+")) {
@@ -703,8 +703,8 @@ public class InputReader{
                 }
                 break;
             case "SetWhite":
-                kelvin = (String) args[2];
-                brightness = (String) args[3];
+                kelvin = (String) args[1];
+                brightness = (String) args[2];
                 for (Smart device : Main.smartList) {
                     if (device.getName().equals(name)) {
                         if (device instanceof ColoredLamp) {
