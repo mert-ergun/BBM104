@@ -19,8 +19,6 @@ public class Plug extends Smart {
             this.isOn = true;
         } else if (isOn.equals("Off")) {
             this.isOn = false;
-        } else {
-            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
         }
         totalPlugs++;
     }

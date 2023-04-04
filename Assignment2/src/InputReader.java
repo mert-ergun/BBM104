@@ -5,11 +5,13 @@ import java.util.Calendar;
 import java.util.List;
 
 public class InputReader{
-    public static List<String> ReadInput(String fileName) throws Exception{
+    public static List<String> ReadInput(String fileName, OutputSender sender) throws Exception{
         BufferedReader br = new BufferedReader(new BufferedReader(new FileReader(fileName)));
         String line;
         List<String> lines = new ArrayList<String>();
-        while ((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null)  {
+            if (line.equals("")) continue;
+            sender.CommandCommand(line);
             String[] split = line.split("\t");
             DetermineCommand(line);
             for (String s : split) {
@@ -120,52 +122,52 @@ public class InputReader{
     public static void AddCommands(String deviceClass, Object ... args) {
         switch (deviceClass) {
             case "SmartPlug":
-                if (args.length == 3) {
-                    Plug plug = new Plug((String) args[2]);
+                if (args.length == 2) {
+                    Plug plug = new Plug((String) args[1]);
                     Main.smartList.add(plug);
-                } else if (args.length == 4){
-                    Plug plug = new Plug((String) args[2], (String) args[3]);
+                } else if (args.length == 3){
+                    Plug plug = new Plug((String) args[1], (String) args[2]);
                     Main.smartList.add(plug);
-                } else if (args.length == 5) {
-                    Plug plug = new Plug((String) args[2], (String) args[3], (double) args[4]);
+                } else if (args.length == 4) {
+                    Plug plug = new Plug((String) args[1], (String) args[2], (double) args[3]);
                     Main.smartList.add(plug);
                 }
                 break;
             case "SmartCamera":
-                if (args.length == 4) {
-                    Camera camera = new Camera((String) args[2], (int) args[3]);
+                if (args.length == 3) {
+                    Camera camera = new Camera((String) args[1], (int) args[2]);
                     Main.smartList.add(camera);
-                } else if (args.length == 5) {
-                    Camera camera = new Camera((String) args[2], (int) args[3], (String) args[4]);
+                } else if (args.length == 4) {
+                    Camera camera = new Camera((String) args[1], (int) args[2], (String) args[3]);
                     Main.smartList.add(camera);
                 }
                 break;
             case "SmartLamp":
-                if (args.length == 3) {
-                    Lamp lamp = new Lamp((String) args[2]);
+                if (args.length == 2) {
+                    Lamp lamp = new Lamp((String) args[1]);
                     Main.smartList.add(lamp);
-                } else if (args.length == 4) {
-                    Lamp lamp = new Lamp((String) args[2], (String) args[3]);
+                } else if (args.length == 3) {
+                    Lamp lamp = new Lamp((String) args[1], (String) args[2]);
                     Main.smartList.add(lamp);
-                } else if (args.length == 6) {
-                    Lamp lamp = new Lamp((String) args[2], (String) args[3], (int) args[4], (int) args[5]);
+                } else if (args.length == 5) {
+                    Lamp lamp = new Lamp((String) args[1], (String) args[2], (int) args[3], (int) args[4]);
                     Main.smartList.add(lamp);
                 }
                 break;
             case "SmartColorLamp":
-                if (args.length == 3) {
-                    ColoredLamp coloredLamp = new ColoredLamp((String) args[2]);
+                if (args.length == 2) {
+                    ColoredLamp coloredLamp = new ColoredLamp((String) args[1]);
                     Main.smartList.add(coloredLamp);
-                } else if (args.length == 4) {
-                    ColoredLamp coloredLamp = new ColoredLamp((String) args[2], (String) args[3]);
+                } else if (args.length == 3) {
+                    ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2]);
                     Main.smartList.add(coloredLamp);
-                } if (args.length > 4) {
-                    String unknown = (String) args[4];
+                } if (args.length > 3) {
+                    String unknown = (String) args[3];
                     if (unknown.startsWith("0x")) {
-                        ColoredLamp coloredLamp = new ColoredLamp((String) args[2], (String) args[3], unknown, (int) args[5]);
+                        ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2], unknown, (int) args[4]);
                         Main.smartList.add(coloredLamp);
-                    } else if (args.length == 6) {
-                            ColoredLamp coloredLamp = new ColoredLamp((String) args[2], (String) args[3], (int) args[4], (int) args[5]);
+                    } else if (args.length == 5) {
+                            ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2], (int) args[3], (int) args[4]);
                             Main.smartList.add(coloredLamp);
                     }
                 }

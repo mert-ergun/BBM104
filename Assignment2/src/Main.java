@@ -5,9 +5,10 @@ public class Main {
     public static List<Smart> smartList = new ArrayList<Smart>();
     public static TimeChecker timeChecker = new TimeChecker();
     public static SwitchChecker switchChecker = new SwitchChecker();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        OutputSender sender = new OutputSender("output.txt");
         try {
-            InputReader.ReadInput("input1.txt");
+            InputReader.ReadInput("input1.txt", sender);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
