@@ -1,9 +1,63 @@
 COMMAND: SetInitialTime	2023-03-31_14:00:00
 SUCCESS: Time has been set to 2023-03-31_14:00:00!
+COMMAND: Nop
+ERROR: There is nothing to switch!
 COMMAND: Add	SmartPlug	Plug1
 COMMAND: Add	SmartPlug	Plug1
+ERROR: There is already a smart device with same name!
 COMMAND: Add	SmartPlug	Plug2	On
 COMMAND: Add	SmartPlug	Plug3	Off
 COMMAND: ILLEGAL_COMMAND
 ERROR: Erroneous command!
 COMMAND: Add	SmartPlug	Plug4	On	5.7
+COMMAND: Add	SmartPlug	Plug5	On	-0.1
+ERROR: Ampere value must be a positive number!
+COMMAND: Add	SmartPlug	Plug5	On	3
+COMMAND: Add	SmartCamera	Plug1
+ERROR: Erroneous command!
+COMMAND: Add	SmartCamera	Camera1	120
+COMMAND: Add	SmartCamera	Camera2	-30
+ERROR: Megabyte value has to be a positive number!
+COMMAND: Add	SmartCamera	Camera2	300	On
+COMMAND: Add	SmartCamera	Camera3	150	Off
+COMMAND: Add	SmartLamp	Plug1
+ERROR: There is already a smart device with same name!
+COMMAND: Add	SmartLamp	Lamp1
+COMMAND: Add	SmartLamp	Lamp2	On
+COMMAND: Add	SmartLamp	Lamp3	Bom
+ERROR: Erroneous command!
+COMMAND: Add	SmartLamp	Lamp3	On	1000	90
+ERROR: Kelvin value must be in range of 2000K-6500K!
+COMMAND: Add	SmartLamp	Lamp3	On	3900	110
+ERROR: Brightness value must be in range of 0%-100%!
+COMMAND: Add	SmartLamp	Lamp3	On	2000	50
+COMMAND: Add	SmartColorLamp	Plug1
+ERROR: There is already a smart device with same name!
+COMMAND: Add	SmartColorLamp	CLamp1
+COMMAND: Add	SmartColorLamp	CLamp2	On
+COMMAND: Add	SmartColorLamp	CLamp3	On	2000	50
+COMMAND: Add	SmartColorLamp	CLamp4	On	0x00GG00	30
+ERROR: Color code must be in range of 0x000000-0xFFFFFF!
+COMMAND: Add	SmartColorLamp	CLamp4	On	0xFFFFFFF	100
+ERROR: Color code must be in range of 0x000000-0xFFFFFF!
+COMMAND: Add	SmartColorLamp	CLamp4	On	0x00FF00	70
+COMMAND: Add	SmartColorLamp	ABCDEFG
+COMMAND: Remove	CLamp1
+SUCCESS: Information about removed smart device is as follows:
+COMMAND: Add	SmartColorLamp	CLamp1
+COMMAND: Switch	Plug15	On
+ERROR: There is not such a device!
+COMMAND: Switch	Plug2	On
+ERROR: This device is already switched on!
+COMMAND: PlugIn	Plug2	-3
+ERROR: Ampere value must be a positive number!
+COMMAND: PlugIn	Plug2	10
+COMMAND: PlugIn	Plug2	7
+ERROR: There is already an item plugged in to that plug!
+COMMAND: SetTime	2023-03-31_14:05:00
+ERROR: Time format is not correct!
+COMMAND: SetInitialTime	2023-03-31_14:15:00
+ERROR: Erroneous command!
+COMMAND: Switch	Plug2	Off
+ERROR: This device is already switched off!
+COMMAND: SkipMinutes	5

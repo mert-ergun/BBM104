@@ -62,7 +62,6 @@ public class Lamp extends Smart {
 
 class ColoredLamp extends Lamp {
     private String color;
-    private int decimalColor = Integer.parseInt(color, 16);
     private boolean isColorOn;
     
     public ColoredLamp(String name) {
@@ -77,8 +76,6 @@ class ColoredLamp extends Lamp {
             this.isOn = true;
         } else if (isOn.equals("Off")) {
             this.isOn = false;
-        } else {
-            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
         }
         this.color = "FFFFFF";
         this.isColorOn = false;
@@ -90,15 +87,9 @@ class ColoredLamp extends Lamp {
             this.isOn = true;
         } else if (isOn.equals("Off")) {
             this.isOn = false;
-        } else {
-            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
         }
-        if (kelvin < 2000 || kelvin > 6500) {
-            throw new IllegalArgumentException("Kelvin must be between 0 and 10000");
-        } this.kelvin = kelvin;
-        if (brightness < 0 || brightness > 100) {
-            throw new IllegalArgumentException("Brightness must be between 0 and 100");
-        } this.brightness = brightness;
+        this.kelvin = kelvin;
+        this.brightness = brightness;
         this.color = "FFFFFF";
         this.isColorOn = false;
     }
@@ -109,19 +100,10 @@ class ColoredLamp extends Lamp {
             this.isOn = true;
         } else if (isOn.equals("Off")) {
             this.isOn = false;
-        } else {
-            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
         }
-        if (color.length() != 6) {
-            throw new IllegalArgumentException("Color must be a 6-digit hexadecimal number");
-        } else if (color.matches("[0-9A-Fa-f]+") == false) {
-            throw new IllegalArgumentException("Color must be a 6-digit hexadecimal number");
-        } 
         this.color = color;
         this.isColorOn = true;
-        if (brightness < 0 || brightness > 100) {
-            throw new IllegalArgumentException("Brightness must be between 0 and 100");
-        } this.brightness = brightness;
+        this.brightness = brightness;
     }
 
     public String getColor() {
@@ -130,14 +112,6 @@ class ColoredLamp extends Lamp {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public int getDecimalColor() {
-        return decimalColor;
-    }
-
-    public void setDecimalColor(int decimalColor) {
-        this.decimalColor = decimalColor;
     }
 
     public boolean isColorOn() {

@@ -10,9 +10,11 @@ public class InputReader{
         String line;
         List<String> lines = new ArrayList<String>();
         String firstLine = null;
-        while (((line = br.readLine()) != null) && firstLine == null) {
-            if (!line.isEmpty())
+        while ((line = br.readLine()) != null) {
+            if (!line.isEmpty()) {
                 firstLine = line;
+                break;
+            }
         }
         sender.CommandCommand(firstLine);
         String[] firstLineSplit = firstLine.split("\t");
@@ -36,6 +38,9 @@ public class InputReader{
             }
         }
         br.close();
+        if (lines.get(-1) != "ZReport"){
+            DetermineCommand("ZReport", sender);
+        }
         return lines;
     }
 
@@ -48,6 +53,10 @@ public class InputReader{
                     sender.InitErrorCommand("initTrue");
                     break;
                 }
+                if (split[1] == null) {
+                    sender.InitErrorCommand("timeFormat");
+                    break;
+                }
                 try {
                     Main.timeChecker.SetInitialTime((String) split[1]);
                 } catch (Exception e){
@@ -56,6 +65,10 @@ public class InputReader{
                 }
                 break;
             case "SetTime":
+                if (split.length != 2) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 try {
                     Main.timeChecker.SetTime(split[1]);
                 } catch (Exception e) {
@@ -63,12 +76,20 @@ public class InputReader{
                 }
                 break;
             case "SkipMinutes":
+                if (split.length != 2) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 if (split[1] == null || Integer.parseInt(split[1]) < 0) {
                     sender.SetTimeErrorCommand();
                 } else 
                     Main.timeChecker.SkipMinutes(Integer.parseInt(split[1]));
                 break;
             case "Nop":
+                if (split.length != 1) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 if (!Main.switchChecker.CheckSwitchTimes()) {
                     sender.NopErrorCommand();
                 } else
@@ -79,14 +100,22 @@ public class InputReader{
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
                 }
-                AddCommands(args.get(0), args.toArray());
+                AddCommands(sender, args.get(0), args.toArray());
                 //TODO: AddDeviceError
                 break;
             case "Remove":
+                if (split.length != 2) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 RemoveCommand(split[1]);
                 sender.RemoveDeviceCommand(split[1]);
                 break;
             case "SetSwitchTime":
+                if (split.length != 3) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 boolean found = false;
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
@@ -106,6 +135,10 @@ public class InputReader{
                 Main.switchChecker.SetSwitchTimes(split[1], switchDate);
                 break;
             case "Switch":
+                if (split.length != 3) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 found = false;
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
@@ -119,6 +152,10 @@ public class InputReader{
                 SwitchDeviceCommand(split[1], split[2], sender);
                 break;
             case "ChangeName":
+                if (split.length != 3) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 if (split[1] == split[2]) {
                     sender.ChangeNameErrorCommand("sameName");
                     break;
@@ -146,6 +183,10 @@ public class InputReader{
                 ChangeNameCommand(split[1], split[2]);
                 break;
             case "PlugIn":
+                if (split.length != 3) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 Smart smart = null;
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
@@ -171,6 +212,10 @@ public class InputReader{
                 PlugInCommand(split[1], Double.parseDouble(split[2]));
                 break;
             case "PlugOut":
+                if (split.length != 2) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 smart = null;
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
@@ -192,6 +237,10 @@ public class InputReader{
                 PlugOutCommand(split[1]);
                 break;
             case "SetBrightness":
+                if (split.length != 3) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 smart = null;
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
@@ -217,6 +266,10 @@ public class InputReader{
                 LampCommands(command, args.toArray());
                 break;
             case "SetKelvin":
+                if (split.length != 3) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 smart = null;
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
@@ -242,6 +295,10 @@ public class InputReader{
                 LampCommands(command, args.toArray());
                 break;
             case "SetColorCode":
+                if (split.length != 3) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 smart = null;
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
@@ -267,6 +324,10 @@ public class InputReader{
                 LampCommands(command, args.toArray());
                 break;
             case "SetWhite":
+                if (split.length != 2) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 smart = null;
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
@@ -296,6 +357,10 @@ public class InputReader{
                 LampCommands(command, args.toArray());
                 break;
             case "Color":
+                if (split.length != 2) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 smart = null;
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
@@ -325,6 +390,10 @@ public class InputReader{
                 LampCommands(command, args.toArray());
                 break;
             case "ZReport":
+                if (split.length != 1) {
+                    sender.ErroneousCommand();
+                    break;
+                }
                 //TODO
                 break;
             default:
@@ -333,56 +402,189 @@ public class InputReader{
         }
     }
 
-    public static void AddCommands(String deviceClass, Object ... args) {
+    public static boolean SearchDevice(String name) {
+        for (Smart s : Main.smartList) {
+            if (s.name.equals(name)) {
+                return true;
+            }
+        } return false;
+    }
+
+    public static void AddCommands(OutputSender sender, String deviceClass, Object ... args) throws Exception {
         switch (deviceClass) {
             case "SmartPlug":
+                if (args.length < 2 || args.length > 4) {
+                    sender.ErroneousCommand();
+                    break;
+                }
+                if (SearchDevice((String) args[1])) {
+                    sender.AddErrorCommand("alreadyExists");
+                    break;
+                }
                 if (args.length == 2) {
                     Plug plug = new Plug((String) args[1]);
                     Main.smartList.add(plug);
                 } else if (args.length == 3){
+                    if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
+                        sender.ErroneousCommand();
+                        break;
+                    }
                     Plug plug = new Plug((String) args[1], (String) args[2]);
                     Main.smartList.add(plug);
                 } else if (args.length == 4) {
+                    if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
+                        sender.ErroneousCommand();
+                        break;
+                    }
+                    try {
+                        args[3] = Double.parseDouble((String) args[3]);
+                    } catch (Exception e) {
+                        sender.AddErrorCommand("invalidAmper");
+                        break;
+                    }
+                    if ((double) args[3] < 0) {
+                        sender.AddErrorCommand("invalidAmper");
+                        break;
+                    }
+                    
                     Plug plug = new Plug((String) args[1], (String) args[2], (double) args[3]);
                     Main.smartList.add(plug);
                 }
                 break;
             case "SmartCamera":
+                if (args.length < 3 || args.length > 4) {
+                    sender.ErroneousCommand();
+                    break;
+                }
+                if (SearchDevice((String) args[1])) {
+                    sender.AddErrorCommand("alreadyExists");
+                    break;
+                }
+                try {
+                    args[2] = Integer.parseInt((String) args[2]);
+                } catch (Exception e) {
+                    sender.AddErrorCommand("invalidResolution");
+                    break;
+                }
+                if ((int) args[2] < 0) {
+                    sender.AddErrorCommand("invalidResolution");
+                    break;
+                }
                 if (args.length == 3) {
                     Camera camera = new Camera((String) args[1], (int) args[2]);
                     Main.smartList.add(camera);
                 } else if (args.length == 4) {
+                    if (!((String) args[3]).equals("Off") && !((String) args[3]).equals("On")) {
+                        sender.ErroneousCommand();
+                        break;
+                    }
                     Camera camera = new Camera((String) args[1], (int) args[2], (String) args[3]);
                     Main.smartList.add(camera);
                 }
                 break;
             case "SmartLamp":
+                if (args.length < 2 || args.length > 5 || args.length == 4) {
+                    sender.ErroneousCommand();
+                    break;
+                }
+                if (SearchDevice((String) args[1])) {
+                    sender.AddErrorCommand("alreadyExists");
+                    break;
+                }
                 if (args.length == 2) {
                     Lamp lamp = new Lamp((String) args[1]);
                     Main.smartList.add(lamp);
                 } else if (args.length == 3) {
+                    if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
+                        sender.ErroneousCommand();
+                        break;
+                    }
                     Lamp lamp = new Lamp((String) args[1], (String) args[2]);
                     Main.smartList.add(lamp);
                 } else if (args.length == 5) {
+                    if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
+                        sender.ErroneousCommand();
+                        break;
+                    }
+                    try {
+                        args[3] = Integer.parseInt((String) args[3]);
+                    } catch (Exception e) {
+                        sender.AddErrorCommand("invalidKelvin");
+                        break;
+                    } try {
+                        args[4] = Integer.parseInt((String) args[4]);
+                    } catch (Exception e) {
+                        sender.AddErrorCommand("invalidBrightness");
+                        break;
+                    }
+                    if ((int) args[3] < 2000 || (int) args[3] > 6500) {
+                        sender.AddErrorCommand("invalidKelvin");
+                        break;
+                    } if ((int) args[4] < 0 || (int) args[4] > 100) {
+                        sender.AddErrorCommand("invalidBrightness");
+                        break;
+                    }
                     Lamp lamp = new Lamp((String) args[1], (String) args[2], (int) args[3], (int) args[4]);
                     Main.smartList.add(lamp);
                 }
                 break;
             case "SmartColorLamp":
+                if (args.length < 2 || args.length > 5 || args.length == 4) {
+                    sender.ErroneousCommand();
+                    break;
+                }
+                if (SearchDevice((String) args[1])) {
+                    sender.AddErrorCommand("alreadyExists");
+                    break;
+                }
                 if (args.length == 2) {
                     ColoredLamp coloredLamp = new ColoredLamp((String) args[1]);
                     Main.smartList.add(coloredLamp);
                 } else if (args.length == 3) {
+                    if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
+                        sender.ErroneousCommand();
+                        break;
+                    }
                     ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2]);
                     Main.smartList.add(coloredLamp);
                 } if (args.length > 3) {
+                    if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
+                        sender.ErroneousCommand();
+                        break;
+                    }
                     String unknown = (String) args[3];
                     if (unknown.startsWith("0x")) {
-                        ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2], unknown, (int) args[4]);
+                        if (unknown.length() > 8) {
+                            sender.AddErrorCommand("invalidColorCode");
+                            break;
+                        }
+                        try {
+                            unknown = Integer.parseInt(unknown.substring(2), 16) + "";
+                        } catch (Exception e) {
+                            sender.AddErrorCommand("invalidColorCode");
+                            break;
+                        }
+                        if (Integer.parseInt(unknown.substring(2), 16) > 16777215) {
+                            sender.AddErrorCommand("invalidColorCode");
+                            break;
+                        }
+                        if (Integer.parseInt((String) args[4]) < 0 || Integer.parseInt((String) args[4]) > 100) {
+                            sender.AddErrorCommand("invalidBrightness");
+                            break;
+                        }
+                        ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2], unknown, Integer.parseInt((String)args[4]));
                         Main.smartList.add(coloredLamp);
                     } else if (args.length == 5) {
-                            ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2], (int) args[3], (int) args[4]);
-                            Main.smartList.add(coloredLamp);
+                        if (Integer.parseInt((String) args[3]) < 2000 || Integer.parseInt((String) args[3]) > 6500) {
+                            sender.AddErrorCommand("invalidKelvin");
+                            break;
+                        }
+                        if (Integer.parseInt((String) args[4]) < 0 || Integer.parseInt((String) args[4]) > 100) {
+                            sender.AddErrorCommand("invalidBrightness");
+                            break;
+                        }
+                        ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2], Integer.parseInt((String)args[3]), Integer.parseInt((String)args[4]));
+                        Main.smartList.add(coloredLamp);
                     }
                 }
                 break;
