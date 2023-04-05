@@ -21,6 +21,7 @@ public class Plug extends Smart {
         } else if (isOn.equals("Off")) {
             this.isOn = false;
         }
+        this.isPlugged = false;
         totalPlugs++;
     }
 
@@ -37,6 +38,7 @@ public class Plug extends Smart {
         if (ampere < 0) {
             throw new IllegalArgumentException("Ampere must be greater than 0");
         } this.ampere = ampere;
+        this.isPlugged = false;
         totalPlugs++;
     }
 
