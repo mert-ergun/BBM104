@@ -53,9 +53,19 @@ public class Camera extends Smart {
         String name = super.name;
         String isOn = this.isOn ? "on" : "off";
         String storage = Integer.toString(this.storage);
-        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime);
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
 
         return type + " " + name + " is " + isOn + " and used " + storage + " MB of storage so far (excluding current device), and its time to switch its status is " + timetoSwitch + ".";
     }
 
+    @Override
+    public String WriteZReport() {
+        String type = "Smart Camera";
+        String name = super.name;
+        String isOn = this.isOn ? "on" : "off";
+        String storage = Integer.toString(this.storage);
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
+
+        return type + " " + name + " is " + isOn + " and used " + storage + " MB of storage so far (excluding current device), and its time to switch its status is " + timetoSwitch + ".";
+    }
 }

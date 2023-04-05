@@ -6,6 +6,16 @@ public class SwitchChecker {
     List<Tuple<Smart, Calendar>> switchTimes = new ArrayList<>();
     TimeChecker timeChecker = Main.timeChecker;
 
+    public void CreateSwitchTimes() {
+        for (Smart device : Main.smartList) {
+            if (device.switchTime != null) {
+                SetSwitchTimes(device.getName(), device.switchTime);
+            } else {
+                switchTimes.add(new Tuple<Smart, Calendar>(device, null));
+            }
+        }
+    }
+
     public List<Tuple<Smart,Calendar>> getSwitchTimes() {
         return switchTimes;
     }
@@ -29,8 +39,11 @@ public class SwitchChecker {
             if (switchTime.getY() == null) continue;
             if (switchTime.getY().after(oldDate) && switchTime.getY().before(currentDate)) {
                 switchTime.getX().setOn(!switchTime.getX().isOn());
+                switchTime.getX().switchTime = null;
+                switchTime.setY(null);
             }
         }
+        sortSwitchTimes();
     }
 
     public void JumpToNop() {
@@ -50,6 +63,8 @@ public class SwitchChecker {
         if (nextSwitch != null) {
             timeChecker.setCurrentDate(nextSwitch);
         }
+        UpdateSwitchTimes();
+        sortSwitchTimes();
     }
 
     public void SetSwitchTimes(String name, Calendar switchTime) {
@@ -69,20 +84,25 @@ public class SwitchChecker {
         }
         switchTimes.add(new Tuple<Smart, Calendar>(smartDevice, switchTime));
         UpdateSwitchTimes();
+        sortSwitchTimes();
     }
     
     public void sortSwitchTimes() {
         for (int i = 0; i < switchTimes.size(); i++) {
-            for (int j = 0; j < switchTimes.size() - 1; j++) {
-                if (switchTimes.get(j).getY() == null) continue;
-                if (switchTimes.get(j).getY().after(switchTimes.get(j + 1).getY())) {
-                    Tuple<Smart, Calendar> temp = switchTimes.get(j);
-                    switchTimes.set(j, switchTimes.get(j + 1));
-                    switchTimes.set(j + 1, temp);
-                }
+          for (int j = 0; j < switchTimes.size() - 1; j++) {
+            if (switchTimes.get(j).getY() == null && switchTimes.get(j + 1).getY() != null) {
+              Tuple<Smart, Calendar> temp = switchTimes.get(j);
+              switchTimes.set(j, switchTimes.get(j + 1));
+              switchTimes.set(j + 1, temp);
+            } else if (switchTimes.get(j).getY() != null && switchTimes.get(j + 1).getY() != null &&
+                switchTimes.get(j).getY().after(switchTimes.get(j + 1).getY())) {
+              Tuple<Smart, Calendar> temp = switchTimes.get(j);
+              switchTimes.set(j, switchTimes.get(j + 1));
+              switchTimes.set(j + 1, temp);
             }
+          }
         }
-    }
+      }
 
     public boolean CheckSwitchTimes() {
         sortSwitchTimes();

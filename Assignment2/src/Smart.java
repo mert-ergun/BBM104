@@ -21,4 +21,8 @@ public abstract class Smart {
     public String WriteInfo() {
         return "";
     }
+
+    public String WriteZReport() {
+        return "";
+    }
 }

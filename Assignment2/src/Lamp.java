@@ -67,7 +67,18 @@ public class Lamp extends Smart {
         String kelvinValue = this.kelvin + "K";
         String onOff = this.isOn ? "on" : "off";
         String brightness = this.brightness + "%";
-        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime);
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
+
+        return type + " " + super.name + " is " + onOff + " and its kelvin value is " + kelvinValue + " with " + brightness + " brightness, and its time to switch its status is " + timetoSwitch + ".";
+    }
+
+    @Override
+    public String WriteZReport() {
+        String type = "Smart Lamp";
+        String kelvinValue = this.kelvin + "K";
+        String onOff = this.isOn ? "on" : "off";
+        String brightness = this.brightness + "%";
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
 
         return type + " " + super.name + " is " + onOff + " and its kelvin value is " + kelvinValue + " with " + brightness + " brightness, and its time to switch its status is " + timetoSwitch + ".";
     }
@@ -142,7 +153,18 @@ class ColoredLamp extends Lamp {
         String onOff = this.isOn ? "on" : "off";
         String color = this.isColorOn ? this.color : this.kelvin + "K";
         String brightness = this.brightness + "%";
-        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime);
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
+
+        return type + " " + super.name + " is " + onOff + " and its color value is " + color + " with " + brightness + " brightness, and its time to switch its status is " + timetoSwitch + ".";
+    }
+
+    @Override
+    public String WriteZReport() {
+        String type = "Smart Color Lamp";
+        String onOff = this.isOn ? "on" : "off";
+        String color = this.isColorOn ? this.color : this.kelvin + "K";
+        String brightness = this.brightness + "%";
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
 
         return type + " " + super.name + " is " + onOff + " and its color value is " + color + " with " + brightness + " brightness, and its time to switch its status is " + timetoSwitch + ".";
     }

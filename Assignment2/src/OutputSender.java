@@ -168,4 +168,8 @@ public class OutputSender {
                 break;
         }
     }
+
+    public void SendZReport(String zReport) throws Exception {
+        writer.WriteOutput(zReport);
+    }
 }

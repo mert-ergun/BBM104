@@ -28,17 +28,15 @@ public class InputReader{
         } else {
             sender.InitErrorCommand("initFalse");
         }
+        Main.switchChecker.CreateSwitchTimes();
         while ((line = br.readLine()) != null)  {
             if (line.equals("")) continue;
+            lines.add(line);
             sender.CommandCommand(line);
-            String[] split = line.split("\t");
             DetermineCommand(line, sender);
-            for (String s : split) {
-                lines.add(s);
-            }
         }
         br.close();
-        if (lines.get(lines.size()-1) != "ZReport"){
+        if (lines.get(lines.size() - 1) != "ZReport"){
             DetermineCommand("ZReport", sender);
         }
         return lines;
@@ -137,8 +135,14 @@ public class InputReader{
                     switchDate.setTime(TimeChecker.formatter.parse(split[2]));
                 } catch (Exception e) {
                     sender.SetTimeErrorCommand();
+                    break;
                 }
                 Main.switchChecker.SetSwitchTimes(split[1], switchDate);
+                for (Smart s : Main.smartList) {
+                    if (s.name.equals(split[1])) {
+                        s.switchTime = switchDate;
+                    }
+                }
                 break;
             case "Switch":
                 if (split.length != 3) {
@@ -400,7 +404,9 @@ public class InputReader{
                     sender.ErroneousCommand();
                     break;
                 }
-                //TODO
+                OutputWriter wr = sender.writer;
+                ZReport zReport = new ZReport();
+                zReport.writeZReport(wr);
                 break;
             default:
                 sender.ErroneousCommand();

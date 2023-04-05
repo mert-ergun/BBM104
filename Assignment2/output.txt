@@ -103,6 +103,7 @@ ERROR: Kelvin value must be in range of 2000K-6500K!
 COMMAND: PlugIn	Plug1	20
 COMMAND: SkipMinutes	5
 COMMAND: ZReport
+Time is:	2023-03-31_14:20:00
 COMMAND: ChangeName	Plug1	CLamp1
 ERROR: There is already a device with this name!
 COMMAND: ChangeName	Plug1	Plug1
@@ -114,23 +115,256 @@ COMMAND: ChangeName	Plug100	Plug100
 ERROR: Both of the names are the same, nothing changed!
 COMMAND: PlugOut	Plug10
 COMMAND: ZReport
+Time is:	2023-03-31_14:20:00
 COMMAND: SetSwitchTime	Plug10	2023-03-31_15:00:00
 COMMAND: ZReport
+Time is:	2023-03-31_14:20:00
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera1 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is off and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is on and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
 COMMAND: SetTime	2023-03-31_14:05:00
 ERROR: Time cannot be reversed!
 COMMAND: SetSwitchTime	Camera1	2023-03-31_15:10:00
 COMMAND: ZReport
+Time is:	2023-03-31_14:20:00
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Camera Camera1 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is 2023-03-31_15:10:00.
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is off and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is on and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
 COMMAND: SetSwitchTime	Lamp3	2023-03-31_15:01:00
 COMMAND: ZReport
+Time is:	2023-03-31_14:20:00
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Lamp Lamp3 is on and its kelvin value is 2000K with 50% brightness, and its time to switch its status is 2023-03-31_15:01:00.
+Smart Camera Camera1 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is 2023-03-31_15:10:00.
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is off and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
 COMMAND: SetSwitchTime	Lamp1	2023-03-31_15:00:00
 COMMAND: ZReport
+Time is:	2023-03-31_14:20:00
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Lamp Lamp1 is off and its kelvin value is 2700K with 100% brightness, and its time to switch its status is 2023-03-31_15:00:00.
+Smart Lamp Lamp3 is on and its kelvin value is 2000K with 50% brightness, and its time to switch its status is 2023-03-31_15:01:00.
+Smart Camera Camera1 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is 2023-03-31_15:10:00.
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
 COMMAND: SetSwitchTime	Lamp2	2023-04-01_00:00:00
 COMMAND: ZReport
+Time is:	2023-03-31_14:20:00
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Lamp Lamp1 is off and its kelvin value is 2700K with 100% brightness, and its time to switch its status is 2023-03-31_15:00:00.
+Smart Lamp Lamp3 is on and its kelvin value is 2000K with 50% brightness, and its time to switch its status is 2023-03-31_15:01:00.
+Smart Camera Camera1 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is 2023-03-31_15:10:00.
+Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is 2023-04-01_00:00:00.
+Smart Plug Plug10 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
 COMMAND: SetTime	2023-03-31_15:99:00
 ERROR: Time format is not correct!
 COMMAND: SetTime	2023-03-31_15:05:00
 COMMAND: ZReport
+Time is:	2023-03-31_15:05:00
+Smart Camera Camera1 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is 2023-03-31_15:10:00.
+Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is 2023-04-01_00:00:00.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
 COMMAND: Nop
 COMMAND: ZReport
+Time is:	2023-03-31_15:10:00
+Smart Camera Camera1 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is 2023-03-31_15:10:00.
+Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is 2023-04-01_00:00:00.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
 COMMAND: Nop
 COMMAND: ZReport
+Time is:	2023-04-01_00:00:00
+Smart Camera Camera1 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is 2023-03-31_15:10:00.
+Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is 2023-04-01_00:00:00.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Time is:	2023-04-01_00:00:00
+Smart Camera Camera1 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is 2023-03-31_15:10:00.
+Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is 2023-04-01_00:00:00.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug5 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera2 is on and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera3 is off and used 0 MB of storage so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
+Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp2 is on and its color value is 2000K with 55% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp3 is on and its color value is 2000K with 50% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp4 is on and its color value is 65280 with 70% brightness, and its time to switch its status is null.
+Smart Color Lamp ABCDEFG is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
