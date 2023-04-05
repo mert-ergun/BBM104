@@ -15,6 +15,7 @@ public class ZReport {
 
     public void writeZReport(OutputWriter writer) throws Exception {
         calculateCurrentDate(Main.timeChecker);
+        Main.switchChecker.UpdateSwitchTimes();
         Main.switchChecker.sortSwitchTimes();
         calculateSwitchTimes(Main.switchChecker);
         writer.WriteOutput("Time is:\t" + TimeChecker.formatter.format(currentDate.getTime()));

@@ -36,7 +36,7 @@ public class InputReader{
             DetermineCommand(line, sender);
         }
         br.close();
-        if (lines.get(lines.size() - 1) != "ZReport"){
+        if (!lines.get(lines.size() - 1).equals("ZReport")){
             DetermineCommand("ZReport", sender);
         }
         return lines;
@@ -699,6 +699,7 @@ public class InputReader{
                     if (device.getName().equals(name)) {
                         if (device instanceof ColoredLamp && colorCode.startsWith("0x") && colorCode.length() == 8 && colorCode.matches("[0-9a-fA-F]+")) {
                             ((ColoredLamp) device).setColor(colorCode);
+                            ((ColoredLamp) device).setColorOn(true);
                             break;
                         }
                     }
@@ -712,6 +713,7 @@ public class InputReader{
                         if (device instanceof ColoredLamp && color.startsWith("0x") && color.length() == 8 && color.matches("[0-9a-fA-F]+")) {
                             ((ColoredLamp) device).setColor(color);
                             ((ColoredLamp) device).setBrightness(Integer.parseInt(brightness));
+                            ((ColoredLamp) device).setColorOn(true);
                             break;
                         }
                     }
@@ -726,6 +728,7 @@ public class InputReader{
                             ((ColoredLamp) device).setKelvin(Integer.parseInt(kelvin));
                             ((ColoredLamp) device).setBrightness(Integer.parseInt(brightness));
                             ((ColoredLamp) device).setColor("0xFFFFFF");
+                            ((ColoredLamp) device).setColorOn(false);
                             break;
                         }
                     }

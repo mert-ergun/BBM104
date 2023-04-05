@@ -8,11 +8,7 @@ public class SwitchChecker {
 
     public void CreateSwitchTimes() {
         for (Smart device : Main.smartList) {
-            if (device.switchTime != null) {
-                SetSwitchTimes(device.getName(), device.switchTime);
-            } else {
-                switchTimes.add(new Tuple<Smart, Calendar>(device, null));
-            }
+            switchTimes.add(new Tuple<Smart, Calendar>(device, null));
         }
     }
 
@@ -25,7 +21,7 @@ public class SwitchChecker {
             if (device.switchTime != null) {
                 SetSwitchTimes(device.getName(), device.switchTime);
             } else {
-                switchTimes.add(new Tuple<Smart, Calendar>(device, null));
+                SetSwitchTimes(device.getName(), null);
             }
         }   
     }
