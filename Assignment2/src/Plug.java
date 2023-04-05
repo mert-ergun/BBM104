@@ -10,6 +10,7 @@ public class Plug extends Smart {
         this.totalEnergy = 0;
         this.isPlugged = false;
         totalPlugs++;
+        this.isOn = false;
     }
 
     public Plug(String name, String isOn) {
@@ -77,5 +78,17 @@ public class Plug extends Smart {
 
     public int getVOLTAGE() {
         return VOLTAGE;
+    }
+
+    @Override
+    public String WriteInfo() {
+        calculateEnergy(ampere, VOLTAGE);
+        String type = "Smart Plug";
+        String name = super.name;
+        String onOff = this.isOn ? "on" : "off";
+        String consumedPower = String.format("%.2f", this.totalEnergy);
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime);
+
+        return type + " " + name + " is " + onOff + " and consumed " + consumedPower + "W so far (excluding current device), and its time to switch its status is " + timetoSwitch + ".";
     }
 }

@@ -22,7 +22,16 @@ public class OutputSender {
 
     public void RemoveDeviceCommand(String deviceName) throws Exception {
         writer.WriteOutput("SUCCESS: Information about removed smart device is as follows:");
-        // TODO: print device info
+        for (Smart smart : Main.smartList) {
+            if (smart.getName().equals(deviceName)) {
+                writer.WriteOutput(smart.WriteInfo());
+                break;
+            }
+        }
+    }
+
+    public void DateAfterError() throws Exception {
+        writer.WriteOutput("ERROR: Time cannot be reversed!"); 
     }
 
     public void InitErrorCommand(String error) throws Exception {

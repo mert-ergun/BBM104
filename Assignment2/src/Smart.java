@@ -17,4 +17,8 @@ public abstract class Smart {
     public void setOn(boolean isOn) {
         this.isOn = isOn;
     }
+
+    public String WriteInfo() {
+        return "";
+    }
 }

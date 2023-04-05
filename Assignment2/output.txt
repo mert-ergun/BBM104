@@ -44,6 +44,7 @@ COMMAND: Add	SmartColorLamp	CLamp4	On	0x00FF00	70
 COMMAND: Add	SmartColorLamp	ABCDEFG
 COMMAND: Remove	CLamp1
 SUCCESS: Information about removed smart device is as follows:
+Smart Color Lamp CLamp1 is off and its color value is 4000K with 100% brightness, and its time to switch its status is null.
 COMMAND: Add	SmartColorLamp	CLamp1
 COMMAND: Switch	Plug15	On
 ERROR: There is not such a device!
@@ -58,19 +59,16 @@ COMMAND: SetTime	2023-03-31_14:05:00
 COMMAND: SetInitialTime	2023-03-31_14:15:00
 ERROR: Erroneous command!
 COMMAND: Switch	Plug2	Off
-ERROR: This device is already switched off!
 COMMAND: SkipMinutes	5
 COMMAND: Switch	Plug2	On
-ERROR: This device is already switched on!
 COMMAND: SkipMinutes	5
 COMMAND: Switch	Plug2	Off
-ERROR: This device is already switched off!
 COMMAND: PlugOut	Plug2
 COMMAND: PlugOut	Plug2
+ERROR: This plug has no item to plug out from that plug!
 COMMAND: PlugIn	Camera1	10
 ERROR: This device is not a smart plug!
 COMMAND: Switch	Plug2	On
-ERROR: This device is already switched on!
 COMMAND: SetKelvin	Camera1	2700
 ERROR: This device is not a smart lamp!
 COMMAND: SetKelvin	Lamp1	2700
@@ -87,41 +85,39 @@ ERROR: This device is not a smart color lamp!
 COMMAND: SetColorCode	Lamp1	2700
 ERROR: This device is not a smart color lamp!
 COMMAND: SetWhite	Camera1	2700	100
-ERROR: Erroneous command!
+ERROR: This device is not a smart color lamp!
 COMMAND: SetColor	Camera1	0xFFFFFF	100
-ERROR: Erroneous command!
+ERROR: This device is not a smart color lamp!
 COMMAND: SetColor	CLamp1	0xFFFFFF	100
-ERROR: Erroneous command!
 COMMAND: SetColor	CLamp1	0xFFGGHH	100
-ERROR: Erroneous command!
+ERROR: Color code must be in range of 0x000000-0xFFFFFF!
 COMMAND: SetColor	CLamp1	0x001100	120
-ERROR: Erroneous command!
+ERROR: Brightness value must be in range of 0%-100%!
 COMMAND: SetWhite	CLamp2	6600	100
-ERROR: Erroneous command!
+ERROR: Kelvin value must be in range of 2000K-6500K!
 COMMAND: SetWhite	CLamp2	6500	120
-ERROR: Erroneous command!
+ERROR: Brightness value must be in range of 0%-100%!
 COMMAND: SetWhite	CLamp2	2000	55
-ERROR: Erroneous command!
 COMMAND: SetWhite	CLamp2	6600	120
-ERROR: Erroneous command!
+ERROR: Kelvin value must be in range of 2000K-6500K!
 COMMAND: PlugIn	Plug1	20
 COMMAND: SkipMinutes	5
 COMMAND: ZReport
 COMMAND: ChangeName	Plug1	CLamp1
 ERROR: There is already a device with this name!
 COMMAND: ChangeName	Plug1	Plug1
-ERROR: There is already a device with this name!
+ERROR: Both of the names are the same, nothing changed!
 COMMAND: ChangeName	Plug1	Plug10
 COMMAND: ChangeName	Plug10
 ERROR: Erroneous command!
 COMMAND: ChangeName	Plug100	Plug100
-ERROR: There is not such a device!
+ERROR: Both of the names are the same, nothing changed!
 COMMAND: PlugOut	Plug10
 COMMAND: ZReport
 COMMAND: SetSwitchTime	Plug10	2023-03-31_15:00:00
 COMMAND: ZReport
 COMMAND: SetTime	2023-03-31_14:05:00
-ERROR: Time format is not correct!
+ERROR: Time cannot be reversed!
 COMMAND: SetSwitchTime	Camera1	2023-03-31_15:10:00
 COMMAND: ZReport
 COMMAND: SetSwitchTime	Lamp3	2023-03-31_15:01:00
@@ -133,6 +129,8 @@ COMMAND: ZReport
 COMMAND: SetTime	2023-03-31_15:99:00
 ERROR: Time format is not correct!
 COMMAND: SetTime	2023-03-31_15:05:00
-ERROR: Time format is not correct!
 COMMAND: ZReport
 COMMAND: Nop
+COMMAND: ZReport
+COMMAND: Nop
+COMMAND: ZReport

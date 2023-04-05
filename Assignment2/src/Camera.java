@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 public class Camera extends Smart {
     private int storage;
     private int mbps;
@@ -25,6 +27,10 @@ public class Camera extends Smart {
         this.storage = 0;
     }
 
+    public int calculateStorage(int mbps, Calendar time) {
+        return mbps * time.get(Calendar.SECOND);
+    }
+
     public int getStorage() {
         return storage;
     }
@@ -40,4 +46,16 @@ public class Camera extends Smart {
     public void setMbps(int mbps) {
         this.mbps = mbps;
     }
+
+    @Override
+    public String WriteInfo() {
+        String type = "Smart Camera";
+        String name = super.name;
+        String isOn = this.isOn ? "on" : "off";
+        String storage = Integer.toString(this.storage);
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime);
+
+        return type + " " + name + " is " + isOn + " and used " + storage + " MB of storage so far (excluding current device), and its time to switch its status is " + timetoSwitch + ".";
+    }
+
 }

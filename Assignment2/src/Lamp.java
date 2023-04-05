@@ -5,12 +5,14 @@ public class Lamp extends Smart {
         super.name = "Lamp";
         this.kelvin = 4000;
         this.brightness = 100;
+        this.isOn = false;
     }
 
     public Lamp(String name) {
         super.name = name;
         this.kelvin = 4000;
         this.brightness = 100;
+        this.isOn = false;
     }
 
     public Lamp(String name, String isOn) {
@@ -58,6 +60,17 @@ public class Lamp extends Smart {
     public void setBrightness(int brightness) {
         this.brightness = brightness;
     }
+
+    @Override
+    public String WriteInfo() {
+        String type = "Smart Lamp";
+        String kelvinValue = this.kelvin + "K";
+        String onOff = this.isOn ? "on" : "off";
+        String brightness = this.brightness + "%";
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime);
+
+        return type + " " + super.name + " is " + onOff + " and its kelvin value is " + kelvinValue + " with " + brightness + " brightness, and its time to switch its status is " + timetoSwitch + ".";
+    }
 }
 
 class ColoredLamp extends Lamp {
@@ -68,6 +81,7 @@ class ColoredLamp extends Lamp {
         super.name = name;
         this.color = "FFFFFF";
         this.isColorOn = false;
+        this.isOn = false;
     }
 
     public ColoredLamp(String name, String isOn) {
@@ -120,5 +134,16 @@ class ColoredLamp extends Lamp {
 
     public void setColorOn(boolean isColorOn) {
         this.isColorOn = isColorOn;
+    }
+
+    @Override
+    public String WriteInfo() {
+        String type = "Smart Color Lamp";
+        String onOff = this.isOn ? "on" : "off";
+        String color = this.isColorOn ? this.color : this.kelvin + "K";
+        String brightness = this.brightness + "%";
+        String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime);
+
+        return type + " " + super.name + " is " + onOff + " and its color value is " + color + " with " + brightness + " brightness, and its time to switch its status is " + timetoSwitch + ".";
     }
 }
