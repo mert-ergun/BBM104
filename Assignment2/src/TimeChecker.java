@@ -22,7 +22,7 @@ public class TimeChecker {
 
     public void SetTime(String time) throws ParseException {
         switchChecker = Main.switchChecker;
-        oldDate = currentDate;
+        oldDate = (Calendar) currentDate.clone();
         Calendar calendar = Calendar.getInstance();
         formatter.setLenient(false);
         calendar.setTime(formatter.parse(time));
@@ -33,7 +33,7 @@ public class TimeChecker {
     public void SkipMinutes(int minutes) {
         switchChecker = Main.switchChecker;
         formatter.setLenient(false);
-        oldDate = currentDate;
+        oldDate = (Calendar) currentDate.clone();
         currentDate.add(Calendar.MINUTE, minutes);
         switchChecker.SwitchTimesBetweenDates();
     }

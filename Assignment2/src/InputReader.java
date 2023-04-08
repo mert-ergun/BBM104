@@ -404,6 +404,7 @@ public class InputReader{
                     sender.ErroneousCommand();
                     break;
                 }
+                Main.switchChecker.normalizeSwitchTimes();
                 OutputWriter wr = sender.writer;
                 ZReport zReport = new ZReport();
                 zReport.writeZReport(wr);

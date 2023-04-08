@@ -29,12 +29,12 @@ public class SwitchChecker {
 
     public void SwitchTimesBetweenDates() {
         timeChecker = Main.timeChecker;
-        Calendar currentDate = timeChecker.getCurrentDate();
-        Calendar oldDate = timeChecker.getOldDate();
+        Calendar currentDate = (Calendar) timeChecker.getCurrentDate().clone();
+        Calendar oldDate = (Calendar) timeChecker.getOldDate().clone();
         
         for (Tuple<Smart, Calendar> switchTime : switchTimes) {
             if (switchTime.getY() == null) continue;
-            if (switchTime.getY().after(oldDate) && switchTime.getY().before(currentDate) || switchTime.getY().equals(oldDate) || switchTime.getY().equals(currentDate)) {
+            if ((switchTime.getY().after(oldDate) && switchTime.getY().before(currentDate)) || switchTime.getY().equals(oldDate) || switchTime.getY().equals(currentDate)) {
                 if (switchTime.getX().getLastSwitchedDate() != null) {
                     long diffInMillis = switchTime.getY().getTimeInMillis() - switchTime.getX().getLastSwitchedDate().getTimeInMillis();
                     double diffInHours = diffInMillis / (1000.0 * 60.0 * 60.0);
@@ -50,11 +50,12 @@ public class SwitchChecker {
             }
         }
         sortSwitchTimes();
+        UpdateSwitchTimes();
     }
 
     public void JumpToNop() {
         timeChecker = Main.timeChecker;
-        Calendar currentDate = timeChecker.getCurrentDate();
+        Calendar currentDate = (Calendar)timeChecker.getCurrentDate().clone();
         Calendar nextSwitch = null;
         for (Tuple<Smart, Calendar> switchTime : switchTimes) {
             if (switchTime.getY() == null) continue;
@@ -125,4 +126,14 @@ public class SwitchChecker {
         return false;
     }
     
+    public void normalizeSwitchTimes() {
+        sortSwitchTimes();
+        for (Tuple<Smart, Calendar> switchTime : switchTimes) {
+            if (switchTime.getY() == null) continue;
+            if (switchTime.getY().before(timeChecker.getCurrentDate()) || switchTime.getY().equals(timeChecker.getCurrentDate())) {
+                switchTime.setY(null);
+                switchTime.getX().switchTime = null;
+            }
+        }
+    }
 }

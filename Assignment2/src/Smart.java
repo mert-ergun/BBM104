@@ -3,7 +3,7 @@ import java.util.Calendar;
 public abstract class Smart {
     protected String name;
     protected boolean isOn;
-    protected Calendar switchTime;
+    public Calendar switchTime;
     protected Calendar lastSwitchedDate;
 
     public String getName() {

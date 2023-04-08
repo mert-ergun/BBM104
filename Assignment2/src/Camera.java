@@ -1,7 +1,7 @@
 import java.util.Calendar;
 
 public class Camera extends Smart {
-    private int storage;
+    private double storage;
     private int mbps;
 
     public Camera(String name, int mbps) {
@@ -27,15 +27,15 @@ public class Camera extends Smart {
         this.storage = 0;
     }
 
-    public int calculateStorage(int mbps, Calendar time) {
+    public double calculateStorage(int mbps, Calendar time) {
         return mbps * time.get(Calendar.SECOND);
     }
 
-    public int getStorage() {
+    public double getStorage() {
         return storage;
     }
 
-    public void setStorage(int storage) {
+    public void setStorage(double storage) {
         this.storage = storage;
     }
 
@@ -52,7 +52,7 @@ public class Camera extends Smart {
         String type = "Smart Camera";
         String name = super.name;
         String isOn = this.isOn ? "on" : "off";
-        String storage = Integer.toString(this.storage);
+        String storage = String.format("%.2f", this.storage);
         String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
 
         return type + " " + name + " is " + isOn + " and used " + storage + " MB of storage so far (excluding current status), and its time to switch its status is " + timetoSwitch + ".";
@@ -63,7 +63,7 @@ public class Camera extends Smart {
         String type = "Smart Camera";
         String name = super.name;
         String isOn = this.isOn ? "on" : "off";
-        String storage = Integer.toString(this.storage);
+        String storage = String.format("%.2f", this.storage);
         String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
 
         return type + " " + name + " is " + isOn + " and used " + storage + " MB of storage so far (excluding current status), and its time to switch its status is " + timetoSwitch + ".";
