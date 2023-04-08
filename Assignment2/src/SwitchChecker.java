@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.List;
 
 public class SwitchChecker {
@@ -33,18 +34,19 @@ public class SwitchChecker {
         
         for (Tuple<Smart, Calendar> switchTime : switchTimes) {
             if (switchTime.getY() == null) continue;
-            if (switchTime.getY().after(oldDate) && switchTime.getY().before(currentDate)) {
-                if (switchTime.getX().getLastSwitchedDate() == null) continue;
-                long diffInMillis = switchTime.getY().getTimeInMillis() - switchTime.getX().getLastSwitchedDate().getTimeInMillis();
-                double diffInHours = diffInMillis / (1000.0 * 60.0 * 60.0);
-                if (switchTime.getX() instanceof Plug && ((Plug) switchTime.getX()).isPlugged()) {
-                    ((Plug) switchTime.getX()).setTotalEnergy(((Plug) switchTime.getX()).getTotalEnergy() + 
-                    ((Plug) switchTime.getX()).calculateEnergy(((Plug) switchTime.getX()).getAmpere(), diffInHours));
+            if (switchTime.getY().after(oldDate) && switchTime.getY().before(currentDate) || switchTime.getY().equals(oldDate) || switchTime.getY().equals(currentDate)) {
+                if (switchTime.getX().getLastSwitchedDate() != null) {
+                    long diffInMillis = switchTime.getY().getTimeInMillis() - switchTime.getX().getLastSwitchedDate().getTimeInMillis();
+                    double diffInHours = diffInMillis / (1000.0 * 60.0 * 60.0);
+                    if (switchTime.getX() instanceof Plug && ((Plug) switchTime.getX()).isPlugged()) {
+                        ((Plug) switchTime.getX()).setTotalEnergy(((Plug) switchTime.getX()).getTotalEnergy() + 
+                        ((Plug) switchTime.getX()).calculateEnergy(((Plug) switchTime.getX()).getAmpere(), diffInHours));
+                    }
                 }
                 switchTime.getX().setOn(!switchTime.getX().isOn());
                 switchTime.getX().switchTime = null;
-                switchTime.setY(null);
                 switchTime.getX().setLastSwitchedDate(switchTime.getY());
+                switchTime.setY(null);
             }
         }
         sortSwitchTimes();
@@ -92,21 +94,27 @@ public class SwitchChecker {
     }
     
     public void sortSwitchTimes() {
-        for (int i = 0; i < switchTimes.size(); i++) {
-          for (int j = 0; j < switchTimes.size() - 1; j++) {
-            if (switchTimes.get(j).getY() == null && switchTimes.get(j + 1).getY() != null) {
-              Tuple<Smart, Calendar> temp = switchTimes.get(j);
-              switchTimes.set(j, switchTimes.get(j + 1));
-              switchTimes.set(j + 1, temp);
-            } else if (switchTimes.get(j).getY() != null && switchTimes.get(j + 1).getY() != null &&
-                switchTimes.get(j).getY().after(switchTimes.get(j + 1).getY())) {
-              Tuple<Smart, Calendar> temp = switchTimes.get(j);
-              switchTimes.set(j, switchTimes.get(j + 1));
-              switchTimes.set(j + 1, temp);
+        Comparator<Tuple<Smart, Calendar>> comparator = Comparator.comparing(Tuple::getY, Comparator.nullsFirst(Comparator.naturalOrder()));
+        switchTimes.sort(comparator);
+    
+        List<Tuple<Smart, Calendar>> calendarList = new ArrayList<>();
+        List<Tuple<Smart, Calendar>> nonCalendarList = new ArrayList<>();
+    
+        for (Tuple<Smart, Calendar> tuple : switchTimes) {
+            if (tuple.getY() != null) {
+                calendarList.add(tuple);
+            } else {
+                nonCalendarList.add(tuple);
             }
-          }
         }
-      }
+    
+        List<Tuple<Smart, Calendar>> sortedList = new ArrayList<>();
+        sortedList.addAll(calendarList);
+        sortedList.addAll(nonCalendarList);
+    
+        switchTimes = sortedList;
+        UpdateSwitchTimes();
+    }
 
     public boolean CheckSwitchTimes() {
         sortSwitchTimes();
