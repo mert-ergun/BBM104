@@ -37,7 +37,8 @@ public class OutputSender {
     public void InitErrorCommand(String error) throws Exception {
         switch (error) {
             case "timeFormat":
-                writer.WriteOutput("ERROR: Time format is not correct!");
+                writer.WriteOutput("ERROR: Format of the initial date is wrong! Program is going to terminate!");
+                System.exit(0);
                 break;
             case "initTrue":
                 writer.WriteOutput("ERROR: Erroneous command!");

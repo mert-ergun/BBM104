@@ -474,24 +474,24 @@ public class InputReader{
                     break;
                 }
                 try {
-                    args[2] = Integer.parseInt((String) args[2]);
+                    args[2] = Double.parseDouble((String) args[2]);
                 } catch (Exception e) {
                     sender.AddErrorCommand("invalidResolution");
                     break;
                 }
-                if ((int) args[2] < 0) {
+                if ((double) args[2] < 0) {
                     sender.AddErrorCommand("invalidResolution");
                     break;
                 }
                 if (args.length == 3) {
-                    Camera camera = new Camera((String) args[1], (int) args[2]);
+                    Camera camera = new Camera((String) args[1], (double) args[2]);
                     Main.smartList.add(camera);
                 } else if (args.length == 4) {
                     if (!((String) args[3]).equals("Off") && !((String) args[3]).equals("On")) {
                         sender.ErroneousCommand();
                         break;
                     }
-                    Camera camera = new Camera((String) args[1], (int) args[2], (String) args[3]);
+                    Camera camera = new Camera((String) args[1], (double) args[2], (String) args[3]);
                     Main.smartList.add(camera);
                 }
                 break;
@@ -630,10 +630,14 @@ public class InputReader{
                     if (device.isOn() == true) {
                         (device).setOn(false);
                         if (device.getLastSwitchedDate() != null) { 
-                            long diffInMillis = Main.timeChecker.getCurrentDate().getTimeInMillis() - device.getLastSwitchedDate().getTimeInMillis() ;
+                            long diffInMillis = ((Calendar) (Main.timeChecker.getCurrentDate().clone())).getTimeInMillis() -((Calendar) device.getLastSwitchedDate().clone()).getTimeInMillis() ;
                             double diffInHours = (double) (diffInMillis / (60 * 60 * 1000.0));
+                            double diffInMinutes = (double) (diffInMillis / (60 * 1000.0));
                             if (device instanceof Plug && ((Plug) device).isPlugged()) {
                                 ((Plug) device).setTotalEnergy(((Plug) device).getTotalEnergy() + ((Plug) device).calculateEnergy(((Plug) device).getAmpere(), diffInHours));
+                            }
+                            if (device instanceof Camera) {
+                                ((Camera) device).setStorage(((Camera) device).getStorage() + ((Camera) device).calculateStorage(((Camera) device).getMbps(), diffInMinutes));
                             }
                         }
                         device.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
@@ -661,6 +665,7 @@ public class InputReader{
                 if (device instanceof Plug) {
                     ((Plug) device).setAmpere(ampere);
                     ((Plug) device).setPlugged(true);
+                    device.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
                     break;
                 }
             }
@@ -671,7 +676,13 @@ public class InputReader{
         for (Smart device : Main.smartList) {
             if (device.getName().equals(plugName)) {
                 if (device instanceof Plug) {
+                    long diffInMillis = Main.timeChecker.getCurrentDate().getTimeInMillis() - device.getLastSwitchedDate().getTimeInMillis() ;
+                    double diffInHours = (double) (diffInMillis / (60 * 60 * 1000.0));
+                    if (device instanceof Plug && ((Plug) device).isPlugged()) {
+                        ((Plug) device).setTotalEnergy(((Plug) device).getTotalEnergy() + ((Plug) device).calculateEnergy(((Plug) device).getAmpere(), diffInHours));
+                    }
                     ((Plug) device).setPlugged(false);
+                    device.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
                     break;
                 }
             }

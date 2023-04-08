@@ -1,10 +1,8 @@
-import java.util.Calendar;
-
 public class Camera extends Smart {
     private double storage;
-    private int mbps;
+    private double mbps;
 
-    public Camera(String name, int mbps) {
+    public Camera(String name, double mbps) {
         super.name = name;
         if (mbps < 0) {
             throw new IllegalArgumentException("Mbps must be greater than 0");
@@ -12,13 +10,14 @@ public class Camera extends Smart {
         this.storage = 0;
     }
 
-    public Camera(String name, int mbps, String isOn) {
+    public Camera(String name, double mbps, String isOn) {
         super.name = name;
         if (mbps < 0) {
             throw new IllegalArgumentException("Mbps must be greater than 0");
         } this.mbps = mbps;
         if (isOn.equals("On")) {
             this.isOn = true;
+            this.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
         } else if (isOn.equals("Off")) {
             this.isOn = false;
         } else {
@@ -27,8 +26,8 @@ public class Camera extends Smart {
         this.storage = 0;
     }
 
-    public double calculateStorage(int mbps, Calendar time) {
-        return mbps * time.get(Calendar.SECOND);
+    public double calculateStorage(double mbps, double time) {
+        return mbps * time;
     }
 
     public double getStorage() {
@@ -39,11 +38,11 @@ public class Camera extends Smart {
         this.storage = storage;
     }
 
-    public int getMbps() {
+    public double getMbps() {
         return mbps;
     }
 
-    public void setMbps(int mbps) {
+    public void setMbps(double mbps) {
         this.mbps = mbps;
     }
 

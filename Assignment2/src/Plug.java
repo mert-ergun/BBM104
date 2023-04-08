@@ -18,7 +18,7 @@ public class Plug extends Smart {
         this.totalEnergy = 0;
         if (isOn.equals("On")) {
             this.isOn = true;
-            super.lastSwitchedDate = Main.timeChecker.getCurrentDate();
+            this.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
         } else if (isOn.equals("Off")) {
             this.isOn = false;
         }
@@ -31,7 +31,7 @@ public class Plug extends Smart {
         this.totalEnergy = 0;
         if (isOn.equals("On")) {
             this.isOn = true;
-            super.lastSwitchedDate = Main.timeChecker.getCurrentDate();
+            this.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
         } else if (isOn.equals("Off")) {
             this.isOn = false;
         } else {

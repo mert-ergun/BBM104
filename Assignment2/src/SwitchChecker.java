@@ -38,9 +38,14 @@ public class SwitchChecker {
                 if (switchTime.getX().getLastSwitchedDate() != null) {
                     long diffInMillis = switchTime.getY().getTimeInMillis() - switchTime.getX().getLastSwitchedDate().getTimeInMillis();
                     double diffInHours = diffInMillis / (1000.0 * 60.0 * 60.0);
-                    if (switchTime.getX() instanceof Plug && ((Plug) switchTime.getX()).isPlugged()) {
+                    double diffInMinutes = diffInMillis / (1000.0 * 60.0);
+                    if (switchTime.getX() instanceof Plug && ((Plug) switchTime.getX()).isPlugged() && switchTime.getX().isOn()) {
                         ((Plug) switchTime.getX()).setTotalEnergy(((Plug) switchTime.getX()).getTotalEnergy() + 
                         ((Plug) switchTime.getX()).calculateEnergy(((Plug) switchTime.getX()).getAmpere(), diffInHours));
+                    }
+                    if (switchTime.getX() instanceof Camera && switchTime.getX().isOn()) {
+                        ((Camera) switchTime.getX()).setStorage(((Camera) switchTime.getX()).getStorage() + 
+                        ((Camera) switchTime.getX()).calculateStorage(((Camera) switchTime.getX()).getMbps(), diffInMinutes));
                     }
                 }
                 switchTime.getX().setOn(!switchTime.getX().isOn());
