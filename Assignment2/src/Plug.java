@@ -18,6 +18,7 @@ public class Plug extends Smart {
         this.totalEnergy = 0;
         if (isOn.equals("On")) {
             this.isOn = true;
+            super.lastSwitchedDate = Main.timeChecker.getCurrentDate();
         } else if (isOn.equals("Off")) {
             this.isOn = false;
         }
@@ -30,6 +31,7 @@ public class Plug extends Smart {
         this.totalEnergy = 0;
         if (isOn.equals("On")) {
             this.isOn = true;
+            super.lastSwitchedDate = Main.timeChecker.getCurrentDate();
         } else if (isOn.equals("Off")) {
             this.isOn = false;
         } else {
@@ -42,7 +44,7 @@ public class Plug extends Smart {
         totalPlugs++;
     }
 
-    public double calculateEnergy(double ampere, int time) {
+    public double calculateEnergy(double ampere, double time) {
         return ampere * VOLTAGE * time;
     }
 

@@ -34,9 +34,17 @@ public class SwitchChecker {
         for (Tuple<Smart, Calendar> switchTime : switchTimes) {
             if (switchTime.getY() == null) continue;
             if (switchTime.getY().after(oldDate) && switchTime.getY().before(currentDate)) {
+                if (switchTime.getX().getLastSwitchedDate() == null) continue;
+                long diffInMillis = switchTime.getY().getTimeInMillis() - switchTime.getX().getLastSwitchedDate().getTimeInMillis();
+                double diffInHours = diffInMillis / (1000.0 * 60.0 * 60.0);
+                if (switchTime.getX() instanceof Plug && ((Plug) switchTime.getX()).isPlugged()) {
+                    ((Plug) switchTime.getX()).setTotalEnergy(((Plug) switchTime.getX()).getTotalEnergy() + 
+                    ((Plug) switchTime.getX()).calculateEnergy(((Plug) switchTime.getX()).getAmpere(), diffInHours));
+                }
                 switchTime.getX().setOn(!switchTime.getX().isOn());
                 switchTime.getX().switchTime = null;
                 switchTime.setY(null);
+                switchTime.getX().setLastSwitchedDate(switchTime.getY());
             }
         }
         sortSwitchTimes();

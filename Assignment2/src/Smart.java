@@ -4,6 +4,7 @@ public abstract class Smart {
     protected String name;
     protected boolean isOn;
     protected Calendar switchTime;
+    protected Calendar lastSwitchedDate;
 
     public String getName() {
         return name;
@@ -17,7 +18,13 @@ public abstract class Smart {
     public void setOn(boolean isOn) {
         this.isOn = isOn;
     }
-
+    public Calendar getLastSwitchedDate() {
+        return lastSwitchedDate;
+    }
+    public void setLastSwitchedDate(Calendar lastSwitchedDate) {
+        this.lastSwitchedDate = (Calendar)lastSwitchedDate.clone();
+    }
+    
     public String WriteInfo() {
         return "";
     }

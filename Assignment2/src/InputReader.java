@@ -621,12 +621,19 @@ public class InputReader{
                 if (state.equals("On")) {
                     if (device.isOn() == false) {
                         (device).setOn(true);
+                        device.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
                     }
                     else if (device.isOn() == true)
                         sender.SwitchErrorCommand("alreadyOn");
                 } else if (state.equals("Off")) {
                     if (device.isOn() == true) {
                         (device).setOn(false);
+                        long diffInMillis = Main.timeChecker.getCurrentDate().getTimeInMillis() - device.getLastSwitchedDate().getTimeInMillis() ;
+                        double diffInHours = (double) (diffInMillis / (60 * 60 * 1000.0));
+                        if (device instanceof Plug && ((Plug) device).isPlugged()) {
+                            ((Plug) device).setTotalEnergy(((Plug) device).getTotalEnergy() + ((Plug) device).calculateEnergy(((Plug) device).getAmpere(), diffInHours));
+                        }
+                        device.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
                     }
                     else if (device.isOn() == false)
                         sender.SwitchErrorCommand("alreadyOff");

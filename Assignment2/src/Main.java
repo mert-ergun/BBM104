@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         OutputSender sender = new OutputSender("output.txt");
         try {
-            InputReader.ReadInput("inputdeneme.txt", sender);
+            InputReader.ReadInput("input1.txt", sender);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
