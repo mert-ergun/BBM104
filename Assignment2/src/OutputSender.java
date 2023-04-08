@@ -54,6 +54,10 @@ public class OutputSender {
         writer.WriteOutput("ERROR: Time format is not correct!");
     }
 
+    public void timeZeroError() throws Exception {
+        writer.WriteOutput("ERROR: There is nothing to skip!");
+    }
+
     public void NopErrorCommand() throws Exception {
         writer.WriteOutput("ERROR: There is nothing to switch!");
     }

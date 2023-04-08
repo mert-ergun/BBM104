@@ -1,0 +1,2 @@
+COMMAND: SetInitialTime	2023-25-34_14:00:00
+ERROR: Format of the initial date is wrong! Program is going to terminate!

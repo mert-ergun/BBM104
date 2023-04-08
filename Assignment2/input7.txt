@@ -1,0 +1,5 @@
+SetInitialTime	2023-04-08_16:17:18
+SkipMinutes	-10
+SkipMinutes	abc
+SkipMinutes	5	random
+SkipMinutes	0

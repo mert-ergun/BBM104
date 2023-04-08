@@ -1,11 +1,15 @@
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SwitchChecker {
     List<Tuple<Smart, Calendar>> switchTimes = new ArrayList<>();
     TimeChecker timeChecker = Main.timeChecker;
+    int switchOrder = 0;
+    Map<Smart, Integer> switchOrderMap = new HashMap<>();
 
     public void CreateSwitchTimes() {
         for (Smart device : Main.smartList) {
@@ -52,6 +56,8 @@ public class SwitchChecker {
                 switchTime.getX().switchTime = null;
                 switchTime.getX().setLastSwitchedDate(switchTime.getY());
                 switchTime.setY(null);
+                switchOrder++;
+                switchOrderMap.put(switchTime.getX(), switchOrder);
             }
         }
         sortSwitchTimes();
@@ -100,7 +106,8 @@ public class SwitchChecker {
     }
     
     public void sortSwitchTimes() {
-        Comparator<Tuple<Smart, Calendar>> comparator = Comparator.comparing(Tuple::getY, Comparator.nullsFirst(Comparator.naturalOrder()));
+        Comparator<Tuple<Smart, Calendar>> comparator = Comparator.comparing((Tuple<Smart, Calendar> tuple) -> tuple.getY(), Comparator.nullsFirst(Comparator.naturalOrder()))
+        .thenComparing(tuple -> switchOrderMap.getOrDefault(tuple.getX(), 0));
         switchTimes.sort(comparator);
     
         List<Tuple<Smart, Calendar>> calendarList = new ArrayList<>();

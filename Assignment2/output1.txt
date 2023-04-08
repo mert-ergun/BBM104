@@ -39,7 +39,7 @@ COMMAND: Add	SmartColorLamp	CLamp3	On	2000	50
 COMMAND: Add	SmartColorLamp	CLamp4	On	0x00GG00	30
 ERROR: Erroneous command!
 COMMAND: Add	SmartColorLamp	CLamp4	On	0xFFFFFFF	100
-ERROR: Color code value must be in range of 0x0-0xFFFFFF
+ERROR: Color code value must be in range of 0x0-0xFFFFFF!
 COMMAND: Add	SmartColorLamp	CLamp4	On	0x00FF00	70
 COMMAND: Add	SmartColorLamp	ABCDEFG
 COMMAND: Remove	CLamp1

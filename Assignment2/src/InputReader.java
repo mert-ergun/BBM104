@@ -20,6 +20,13 @@ public class InputReader{
         String[] firstLineSplit = firstLine.split("\t");
         if (firstLineSplit[0].equals("SetInitialTime")) {
             try {
+                if (firstLineSplit[1] == null) {
+                    sender.InitErrorCommand("initFalse");
+                }
+            } catch (Exception e) {
+                sender.InitErrorCommand("initFalse");
+            }
+            try {
                 Main.timeChecker.SetInitialTime((String) firstLineSplit[1]);
                 sender.SetInitTimeCommand(firstLineSplit[1]);
             } catch (Exception e){
@@ -83,11 +90,20 @@ public class InputReader{
                     sender.ErroneousCommand();
                     break;
                 }
-                if (split[1] == null || Integer.parseInt(split[1]) < 0) {
-                    sender.SetTimeErrorCommand();
-                } else 
-                    Main.timeChecker.SkipMinutes(Integer.parseInt(split[1]));
-                break;
+                try {
+                    if (Integer.parseInt(split[1]) < 0) {
+                        sender.DateAfterError();
+                        break;
+                    } else if (Integer.parseInt(split[1]) == 0) {
+                        sender.timeZeroError();
+                        break;
+                    } else 
+                        Main.timeChecker.SkipMinutes(Integer.parseInt(split[1]));
+                        break;
+                } catch (Exception e) {
+                    sender.ErroneousCommand();
+                    break;
+                }
             case "Nop":
                 if (split.length != 1) {
                     sender.ErroneousCommand();
