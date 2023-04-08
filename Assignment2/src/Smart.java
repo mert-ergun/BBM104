@@ -5,6 +5,7 @@ public abstract class Smart {
     protected boolean isOn;
     public Calendar switchTime;
     protected Calendar lastSwitchedDate;
+    protected Calendar lastRemoteSwitch;
 
     public String getName() {
         return name;

@@ -1,15 +1,11 @@
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SwitchChecker {
     List<Tuple<Smart, Calendar>> switchTimes = new ArrayList<>();
     TimeChecker timeChecker = Main.timeChecker;
-    int switchOrder = 0;
-    Map<Smart, Integer> switchOrderMap = new HashMap<>();
 
     public void CreateSwitchTimes() {
         for (Smart device : Main.smartList) {
@@ -35,8 +31,8 @@ public class SwitchChecker {
         timeChecker = Main.timeChecker;
         Calendar currentDate = (Calendar) timeChecker.getCurrentDate().clone();
         Calendar oldDate = (Calendar) timeChecker.getOldDate().clone();
-        
-        for (Tuple<Smart, Calendar> switchTime : switchTimes) {
+    
+        for (Tuple<Smart, Calendar> switchTime : new ArrayList<>(switchTimes)) {
             if (switchTime.getY() == null) continue;
             if ((switchTime.getY().after(oldDate) && switchTime.getY().before(currentDate)) || switchTime.getY().equals(oldDate) || switchTime.getY().equals(currentDate)) {
                 if (switchTime.getX().getLastSwitchedDate() != null) {
@@ -56,11 +52,9 @@ public class SwitchChecker {
                 switchTime.getX().switchTime = null;
                 switchTime.getX().setLastSwitchedDate(switchTime.getY());
                 switchTime.setY(null);
-                switchOrder++;
-                switchOrderMap.put(switchTime.getX(), switchOrder);
+                sortSwitchTimes();
             }
         }
-        sortSwitchTimes();
         UpdateSwitchTimes();
     }
 
@@ -106,8 +100,7 @@ public class SwitchChecker {
     }
     
     public void sortSwitchTimes() {
-        Comparator<Tuple<Smart, Calendar>> comparator = Comparator.comparing((Tuple<Smart, Calendar> tuple) -> tuple.getY(), Comparator.nullsFirst(Comparator.naturalOrder()))
-        .thenComparing(tuple -> switchOrderMap.getOrDefault(tuple.getX(), 0));
+        Comparator<Tuple<Smart, Calendar>> comparator = Comparator.comparing(Tuple::getY, Comparator.nullsFirst(Comparator.naturalOrder()));
         switchTimes.sort(comparator);
     
         List<Tuple<Smart, Calendar>> calendarList = new ArrayList<>();

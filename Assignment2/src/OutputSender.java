@@ -169,7 +169,7 @@ public class OutputSender {
                 writer.WriteOutput("ERROR: Brightness must be in range of 0%-100%!");
                 break;
             case "invalidColorCode":
-                writer.WriteOutput("ERROR: Color code value must be in range of 0x0-0xFFFFFF");
+                writer.WriteOutput("ERROR: Color code value must be in range of 0x0-0xFFFFFF!");
                 break;
         }
     }

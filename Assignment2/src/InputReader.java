@@ -776,8 +776,4 @@ public class InputReader{
                 break;
         }
     }
-
-    public static void ZReportCommand() {
-        // TODO print report
-    }
 }
