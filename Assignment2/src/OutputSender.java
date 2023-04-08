@@ -82,7 +82,7 @@ public class OutputSender {
                 writer.WriteOutput("ERROR: There is not such a device!");
                 break;
             case "alreadyExists":
-                writer.WriteOutput("ERROR: There is already a device with this name!");
+                writer.WriteOutput("ERROR: There is already a smart device with same name!");
                 break;
             case "sameName":
                 writer.WriteOutput("ERROR: Both of the names are the same, nothing changed!");

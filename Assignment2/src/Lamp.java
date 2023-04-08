@@ -151,7 +151,7 @@ class ColoredLamp extends Lamp {
     public String WriteInfo() {
         String type = "Smart Color Lamp";
         String onOff = this.isOn ? "on" : "off";
-        String color = this.isColorOn ? "0x" + Integer.toHexString(Integer.parseInt(this.color)).toUpperCase() : this.kelvin + "K";
+        String color = this.isColorOn ? "0x" + String.format("%06X", Integer.parseInt(this.color, 16)).toUpperCase() : this.kelvin + "K";
         String brightness = this.brightness + "%";
         String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
 
@@ -162,7 +162,7 @@ class ColoredLamp extends Lamp {
     public String WriteZReport() {
         String type = "Smart Color Lamp";
         String onOff = this.isOn ? "on" : "off";
-        String color = this.isColorOn ? "0x" + Integer.toHexString(Integer.parseInt(this.color)).toUpperCase() : this.kelvin + "K";
+        String color = this.isColorOn ? "0x" + String.format("%06X", Integer.parseInt(this.color, 16)).toUpperCase() : this.kelvin + "K";
         String brightness = this.brightness + "%";
         String timetoSwitch = super.switchTime == null ? "null" : TimeChecker.formatter.format(super.switchTime.getTime());
 

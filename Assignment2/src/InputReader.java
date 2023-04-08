@@ -342,8 +342,8 @@ public class InputReader{
                     sender.LampErrorCommand("noDevice");
                     break;
                 }
-                if (!(smart instanceof ColoredLamp)) {
-                    sender.LampErrorCommand("notColorLamp");
+                if (!(smart instanceof Lamp)) {
+                    sender.LampErrorCommand("notLamp");
                     break;
                 }
                 if (Integer.parseInt(split[2]) < 2000 || Integer.parseInt(split[2]) > 6500) {
@@ -382,6 +382,12 @@ public class InputReader{
                 split[2] = split[2].substring(2);
                 if (Integer.parseInt(split[3]) < 0 || Integer.parseInt(split[3]) > 100) {
                     sender.LampErrorCommand("invalidBrightness");
+                    break;
+                }
+                try {
+                    Integer.parseInt(split[2], 16);
+                } catch (Exception e) {
+                    sender.ErroneousCommand();
                     break;
                 }
                 try {
@@ -567,14 +573,15 @@ public class InputReader{
                     }
                     String unknown = (String) args[3];
                     if (unknown.startsWith("0x")) {
-                        if (unknown.length() > 8) {
+                        if (unknown.length() > 8 || unknown.length() < 8) {
                             sender.AddErrorCommand("invalidColorCode");
                             break;
                         }
                         try {
-                            unknown = Integer.parseInt(unknown.substring(2), 16) + "";
+                            Integer.parseInt(unknown.substring(2), 16);
+                            unknown = unknown.substring(2);
                         } catch (Exception e) {
-                            sender.AddErrorCommand("invalidColorCode");
+                            sender.ErroneousCommand();
                             break;
                         }
                         if (Integer.parseInt(unknown.substring(2), 16) > 16777215) {
@@ -678,7 +685,7 @@ public class InputReader{
                 if (device instanceof Plug) {
                     long diffInMillis = Main.timeChecker.getCurrentDate().getTimeInMillis() - device.getLastSwitchedDate().getTimeInMillis() ;
                     double diffInHours = (double) (diffInMillis / (60 * 60 * 1000.0));
-                    if (device instanceof Plug && ((Plug) device).isPlugged()) {
+                    if (device instanceof Plug && ((Plug) device).isPlugged() && device.isOn()) {
                         ((Plug) device).setTotalEnergy(((Plug) device).getTotalEnergy() + ((Plug) device).calculateEnergy(((Plug) device).getAmpere(), diffInHours));
                     }
                     ((Plug) device).setPlugged(false);
@@ -718,11 +725,8 @@ public class InputReader{
                 String colorCode = (String) args[1];
                 for (Smart device : Main.smartList) {
                     if (device.getName().equals(name)) {
-                        if (device instanceof ColoredLamp && colorCode.startsWith("0x") && colorCode.length() == 8 && colorCode.matches("[0-9a-fA-F]+")) {
-                            ((ColoredLamp) device).setColor(colorCode);
-                            ((ColoredLamp) device).setColorOn(true);
-                            break;
-                        }
+                        ((ColoredLamp) device).setColor(colorCode);
+                        ((ColoredLamp) device).setColorOn(true);
                     }
                 }
                 break;
@@ -731,12 +735,9 @@ public class InputReader{
                 brightness = (String) args[2];
                 for (Smart device : Main.smartList) {
                     if (device.getName().equals(name)) {
-                        if (device instanceof ColoredLamp && color.startsWith("0x") && color.length() == 8 && color.matches("[0-9a-fA-F]+")) {
-                            ((ColoredLamp) device).setColor(color);
-                            ((ColoredLamp) device).setBrightness(Integer.parseInt(brightness));
-                            ((ColoredLamp) device).setColorOn(true);
-                            break;
-                        }
+                        ((ColoredLamp) device).setColor(color);
+                        ((ColoredLamp) device).setBrightness(Integer.parseInt(brightness));
+                        ((ColoredLamp) device).setColorOn(true);
                     }
                 }
                 break;
