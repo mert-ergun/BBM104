@@ -275,7 +275,7 @@ public class OutputSender {
                 writer.writeOutput("ERROR: Ampere value must be a positive number!");
                 break;
             case "invalidResolution":
-                writer.writeOutput("ERROR: Megabyte value has to be a positive number!");
+                writer.writeOutput("ERROR: Megabyte value must be a positive number!");
                 break;
             case "invalidKelvin":
                 writer.writeOutput("ERROR: Kelvin value must be in range of 2000K-6500K!");

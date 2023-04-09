@@ -1,0 +1,11 @@
+SetInitialTime	2023-04-09_23:30:00
+Add	SmartCamera	Camera1	0
+Add	SmartPlug	Plug1	On	0
+Add	SmartPlug	Plug1	On	3
+Add	SmartCamera	Camera1	100	On
+Add	SmartLamp	Lamp1
+SkipMinutes	10
+ZReport
+Remove	Camera1
+Remove	Plug1
+Remove	Lamp1

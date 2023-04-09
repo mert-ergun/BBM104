@@ -147,9 +147,9 @@ public class InputReader{
                     break;
                 }
                 if (searchDevice(split[1])) {  // check if the device exists
-                    sender.removeDeviceCommand(split[1]);
+                    removeCommand(split[1], sender);
                 } 
-                removeCommand(split[1]);  // call the removeCommand method
+                  // call the removeCommand method
                 break;
             case "SetSwitchTime":
                 if (split.length != 3) {  // check if there is a device name and time after the command
@@ -246,7 +246,7 @@ public class InputReader{
                     break;
                 }
                 try {
-                    if (Double.parseDouble(split[2]) < 0) {  // check if the ampere is negative
+                    if (Double.parseDouble(split[2]) <= 0) {  // check if the ampere is negative
                         sender.plugInErrorCommand("negativeAmpere");
                         break;
                     }
@@ -521,7 +521,7 @@ public class InputReader{
                         sender.addErrorCommand("invalidAmper");
                         break;
                     }
-                    if ((double) args[3] < 0) {
+                    if ((double) args[3] <= 0) {
                         sender.addErrorCommand("invalidAmper");
                         break;
                     }
@@ -545,7 +545,7 @@ public class InputReader{
                     sender.addErrorCommand("invalidResolution");
                     break;
                 }
-                if ((double) args[2] < 0) {
+                if ((double) args[2] <= 0) {
                     sender.addErrorCommand("invalidResolution");
                     break;
                 }
@@ -677,11 +677,29 @@ public class InputReader{
      * This method removes a device from the smartList
      * @param deviceName - the name of the device to be removed
      */
-    public static void removeCommand(String deviceName) {
+    public static void removeCommand(String deviceName, OutputSender sender) throws Exception {
         for (Smart device : Main.smartList) {
             if (device.getName().equals(deviceName)) {
                 device.setOn(false);
+                if (device.getLastSwitchedDate() != null) { 
+                    long diffInMillis = ((Calendar) (Main.timeChecker.getCurrentDate().clone())).getTimeInMillis() -((Calendar) device.getLastSwitchedDate().clone()).getTimeInMillis() ;
+                    double diffInHours = (double) (diffInMillis / (60 * 60 * 1000.0));
+                    double diffInMinutes = (double) (diffInMillis / (60 * 1000.0));
+                    if (device instanceof Plug && ((Plug) device).isPlugged()) {
+                        ((Plug) device).setTotalEnergy(((Plug) device).getTotalEnergy() + ((Plug) device).calculateEnergy(((Plug) device).getAmpere(), diffInHours));
+                    }
+                    if (device instanceof Camera) {
+                        ((Camera) device).setStorage(((Camera) device).getStorage() + ((Camera) device).calculateStorage(((Camera) device).getMbps(), diffInMinutes));
+                    }
+                }
+                sender.removeDeviceCommand(deviceName);
                 Main.smartList.remove(device);
+                for (Tuple<Smart, Calendar> device2 : Main.switchChecker.getSwitchTimes()) {
+                    if (((Smart)device2.getX()).getName().equals(deviceName)) {
+                        Main.switchChecker.getSwitchTimes().remove(device2);
+                        break;
+                    }
+                }
                 break;
             }
         }

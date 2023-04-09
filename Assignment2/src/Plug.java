@@ -54,7 +54,7 @@ public class Plug extends Smart {
             this.isOn = false;
         }
         this.ampere = ampere;
-        this.isPlugged = false;
+        this.isPlugged = true;
     }
 
     /**

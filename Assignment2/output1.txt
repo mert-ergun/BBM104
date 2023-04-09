@@ -17,7 +17,7 @@ COMMAND: Add	SmartCamera	Plug1
 ERROR: Erroneous command!
 COMMAND: Add	SmartCamera	Camera1	120
 COMMAND: Add	SmartCamera	Camera2	-30
-ERROR: Megabyte value has to be a positive number!
+ERROR: Megabyte value must be a positive number!
 COMMAND: Add	SmartCamera	Camera2	300	On
 COMMAND: Add	SmartCamera	Camera3	150	Off
 COMMAND: Add	SmartLamp	Plug1
