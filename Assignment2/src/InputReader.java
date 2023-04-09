@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class InputReader{
-    public static List<String> ReadInput(String fileName, OutputSender sender) throws Exception{
+    public static List<String> readInput(String fileName, OutputSender sender) throws Exception{
         BufferedReader br = new BufferedReader(new BufferedReader(new FileReader(fileName)));
         String line;
         List<String> lines = new ArrayList<String>();
@@ -16,124 +16,124 @@ public class InputReader{
                 break;
             }
         }
-        sender.CommandCommand(firstLine);
+        sender.commandWrite(firstLine);
         String[] firstLineSplit = firstLine.split("\t");
         if (firstLineSplit[0].equals("SetInitialTime")) {
             try {
                 if (firstLineSplit[1] == null) {
-                    sender.InitErrorCommand("initFalse");
+                    sender.initErrorCommand("initFalse");
                 }
             } catch (Exception e) {
-                sender.InitErrorCommand("initFalse");
+                sender.initErrorCommand("initFalse");
             }
             try {
-                Main.timeChecker.SetInitialTime((String) firstLineSplit[1]);
-                sender.SetInitTimeCommand(firstLineSplit[1]);
+                Main.timeChecker.setInitialTime((String) firstLineSplit[1]);
+                sender.setInitTimeCommand(firstLineSplit[1]);
             } catch (Exception e){
-                sender.InitErrorCommand("timeFormat");
+                sender.initErrorCommand("timeFormat");
             }
         } else {
-            sender.InitErrorCommand("initFalse");
+            sender.initErrorCommand("initFalse");
         }
-        Main.switchChecker.CreateSwitchTimes();
+        Main.switchChecker.createSwitchTimes();
         while ((line = br.readLine()) != null)  {
             if (line.equals("")) continue;
             lines.add(line);
-            sender.CommandCommand(line);
-            DetermineCommand(line, sender);
+            sender.commandWrite(line);
+            determineCommand(line, sender);
         }
         br.close();
         if (!lines.get(lines.size() - 1).equals("ZReport")){
-            DetermineCommand("ZReport", sender);
+            determineCommand("ZReport", sender);
         }
         return lines;
     }
 
-    public static void DetermineCommand(String line, OutputSender sender) throws Exception {
+    public static void determineCommand(String line, OutputSender sender) throws Exception {
         String[] split = line.split("\t");
         String command = split[0];
         switch (command) {
             case "SetInitialTime":
                 if (Main.timeChecker.isInit == true) {
-                    sender.InitErrorCommand("initTrue");
+                    sender.initErrorCommand("initTrue");
                     break;
                 }
                 if (split[1] == null) {
-                    sender.InitErrorCommand("timeFormat");
+                    sender.initErrorCommand("timeFormat");
                     break;
                 }
                 try {
-                    Main.timeChecker.SetInitialTime((String) split[1]);
+                    Main.timeChecker.setInitialTime((String) split[1]);
                 } catch (Exception e){
-                    sender.InitErrorCommand("timeFormat");
+                    sender.initErrorCommand("timeFormat");
                     break;
                 }
                 break;
             case "SetTime":
                 if (split.length != 2) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 } 
                 try {
-                    if (!Main.timeChecker.CheckTime(split[1])) {
-                        sender.DateAfterError();
+                    if (!Main.timeChecker.checktTime(split[1])) {
+                        sender.dateAfterError();
                         break;
                     } 
                 } catch (Exception e) {
-                    sender.SetTimeErrorCommand();
+                    sender.setTimeErrorCommand();
                     break;
                 }
-                Main.timeChecker.SetTime(split[1]);
+                Main.timeChecker.setTime(split[1]);
                 break;
             case "SkipMinutes":
                 if (split.length != 2) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 try {
                     if (Integer.parseInt(split[1]) < 0) {
-                        sender.DateAfterError();
+                        sender.dateAfterError();
                         break;
                     } else if (Integer.parseInt(split[1]) == 0) {
                         sender.timeZeroError();
                         break;
                     } else 
-                        Main.timeChecker.SkipMinutes(Integer.parseInt(split[1]));
+                        Main.timeChecker.skipMinutes(Integer.parseInt(split[1]));
                         break;
                 } catch (Exception e) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
             case "Nop":
                 if (split.length != 1) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
-                if (!Main.switchChecker.CheckSwitchTimes()) {
-                    sender.NopErrorCommand();
+                if (!Main.switchChecker.checkSwitchTimes()) {
+                    sender.nopErrorCommand();
                 } else
-                    Main.switchChecker.JumpToNop();
+                    Main.switchChecker.jumpToNop();
                 break;
             case "Add":
                 List<String> args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
                 }
-                AddCommands(sender, args.get(0), args.toArray());
+                addCommands(sender, args.get(0), args.toArray());
                 break;
             case "Remove":
                 if (split.length != 2) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
-                if (SearchDevice(split[1])) {
-                    sender.RemoveDeviceCommand(split[1]);
+                if (searchDevice(split[1])) {
+                    sender.removeDeviceCommand(split[1]);
                 } 
-                RemoveCommand(split[1]);
+                removeCommand(split[1]);
                 break;
             case "SetSwitchTime":
                 if (split.length != 3) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 boolean found = false;
@@ -143,17 +143,17 @@ public class InputReader{
                     }
                 }
                 if (!found) {
-                    sender.SetSwitchTimeErrorCommand();
+                    sender.setSwitchTimeErrorCommand();
                     break;
                 }
                 Calendar switchDate = Calendar.getInstance();
                 try {
                     switchDate.setTime(TimeChecker.formatter.parse(split[2]));
                 } catch (Exception e) {
-                    sender.SetTimeErrorCommand();
+                    sender.setTimeErrorCommand();
                     break;
                 }
-                Main.switchChecker.SetSwitchTimes(split[1], switchDate);
+                Main.switchChecker.setSwitchTimes(split[1], switchDate);
                 for (Smart s : Main.smartList) {
                     if (s.name.equals(split[1])) {
                         s.switchTime = switchDate;
@@ -162,22 +162,22 @@ public class InputReader{
                 break;
             case "Switch":
                 if (split.length != 3) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
-                if(!SearchDevice(split[1])) {
-                    sender.SwitchErrorCommand("noDevice");
+                if(!searchDevice(split[1])) {
+                    sender.switchErrorCommand("noDevice");
                     break;
                 }
-                SwitchDeviceCommand(split[1], split[2], sender);
+                switchDeviceCommand(split[1], split[2], sender);
                 break;
             case "ChangeName":
                 if (split.length != 3) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 if (split[1].equals(split[2])) {
-                    sender.ChangeNameErrorCommand("sameName");
+                    sender.changeNameErrorCommand("sameName");
                     break;
                 }
                 found = false;
@@ -187,7 +187,7 @@ public class InputReader{
                     }
                 }
                 if (!found) {
-                    sender.ChangeNameErrorCommand("noDevice");
+                    sender.changeNameErrorCommand("noDevice");
                     break;
                 }
                 found = false;
@@ -197,14 +197,14 @@ public class InputReader{
                     }
                 }
                 if (found) {
-                    sender.ChangeNameErrorCommand("alreadyExists");
+                    sender.changeNameErrorCommand("alreadyExists");
                     break;
                 }
-                ChangeNameCommand(split[1], split[2]);
+                changeNameCommand(split[1], split[2]);
                 break;
             case "PlugIn":
                 if (split.length != 3) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 Smart smart = null;
@@ -214,26 +214,26 @@ public class InputReader{
                     }
                 }
                 if (smart == null) {
-                    sender.PlugInErrorCommand("noDevice");
+                    sender.plugInErrorCommand("noDevice");
                     break;
                 }
                 if (!(smart instanceof Plug)) {
-                    sender.PlugInErrorCommand("notPlug");
+                    sender.plugInErrorCommand("notPlug");
                     break;
                 }
                 if (((Plug) smart).isPlugged()) {
-                    sender.PlugInErrorCommand("alreadyPlugged");
+                    sender.plugInErrorCommand("alreadyPlugged");
                     break;
                 }
                 if (Integer.parseInt(split[2]) < 0) {
-                    sender.PlugInErrorCommand("negativeAmpere");
+                    sender.plugInErrorCommand("negativeAmpere");
                     break;
                 }
-                PlugInCommand(split[1], Double.parseDouble(split[2]));
+                plugInCommand(split[1], Double.parseDouble(split[2]));
                 break;
             case "PlugOut":
                 if (split.length != 2) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 smart = null;
@@ -243,22 +243,22 @@ public class InputReader{
                     }
                 }
                 if (smart == null) {
-                    sender.PlugOutErrorCommand("noDevice");
+                    sender.plugOutErrorCommand("noDevice");
                     break;
                 }
                 if (!(smart instanceof Plug)) {
-                    sender.PlugOutErrorCommand("notPlug");
+                    sender.plugOutErrorCommand("notPlug");
                     break;
                 }
                 if (!(((Plug) smart).isPlugged())) {
-                    sender.PlugOutErrorCommand("notPlugged");
+                    sender.plugOutErrorCommand("notPlugged");
                     break;
                 }
-                PlugOutCommand(split[1]);
+                plugOutCommand(split[1]);
                 break;
             case "SetBrightness":
                 if (split.length != 3) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 smart = null;
@@ -268,26 +268,26 @@ public class InputReader{
                     }
                 }
                 if (smart == null) {
-                    sender.LampErrorCommand("noDevice");
+                    sender.lampErrorCommand("noDevice");
                     break;
                 }
                 if (!(smart instanceof Lamp)) {
-                    sender.LampErrorCommand("notLamp");
+                    sender.lampErrorCommand("notLamp");
                     break;
                 }
                 if (Integer.parseInt(split[2]) < 0 || Integer.parseInt(split[2]) > 100) {
-                    sender.LampErrorCommand("invalidBrightness");
+                    sender.lampErrorCommand("invalidBrightness");
                     break;
                 }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
                 }
-                LampCommands(command, args.toArray());
+                lampCommands(command, args.toArray());
                 break;
             case "SetKelvin":
                 if (split.length != 3) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 smart = null;
@@ -297,26 +297,26 @@ public class InputReader{
                     }
                 }
                 if (smart == null) {
-                    sender.LampErrorCommand("noDevice");
+                    sender.lampErrorCommand("noDevice");
                     break;
                 }
                 if (!(smart instanceof Lamp)) {
-                    sender.LampErrorCommand("notLamp");
+                    sender.lampErrorCommand("notLamp");
                     break;
                 }
                 if (Integer.parseInt(split[2]) < 2000 || Integer.parseInt(split[2]) > 6500) {
-                    sender.LampErrorCommand("invalidKelvin");
+                    sender.lampErrorCommand("invalidKelvin");
                     break;
                 }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
                 }
-                LampCommands(command, args.toArray());
+                lampCommands(command, args.toArray());
                 break;
             case "SetColorCode":
                 if (split.length != 3) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 smart = null;
@@ -326,26 +326,26 @@ public class InputReader{
                     }
                 }
                 if (smart == null) {
-                    sender.LampErrorCommand("noDevice");
+                    sender.lampErrorCommand("noDevice");
                     break;
                 }
                 if (!(smart instanceof ColoredLamp)) {
-                    sender.LampErrorCommand("notColorLamp");
+                    sender.lampErrorCommand("notColorLamp");
                     break;
                 }
                 if (Integer.parseInt(split[2], 16) < 0 || Integer.parseInt(split[2], 16) > 16777215) {
-                    sender.LampErrorCommand("invalidColorCode");
+                    sender.lampErrorCommand("invalidColorCode");
                     break;
                 }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
                 }
-                LampCommands(command, args.toArray());
+                lampCommands(command, args.toArray());
                 break;
             case "SetWhite":
                 if (split.length != 4) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 smart = null;
@@ -355,30 +355,30 @@ public class InputReader{
                     }
                 }
                 if (smart == null) {
-                    sender.LampErrorCommand("noDevice");
+                    sender.lampErrorCommand("noDevice");
                     break;
                 }
                 if (!(smart instanceof Lamp)) {
-                    sender.LampErrorCommand("notLamp");
+                    sender.lampErrorCommand("notLamp");
                     break;
                 }
                 if (Integer.parseInt(split[2]) < 2000 || Integer.parseInt(split[2]) > 6500) {
-                    sender.LampErrorCommand("invalidKelvin");
+                    sender.lampErrorCommand("invalidKelvin");
                     break;
                 }
                 if (Integer.parseInt(split[3]) < 0 || Integer.parseInt(split[3]) > 100) {
-                    sender.LampErrorCommand("invalidBrightness");
+                    sender.lampErrorCommand("invalidBrightness");
                     break;
                 }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
                 }
-                LampCommands(command, args.toArray());
+                lampCommands(command, args.toArray());
                 break;
             case "SetColor":
                 if (split.length != 4) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 smart = null;
@@ -388,42 +388,42 @@ public class InputReader{
                     }
                 }
                 if (smart == null) {
-                    sender.LampErrorCommand("noDevice");
+                    sender.lampErrorCommand("noDevice");
                     break;
                 }
                 if (!(smart instanceof ColoredLamp)) {
-                    sender.LampErrorCommand("notColorLamp");
+                    sender.lampErrorCommand("notColorLamp");
                     break;
                 }
                 split[2] = split[2].substring(2);
                 if (Integer.parseInt(split[3]) < 0 || Integer.parseInt(split[3]) > 100) {
-                    sender.LampErrorCommand("invalidBrightness");
+                    sender.lampErrorCommand("invalidBrightness");
                     break;
                 }
                 try {
                     Integer.parseInt(split[2], 16);
                 } catch (Exception e) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 try {
                     if (Integer.parseInt(split[2], 16) < 0 || Integer.parseInt(split[2], 16) > 16777215) {
-                        sender.LampErrorCommand("invalidColorCode");
+                        sender.lampErrorCommand("invalidColorCode");
                         break;
                     }
                 } catch (Exception e) {
-                    sender.LampErrorCommand("invalidColorCode");
+                    sender.lampErrorCommand("invalidColorCode");
                     break;
                 }
                 args = new ArrayList<String>();
                 for (int i = 1; i < split.length; i++) {
                     args.add(split[i]);
                 }
-                LampCommands(command, args.toArray());
+                lampCommands(command, args.toArray());
                 break;
             case "ZReport":
                 if (split.length != 1) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
                 Main.switchChecker.normalizeSwitchTimes();
@@ -432,12 +432,12 @@ public class InputReader{
                 zReport.writeZReport(wr);
                 break;
             default:
-                sender.ErroneousCommand();
+                sender.erroneousCommand();
                 break;
         }
     }
 
-    public static boolean SearchDevice(String name) {
+    public static boolean searchDevice(String name) {
         for (Smart s : Main.smartList) {
             if (s.name.equals(name)) {
                 return true;
@@ -445,15 +445,15 @@ public class InputReader{
         } return false;
     }
 
-    public static void AddCommands(OutputSender sender, String deviceClass, Object ... args) throws Exception {
+    public static void addCommands(OutputSender sender, String deviceClass, Object ... args) throws Exception {
         switch (deviceClass) {
             case "SmartPlug":
                 if (args.length < 2 || args.length > 4) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
-                if (SearchDevice((String) args[1])) {
-                    sender.AddErrorCommand("alreadyExists");
+                if (searchDevice((String) args[1])) {
+                    sender.addErrorCommand("alreadyExists");
                     break;
                 }
                 if (args.length == 2) {
@@ -461,24 +461,24 @@ public class InputReader{
                     Main.smartList.add(plug);
                 } else if (args.length == 3){
                     if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
-                        sender.ErroneousCommand();
+                        sender.erroneousCommand();
                         break;
                     }
                     Plug plug = new Plug((String) args[1], (String) args[2]);
                     Main.smartList.add(plug);
                 } else if (args.length == 4) {
                     if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
-                        sender.ErroneousCommand();
+                        sender.erroneousCommand();
                         break;
                     }
                     try {
                         args[3] = Double.parseDouble((String) args[3]);
                     } catch (Exception e) {
-                        sender.AddErrorCommand("invalidAmper");
+                        sender.addErrorCommand("invalidAmper");
                         break;
                     }
                     if ((double) args[3] < 0) {
-                        sender.AddErrorCommand("invalidAmper");
+                        sender.addErrorCommand("invalidAmper");
                         break;
                     }
                     
@@ -488,21 +488,21 @@ public class InputReader{
                 break;
             case "SmartCamera":
                 if (args.length < 3 || args.length > 4) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
-                if (SearchDevice((String) args[1])) {
-                    sender.AddErrorCommand("alreadyExists");
+                if (searchDevice((String) args[1])) {
+                    sender.addErrorCommand("alreadyExists");
                     break;
                 }
                 try {
                     args[2] = Double.parseDouble((String) args[2]);
                 } catch (Exception e) {
-                    sender.AddErrorCommand("invalidResolution");
+                    sender.addErrorCommand("invalidResolution");
                     break;
                 }
                 if ((double) args[2] < 0) {
-                    sender.AddErrorCommand("invalidResolution");
+                    sender.addErrorCommand("invalidResolution");
                     break;
                 }
                 if (args.length == 3) {
@@ -510,7 +510,7 @@ public class InputReader{
                     Main.smartList.add(camera);
                 } else if (args.length == 4) {
                     if (!((String) args[3]).equals("Off") && !((String) args[3]).equals("On")) {
-                        sender.ErroneousCommand();
+                        sender.erroneousCommand();
                         break;
                     }
                     Camera camera = new Camera((String) args[1], (double) args[2], (String) args[3]);
@@ -519,11 +519,11 @@ public class InputReader{
                 break;
             case "SmartLamp":
                 if (args.length < 2 || args.length > 5 || args.length == 4) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
-                if (SearchDevice((String) args[1])) {
-                    sender.AddErrorCommand("alreadyExists");
+                if (searchDevice((String) args[1])) {
+                    sender.addErrorCommand("alreadyExists");
                     break;
                 }
                 if (args.length == 2) {
@@ -531,32 +531,32 @@ public class InputReader{
                     Main.smartList.add(lamp);
                 } else if (args.length == 3) {
                     if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
-                        sender.ErroneousCommand();
+                        sender.erroneousCommand();
                         break;
                     }
                     Lamp lamp = new Lamp((String) args[1], (String) args[2]);
                     Main.smartList.add(lamp);
                 } else if (args.length == 5) {
                     if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
-                        sender.ErroneousCommand();
+                        sender.erroneousCommand();
                         break;
                     }
                     try {
                         args[3] = Integer.parseInt((String) args[3]);
                     } catch (Exception e) {
-                        sender.AddErrorCommand("invalidKelvin");
+                        sender.addErrorCommand("invalidKelvin");
                         break;
                     } try {
                         args[4] = Integer.parseInt((String) args[4]);
                     } catch (Exception e) {
-                        sender.AddErrorCommand("invalidBrightness");
+                        sender.addErrorCommand("invalidBrightness");
                         break;
                     }
                     if ((int) args[3] < 2000 || (int) args[3] > 6500) {
-                        sender.AddErrorCommand("invalidKelvin");
+                        sender.addErrorCommand("invalidKelvin");
                         break;
                     } if ((int) args[4] < 0 || (int) args[4] > 100) {
-                        sender.AddErrorCommand("invalidBrightness");
+                        sender.addErrorCommand("invalidBrightness");
                         break;
                     }
                     Lamp lamp = new Lamp((String) args[1], (String) args[2], (int) args[3], (int) args[4]);
@@ -565,11 +565,11 @@ public class InputReader{
                 break;
             case "SmartColorLamp":
                 if (args.length < 2 || args.length > 5 || args.length == 4) {
-                    sender.ErroneousCommand();
+                    sender.erroneousCommand();
                     break;
                 }
-                if (SearchDevice((String) args[1])) {
-                    sender.AddErrorCommand("alreadyExists");
+                if (searchDevice((String) args[1])) {
+                    sender.addErrorCommand("alreadyExists");
                     break;
                 }
                 if (args.length == 2) {
@@ -577,46 +577,46 @@ public class InputReader{
                     Main.smartList.add(coloredLamp);
                 } else if (args.length == 3) {
                     if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
-                        sender.ErroneousCommand();
+                        sender.erroneousCommand();
                         break;
                     }
                     ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2]);
                     Main.smartList.add(coloredLamp);
                 } if (args.length > 3) {
                     if (!((String) args[2]).equals("Off") && !((String) args[2]).equals("On")) {
-                        sender.ErroneousCommand();
+                        sender.erroneousCommand();
                         break;
                     }
                     String unknown = (String) args[3];
                     if (unknown.startsWith("0x")) {
                         if (unknown.length() > 8 || unknown.length() < 8) {
-                            sender.AddErrorCommand("invalidColorCode");
+                            sender.addErrorCommand("invalidColorCode");
                             break;
                         }
                         try {
                             Integer.parseInt(unknown.substring(2), 16);
                             unknown = unknown.substring(2);
                         } catch (Exception e) {
-                            sender.ErroneousCommand();
+                            sender.erroneousCommand();
                             break;
                         }
                         if (Integer.parseInt(unknown.substring(2), 16) > 16777215) {
-                            sender.AddErrorCommand("invalidColorCode");
+                            sender.addErrorCommand("invalidColorCode");
                             break;
                         }
                         if (Integer.parseInt((String) args[4]) < 0 || Integer.parseInt((String) args[4]) > 100) {
-                            sender.AddErrorCommand("invalidBrightness");
+                            sender.addErrorCommand("invalidBrightness");
                             break;
                         }
                         ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2], unknown, Integer.parseInt((String)args[4]));
                         Main.smartList.add(coloredLamp);
                     } else if (args.length == 5) {
                         if (Integer.parseInt((String) args[3]) < 2000 || Integer.parseInt((String) args[3]) > 6500) {
-                            sender.AddErrorCommand("invalidKelvin");
+                            sender.addErrorCommand("invalidKelvin");
                             break;
                         }
                         if (Integer.parseInt((String) args[4]) < 0 || Integer.parseInt((String) args[4]) > 100) {
-                            sender.AddErrorCommand("invalidBrightness");
+                            sender.addErrorCommand("invalidBrightness");
                             break;
                         }
                         ColoredLamp coloredLamp = new ColoredLamp((String) args[1], (String) args[2], Integer.parseInt((String)args[3]), Integer.parseInt((String)args[4]));
@@ -629,7 +629,7 @@ public class InputReader{
         }
     }
 
-    public static void RemoveCommand(String deviceName) {
+    public static void removeCommand(String deviceName) {
         for (Smart device : Main.smartList) {
             if (device.getName().equals(deviceName)) {
                 device.setOn(false);
@@ -639,7 +639,7 @@ public class InputReader{
         }
     }
 
-    public static void SwitchDeviceCommand(String deviceName, String state, OutputSender sender) throws Exception {
+    public static void switchDeviceCommand(String deviceName, String state, OutputSender sender) throws Exception {
         for (Smart device : Main.smartList) {
             if (device.getName().equals(deviceName)) {
                 if (state.equals("On")) {
@@ -648,7 +648,7 @@ public class InputReader{
                         device.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
                     }
                     else if (device.isOn() == true)
-                        sender.SwitchErrorCommand("alreadyOn");
+                        sender.switchErrorCommand("alreadyOn");
                 } else if (state.equals("Off")) {
                     if (device.isOn() == true) {
                         (device).setOn(false);
@@ -666,14 +666,14 @@ public class InputReader{
                         device.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
                     }
                     else if (device.isOn() == false)
-                        sender.SwitchErrorCommand("alreadyOff");
+                        sender.switchErrorCommand("alreadyOff");
                 } 
                 break;
             }
         }
     }
 
-    public static void ChangeNameCommand(String deviceName, String newName) {
+    public static void changeNameCommand(String deviceName, String newName) {
         for (Smart device : Main.smartList) {
             if (device.getName().equals(deviceName)) {
                 device.setName(newName);
@@ -682,7 +682,7 @@ public class InputReader{
         }
     }
 
-    public static void PlugInCommand(String plugName, double ampere) {
+    public static void plugInCommand(String plugName, double ampere) {
         for (Smart device : Main.smartList) {
             if (device.getName().equals(plugName)) {
                 if (device instanceof Plug) {
@@ -695,7 +695,7 @@ public class InputReader{
         }
     }
 
-    public static void PlugOutCommand(String plugName) {
+    public static void plugOutCommand(String plugName) {
         for (Smart device : Main.smartList) {
             if (device.getName().equals(plugName)) {
                 if (device instanceof Plug) {
@@ -712,7 +712,7 @@ public class InputReader{
         }
     }
 
-    public static void LampCommands(String input, Object ... args) {
+    public static void lampCommands(String input, Object ... args) {
         String name = (String) args[0];
         switch (input) {
             case "SetBrightness":

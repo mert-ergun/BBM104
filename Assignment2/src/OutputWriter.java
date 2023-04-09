@@ -8,13 +8,13 @@ public class OutputWriter {
         this.fileName = fileName;
     }
 
-    public void WriteOutput(String output) throws Exception {
+    public void writeOutput(String output) throws Exception {
         BufferedWriter bw = new BufferedWriter(new BufferedWriter(new FileWriter(fileName, true)));
         bw.write(output + "\n");
         bw.close();
     }
 
-    public void ClearOutput() throws Exception {
+    public void clearOutput() throws Exception {
         BufferedWriter bw = new BufferedWriter(new BufferedWriter(new FileWriter(fileName, false)));
         bw.write("");
         bw.close();

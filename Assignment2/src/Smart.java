@@ -26,11 +26,11 @@ public abstract class Smart {
         this.lastSwitchedDate = (Calendar)lastSwitchedDate.clone();
     }
     
-    public String WriteInfo() {
+    public String writeInfo() {
         return "";
     }
 
-    public String WriteZReport() {
+    public String writeZReport() {
         return "";
     }
 }

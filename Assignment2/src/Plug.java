@@ -34,12 +34,8 @@ public class Plug extends Smart {
             this.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
         } else if (isOn.equals("Off")) {
             this.isOn = false;
-        } else {
-            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
         }
-        if (ampere < 0) {
-            throw new IllegalArgumentException("Ampere must be greater than 0");
-        } this.ampere = ampere;
+        this.ampere = ampere;
         this.isPlugged = false;
         totalPlugs++;
     }
@@ -85,7 +81,7 @@ public class Plug extends Smart {
     }
 
     @Override
-    public String WriteInfo() {
+    public String writeInfo() {
         calculateEnergy(ampere, VOLTAGE);
         String type = "Smart Plug";
         String name = super.name;
@@ -97,7 +93,7 @@ public class Plug extends Smart {
     }
 
     @Override
-    public String WriteZReport() {
+    public String writeZReport() {
         String type = "Smart Plug";
         String name = super.name;
         String onOff = this.isOn ? "on" : "off";

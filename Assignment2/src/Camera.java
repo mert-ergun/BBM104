@@ -1,27 +1,20 @@
 public class Camera extends Smart {
-    private double storage;
-    private double mbps;
+    private double storage, mbps;
 
     public Camera(String name, double mbps) {
         super.name = name;
-        if (mbps < 0) {
-            throw new IllegalArgumentException("Mbps must be greater than 0");
-        } this.mbps = mbps;
+        this.mbps = mbps;
         this.storage = 0;
     }
 
     public Camera(String name, double mbps, String isOn) {
         super.name = name;
-        if (mbps < 0) {
-            throw new IllegalArgumentException("Mbps must be greater than 0");
-        } this.mbps = mbps;
+        this.mbps = mbps;
         if (isOn.equals("On")) {
             this.isOn = true;
             this.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
         } else if (isOn.equals("Off")) {
             this.isOn = false;
-        } else {
-            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
         }
         this.storage = 0;
     }
@@ -47,7 +40,7 @@ public class Camera extends Smart {
     }
 
     @Override
-    public String WriteInfo() {
+    public String writeInfo() {
         String type = "Smart Camera";
         String name = super.name;
         String isOn = this.isOn ? "on" : "off";
@@ -58,7 +51,7 @@ public class Camera extends Smart {
     }
 
     @Override
-    public String WriteZReport() {
+    public String writeZReport() {
         String type = "Smart Camera";
         String name = super.name;
         String isOn = this.isOn ? "on" : "off";

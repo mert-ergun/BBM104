@@ -21,8 +21,6 @@ public class Lamp extends Smart {
             this.isOn = true;
         } else if (isOn.equals("Off")) {
             this.isOn = false;
-        } else {
-            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
         }
         this.kelvin = 4000;
         this.brightness = 100;
@@ -34,15 +32,9 @@ public class Lamp extends Smart {
             this.isOn = true;
         } else if (isOn.equals("Off")) {
             this.isOn = false;
-        } else {
-            throw new IllegalArgumentException("isOn must be either \"on\" or \"off\"");
         }
-        if (kelvin < 2000 || kelvin > 6500) {
-            throw new IllegalArgumentException("Kelvin must be between 0 and 10000");
-        } this.kelvin = kelvin;
-        if (brightness < 0 || brightness > 100) {
-            throw new IllegalArgumentException("Brightness must be between 0 and 100");
-        } this.brightness = brightness;
+        this.kelvin = kelvin;
+        this.brightness = brightness;
     }
 
     public int getKelvin() {
@@ -62,7 +54,7 @@ public class Lamp extends Smart {
     }
 
     @Override
-    public String WriteInfo() {
+    public String writeInfo() {
         String type = "Smart Lamp";
         String kelvinValue = this.kelvin + "K";
         String onOff = this.isOn ? "on" : "off";
@@ -73,7 +65,7 @@ public class Lamp extends Smart {
     }
 
     @Override
-    public String WriteZReport() {
+    public String writeZReport() {
         String type = "Smart Lamp";
         String kelvinValue = this.kelvin + "K";
         String onOff = this.isOn ? "on" : "off";
@@ -148,7 +140,7 @@ class ColoredLamp extends Lamp {
     }
 
     @Override
-    public String WriteInfo() {
+    public String writeInfo() {
         String type = "Smart Color Lamp";
         String onOff = this.isOn ? "on" : "off";
         String color = this.isColorOn ? "0x" + String.format("%06X", Integer.parseInt(this.color, 16)).toUpperCase() : this.kelvin + "K";
@@ -159,7 +151,7 @@ class ColoredLamp extends Lamp {
     }
 
     @Override
-    public String WriteZReport() {
+    public String writeZReport() {
         String type = "Smart Color Lamp";
         String onOff = this.isOn ? "on" : "off";
         String color = this.isColorOn ? "0x" + String.format("%06X", Integer.parseInt(this.color, 16)).toUpperCase() : this.kelvin + "K";

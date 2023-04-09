@@ -7,7 +7,7 @@ public class SwitchChecker {
     List<Tuple<Smart, Calendar>> switchTimes = new ArrayList<>();
     TimeChecker timeChecker = Main.timeChecker;
 
-    public void CreateSwitchTimes() {
+    public void createSwitchTimes() {
         for (Smart device : Main.smartList) {
             switchTimes.add(new Tuple<Smart, Calendar>(device, null));
         }
@@ -17,17 +17,17 @@ public class SwitchChecker {
         return switchTimes;
     }
 
-    public void UpdateSwitchTimes() {
+    public void updateSwitchTimes() {
         for (Smart device : Main.smartList) {
             if (device.switchTime != null) {
-                SetSwitchTimes(device.getName(), device.switchTime);
+                setSwitchTimes(device.getName(), device.switchTime);
             } else {
-                SetSwitchTimes(device.getName(), null);
+                setSwitchTimes(device.getName(), null);
             }
         }   
     }
 
-    public void SwitchTimesBetweenDates() {
+    public void switchTimesBetweenDates() {
         timeChecker = Main.timeChecker;
         Calendar currentDate = (Calendar) timeChecker.getCurrentDate().clone();
         Calendar oldDate = (Calendar) timeChecker.getOldDate().clone();
@@ -55,10 +55,10 @@ public class SwitchChecker {
                 sortSwitchTimes();
             }
         }
-        UpdateSwitchTimes();
+        updateSwitchTimes();
     }
 
-    public void JumpToNop() {
+    public void jumpToNop() {
         timeChecker = Main.timeChecker;
         Calendar currentDate = (Calendar)timeChecker.getCurrentDate().clone();
         Calendar nextSwitch = null;
@@ -75,11 +75,11 @@ public class SwitchChecker {
         if (nextSwitch != null) {
             timeChecker.setCurrentDate(nextSwitch);
         }
-        UpdateSwitchTimes();
+        updateSwitchTimes();
         sortSwitchTimes();
     }
 
-    public void SetSwitchTimes(String name, Calendar switchTime) {
+    public void setSwitchTimes(String name, Calendar switchTime) {
         Smart smartDevice = null;
         for (Smart device : Main.smartList) {
             if (device.getName().equals(name)) {
@@ -95,7 +95,7 @@ public class SwitchChecker {
             } 
         }
         switchTimes.add(new Tuple<Smart, Calendar>(smartDevice, switchTime));
-        UpdateSwitchTimes();
+        updateSwitchTimes();
         sortSwitchTimes();
     }
     
@@ -119,10 +119,10 @@ public class SwitchChecker {
         sortedList.addAll(nonCalendarList);
     
         switchTimes = sortedList;
-        UpdateSwitchTimes();
+        updateSwitchTimes();
     }
 
-    public boolean CheckSwitchTimes() {
+    public boolean checkSwitchTimes() {
         sortSwitchTimes();
         for (Tuple<Smart, Calendar> switchTime : switchTimes) {
             if (switchTime.getY() == null) continue;

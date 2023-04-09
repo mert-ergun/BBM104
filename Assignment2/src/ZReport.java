@@ -15,12 +15,12 @@ public class ZReport {
 
     public void writeZReport(OutputWriter writer) throws Exception {
         calculateCurrentDate(Main.timeChecker);
-        Main.switchChecker.UpdateSwitchTimes();
+        Main.switchChecker.updateSwitchTimes();
         Main.switchChecker.sortSwitchTimes();
         calculateSwitchTimes(Main.switchChecker);
-        writer.WriteOutput("Time is:\t" + TimeChecker.formatter.format(currentDate.getTime()));
+        writer.writeOutput("Time is:\t" + TimeChecker.formatter.format(currentDate.getTime()));
         for (Tuple<Smart, Calendar> switchTime : switchTimes) {
-            writer.WriteOutput(switchTime.getX().WriteZReport());
+            writer.writeOutput(switchTime.getX().writeZReport());
         }
     }
 }
