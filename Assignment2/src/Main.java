@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main class. It contains the main method.
+ * It also contains the list of smart devices and the switch checker and time checker objects.
+ * It drives the program.
+ * Gets the input file and output file from the command line.
+ */
 public class Main {
     public static List<Smart> smartList = new ArrayList<Smart>();
     public static SwitchChecker switchChecker = new SwitchChecker();

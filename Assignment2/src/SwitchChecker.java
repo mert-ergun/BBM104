@@ -3,20 +3,36 @@ import java.util.Calendar;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Class for switch checker.
+ * It contains the list of switch times.
+ * It also contains methods to create, update, sort and get the switch times.
+ */
 public class SwitchChecker {
-    List<Tuple<Smart, Calendar>> switchTimes = new ArrayList<>();
-    TimeChecker timeChecker = Main.timeChecker;
+    List<Tuple<Smart, Calendar>> switchTimes = new ArrayList<>();  // list of switch times, each switch time is a tuple of device and time
+    TimeChecker timeChecker = Main.timeChecker;  // time checker object to get the current date
 
+    /**
+     * Constructor for the class.
+     */
     public void createSwitchTimes() {
         for (Smart device : Main.smartList) {
             switchTimes.add(new Tuple<Smart, Calendar>(device, null));
         }
     }
 
+    /**
+     * Get the switch times.
+     * @return list of switch times
+     */
     public List<Tuple<Smart,Calendar>> getSwitchTimes() {
         return switchTimes;
     }
 
+    /**
+     * Update the switch times in the list.
+     * If a smart device has added to smart list, add it to the switch times list.
+     */
     public void updateSwitchTimes() {
         for (Smart device : Main.smartList) {
             if (device.switchTime != null) {
@@ -27,6 +43,13 @@ public class SwitchChecker {
         }   
     }
 
+    /**
+     * Switch time items in the list according to the time.
+     * If a switch time has passed, switch the device.
+     * If device is a plug, calculate the energy.
+     * If device is a camera, calculate the storage.
+     * Sort and update the switch times.
+     */
     public void switchTimesBetweenDates() {
         timeChecker = Main.timeChecker;
         Calendar currentDate = (Calendar) timeChecker.getCurrentDate().clone();
@@ -58,6 +81,9 @@ public class SwitchChecker {
         updateSwitchTimes();
     }
 
+    /**
+     * Jump to the next switch time.
+     */
     public void jumpToNop() {
         timeChecker = Main.timeChecker;
         Calendar currentDate = (Calendar)timeChecker.getCurrentDate().clone();
@@ -79,6 +105,11 @@ public class SwitchChecker {
         sortSwitchTimes();
     }
 
+    /**
+     * Set the switch time of a device.
+     * @param name - name of the device
+     * @param switchTime - switch time of the device
+     */
     public void setSwitchTimes(String name, Calendar switchTime) {
         Smart smartDevice = null;
         for (Smart device : Main.smartList) {
@@ -99,6 +130,10 @@ public class SwitchChecker {
         sortSwitchTimes();
     }
     
+    /**
+     * Sort the switch times according to the time.
+     * If a switch time is null, put it to the end of the list.
+     */
     public void sortSwitchTimes() {
         Comparator<Tuple<Smart, Calendar>> comparator = Comparator.comparing(Tuple::getY, Comparator.nullsFirst(Comparator.naturalOrder()));
         switchTimes.sort(comparator);
@@ -122,6 +157,10 @@ public class SwitchChecker {
         updateSwitchTimes();
     }
 
+    /**
+     * Check if there is a switch time.
+     * @return true if there is a switch time, false if there is not
+     */
     public boolean checkSwitchTimes() {
         sortSwitchTimes();
         for (Tuple<Smart, Calendar> switchTime : switchTimes) {
@@ -131,6 +170,11 @@ public class SwitchChecker {
         return false;
     }
     
+    /**
+     * Normalize the switch times.
+     * Called when command is ZReport.
+     * If a switch time has passed, set it to null.
+     */
     public void normalizeSwitchTimes() {
         sortSwitchTimes();
         for (Tuple<Smart, Calendar> switchTime : switchTimes) {
