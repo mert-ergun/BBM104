@@ -6,9 +6,11 @@ public class Main {
     public static SwitchChecker switchChecker = new SwitchChecker();
     public static TimeChecker timeChecker = new TimeChecker();
     public static void main(String[] args) throws Exception {
-        OutputSender sender = new OutputSender("output.txt");
+        String outputFile = args[1];
+        String inputFile = args[0];
+        OutputSender sender = new OutputSender(outputFile);
         try {
-            InputReader.readInput("input1.txt", sender);
+            InputReader.readInput(inputFile, sender);
         } catch (Exception e) {
             e.printStackTrace();
         }
