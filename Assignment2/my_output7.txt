@@ -1,0 +1,12 @@
+COMMAND: SetInitialTime	2023-04-08_16:17:18
+SUCCESS: Time has been set to 2023-04-08_16:17:18!
+COMMAND: SkipMinutes	-10
+ERROR: Time cannot be reversed!
+COMMAND: SkipMinutes	abc
+ERROR: Erroneous command!
+COMMAND: SkipMinutes	5	random
+ERROR: Erroneous command!
+COMMAND: SkipMinutes	0
+ERROR: There is nothing to skip!
+ZReport:
+Time is:	2023-04-08_16:17:18

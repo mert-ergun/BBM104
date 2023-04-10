@@ -1,0 +1,2 @@
+COMMAND: SetInitialTime
+ERROR: First command must be set initial time! Program is going to terminate!

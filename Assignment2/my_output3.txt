@@ -1,0 +1,14 @@
+COMMAND: SetInitialTime	2023-03-31_14:00:00
+SUCCESS: Time has been set to 2023-03-31_14:00:00!
+COMMAND: Add	SmartPlug	sc1	On
+COMMAND: PlugIn	sc1	1
+COMMAND: SetTime	2023-03-31_14:10:00
+COMMAND: Switch	sc1	Off
+COMMAND: SetSwitchTime	sc1	2023-03-31_15:00:00
+COMMAND: ZReport
+Time is:	2023-03-31_14:10:00
+Smart Plug sc1 is off and consumed 36,67W so far (excluding current device), and its time to switch its status is 2023-03-31_15:00:00.
+COMMAND: Nop
+ZReport:
+Time is:	2023-03-31_15:00:00
+Smart Plug sc1 is on and consumed 36,67W so far (excluding current device), and its time to switch its status is null.

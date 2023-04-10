@@ -1,0 +1,15 @@
+COMMAND: SetInitialTime	2023-04-06_15:15:15
+SUCCESS: Time has been set to 2023-04-06_15:15:15!
+COMMAND: Add	SmartCamera	Camera1	55.4	On
+COMMAND: SkipMinutes	20
+COMMAND: ZReport
+Time is:	2023-04-06_15:35:15
+Smart Camera Camera1 is on and used 0,00 MB of storage so far (excluding current status), and its time to switch its status is null.
+COMMAND: Switch	Camera1	Off
+COMMAND: ZReport
+Time is:	2023-04-06_15:35:15
+Smart Camera Camera1 is off and used 1108,00 MB of storage so far (excluding current status), and its time to switch its status is null.
+COMMAND: SkipMinutes	20
+COMMAND: ZReport
+Time is:	2023-04-06_15:55:15
+Smart Camera Camera1 is off and used 1108,00 MB of storage so far (excluding current status), and its time to switch its status is null.

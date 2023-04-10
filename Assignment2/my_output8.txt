@@ -1,0 +1,26 @@
+COMMAND: SetInitialTime	2023-04-09_23:30:00
+SUCCESS: Time has been set to 2023-04-09_23:30:00!
+COMMAND: Add	SmartCamera	Camera1	0
+ERROR: Megabyte value must be a positive number!
+COMMAND: Add	SmartPlug	Plug1	On	0
+ERROR: Ampere value must be a positive number!
+COMMAND: Add	SmartPlug	Plug1	On	3
+COMMAND: Add	SmartCamera	Camera1	100	On
+COMMAND: Add	SmartLamp	Lamp1
+COMMAND: SkipMinutes	10
+COMMAND: ZReport
+Time is:	2023-04-09_23:40:00
+Smart Plug Plug1 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Camera Camera1 is on and used 0,00 MB of storage so far (excluding current status), and its time to switch its status is null.
+Smart Lamp Lamp1 is off and its kelvin value is 4000K with 100% brightness, and its time to switch its status is null.
+COMMAND: Remove	Camera1
+SUCCESS: Information about removed smart device is as follows:
+Smart Camera Camera1 is off and used 1000,00 MB of storage so far (excluding current status), and its time to switch its status is null.
+COMMAND: Remove	Plug1
+SUCCESS: Information about removed smart device is as follows:
+Smart Plug Plug1 is off and consumed 110,00W so far (excluding current device), and its time to switch its status is null.
+COMMAND: Remove	Lamp1
+SUCCESS: Information about removed smart device is as follows:
+Smart Lamp Lamp1 is off and its kelvin value is 4000K with 100% brightness, and its time to switch its status is null.
+ZReport:
+Time is:	2023-04-09_23:40:00

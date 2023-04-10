@@ -37,4 +37,15 @@ public class OutputWriter {
         bw.write("");
         bw.close();
     }
+    
+    /**
+     * This method writes the "ZReport:" text.
+     * @param filename - name of the output file
+     * @throws Exception
+     */
+    public static void writeZReport(String filename) throws Exception {
+        BufferedWriter bw = new BufferedWriter(new BufferedWriter(new FileWriter(filename, true)));
+        bw.write("ZReport:\n");
+        bw.close();
+    }
 }

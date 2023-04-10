@@ -56,6 +56,7 @@ public class InputReader{
         }
         br.close();
         if (!lines.get(lines.size() - 1).equals("ZReport")){  // check if the last line is ZReport, if not, send ZReport
+            OutputWriter.writeZReport(sender.fileName);
             determineCommand("ZReport", sender);
         }
         return lines;
