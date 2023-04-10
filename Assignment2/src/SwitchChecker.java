@@ -76,6 +76,7 @@ public class SwitchChecker {
                 switchTime.getX().setLastSwitchedDate((Calendar)switchTime.getX().switchTime.clone());
                 switchTime.getX().lastRemoteSwitch = (switchTime.getX().switchTime == null) ? null : (Calendar) switchTime.getX().switchTime.clone();
                 switchTime.getX().switchTime = null;
+                switchTime.getX().isReversed = false;
                 switchTime.setY(null);
                 sortSwitchTimes();
             }
@@ -83,7 +84,7 @@ public class SwitchChecker {
         List<Tuple<Smart, Calendar>> sameLastSwitchedDateList = new ArrayList<>();
         for (int i = 0; i < switchTimes.size(); i++) {
             Tuple<Smart, Calendar> switchTime = switchTimes.get(i);
-            if (switchTime.getX().getLastSwitchedDate() == null) continue;
+            if (switchTime.getX().getLastSwitchedDate() == null || switchTime.getX().isReversed) continue;
             sameLastSwitchedDateList.clear();
             sameLastSwitchedDateList.add(switchTime);
             int j = i + 1;
@@ -92,12 +93,15 @@ public class SwitchChecker {
                 j++;
             }
             Collections.reverse(sameLastSwitchedDateList);
+            for (Tuple<Smart, Calendar> sameLastSwitchedDate : sameLastSwitchedDateList) {
+                sameLastSwitchedDate.getX().isReversed = true;
+            }
             for (int k = 0; k < sameLastSwitchedDateList.size(); k++) {
                 switchTimes.set(i + k, sameLastSwitchedDateList.get(k));
             }
             i = j - 1;
         }
-        updateSwitchTimes();
+        updateSwitchTimes();    
     }
 
     /**

@@ -12,6 +12,7 @@ public abstract class Smart {
     public Calendar switchTime; // time to switch on/off
     protected Calendar lastSwitchedDate; // last switched date
     protected Calendar lastRemoteSwitch; // last auto-switched date
+    protected boolean isReversed = false;
 
     /**
      * Get the name of the device.
@@ -40,6 +41,20 @@ public abstract class Smart {
      */
     public void setOn(boolean isOn) {
         this.isOn = isOn;
+    }
+    /**
+     * Get if the device is reversed in the schedule.
+     * @return true if the device is reversed, false otherwise
+     */
+    public boolean isReversed() {
+        return isReversed;
+    }
+    /**
+     * Set if the device is reversed in the schedule.
+     * @param isReversed - true if the device is reversed, false otherwise
+     */
+    public void setReversed(boolean isReversed) {
+        this.isReversed = isReversed;
     }
     /**
      * Get the last switched time.

@@ -272,8 +272,8 @@ Time is:	2023-03-31_15:10:00
 Smart Lamp Lamp2 is on and its kelvin value is 4000K with 100% brightness, and its time to switch its status is 2023-04-01_00:00:00.
 Smart Camera Camera1 is on and used 0,00 MB of storage so far (excluding current status), and its time to switch its status is null.
 Smart Lamp Lamp3 is off and its kelvin value is 2000K with 50% brightness, and its time to switch its status is null.
-Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
 Smart Plug Plug10 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Lamp Lamp1 is on and its kelvin value is 2700K with 100% brightness, and its time to switch its status is null.
 Smart Plug Plug2 is on and consumed 366,67W so far (excluding current device), and its time to switch its status is null.
 Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
 Smart Plug Plug4 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
