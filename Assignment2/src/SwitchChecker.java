@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -72,11 +73,29 @@ public class SwitchChecker {
                     }
                 }
                 switchTime.getX().setOn(!switchTime.getX().isOn());
+                switchTime.getX().setLastSwitchedDate((Calendar)switchTime.getX().switchTime.clone());
+                switchTime.getX().lastRemoteSwitch = (switchTime.getX().switchTime == null) ? null : (Calendar) switchTime.getX().switchTime.clone();
                 switchTime.getX().switchTime = null;
-                switchTime.getX().setLastSwitchedDate(switchTime.getY());
                 switchTime.setY(null);
                 sortSwitchTimes();
             }
+        }
+        List<Tuple<Smart, Calendar>> sameLastSwitchedDateList = new ArrayList<>();
+        for (int i = 0; i < switchTimes.size(); i++) {
+            Tuple<Smart, Calendar> switchTime = switchTimes.get(i);
+            if (switchTime.getX().getLastSwitchedDate() == null) continue;
+            sameLastSwitchedDateList.clear();
+            sameLastSwitchedDateList.add(switchTime);
+            int j = i + 1;
+            while (j < switchTimes.size() && switchTimes.get(j).getX().lastRemoteSwitch != null && switchTimes.get(j).getX().lastRemoteSwitch.equals(switchTime.getX().lastRemoteSwitch)) {
+                sameLastSwitchedDateList.add(switchTimes.get(j));
+                j++;
+            }
+            Collections.reverse(sameLastSwitchedDateList);
+            for (int k = 0; k < sameLastSwitchedDateList.size(); k++) {
+                switchTimes.set(i + k, sameLastSwitchedDateList.get(k));
+            }
+            i = j - 1;
         }
         updateSwitchTimes();
     }
@@ -84,7 +103,7 @@ public class SwitchChecker {
     /**
      * Jump to the next switch time.
      */
-    public void jumpToNop() {
+    public void jumpToNop() throws Exception {
         timeChecker = Main.timeChecker;
         Calendar currentDate = (Calendar)timeChecker.getCurrentDate().clone();
         Calendar nextSwitch = null;
@@ -99,10 +118,9 @@ public class SwitchChecker {
             }
         }
         if (nextSwitch != null) {
-            timeChecker.setCurrentDate(nextSwitch);
+            String timetoSwitch = TimeChecker.formatter.format(nextSwitch.getTime());
+            timeChecker.setTime(timetoSwitch);
         }
-        updateSwitchTimes();
-        sortSwitchTimes();
     }
 
     /**
@@ -121,7 +139,7 @@ public class SwitchChecker {
         for (Tuple<Smart, Calendar> switchTimes : switchTimes) {
             if (switchTimes.getX() == null) continue;
             if (switchTimes.getX().getName().equals(smartDevice.getName())) {
-                switchTimes.setY(switchTime);
+                switchTimes.setY((switchTimes.getX().switchTime == null) ? null : (Calendar) switchTimes.getX().switchTime.clone());
                 return;
             } 
         }
@@ -168,21 +186,5 @@ public class SwitchChecker {
             return true;
         }
         return false;
-    }
-    
-    /**
-     * Normalize the switch times.
-     * Called when command is ZReport.
-     * If a switch time has passed, set it to null.
-     */
-    public void normalizeSwitchTimes() {
-        sortSwitchTimes();
-        for (Tuple<Smart, Calendar> switchTime : switchTimes) {
-            if (switchTime.getY() == null) continue;
-            if (switchTime.getY().before(timeChecker.getCurrentDate()) || switchTime.getY().equals(timeChecker.getCurrentDate())) {
-                switchTime.setY(null);
-                switchTime.getX().switchTime = null;
-            }
-        }
     }
 }

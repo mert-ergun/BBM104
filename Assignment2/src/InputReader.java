@@ -131,8 +131,9 @@ public class InputReader{
                 }
                 if (!Main.switchChecker.checkSwitchTimes()) {  // check if there is a switch time
                     sender.nopErrorCommand();
-                } else
-                    Main.switchChecker.jumpToNop();
+                    break;
+                }
+                Main.switchChecker.jumpToNop();
                 break;
             case "Add":
                 List<String> args = new ArrayList<String>();  // create a list to store the arguments
@@ -458,7 +459,6 @@ public class InputReader{
                     sender.erroneousCommand();
                     break;
                 }
-                Main.switchChecker.normalizeSwitchTimes();  // set the switch times, remove the switches that are not in the switch list and normalize the switch times
                 OutputWriter wr = sender.writer;  
                 ZReport zReport = new ZReport();  // create a new ZReport object
                 zReport.writeZReport(wr);  // write the ZReport

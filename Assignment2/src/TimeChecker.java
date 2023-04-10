@@ -42,7 +42,7 @@ public class TimeChecker {
         Calendar calendar = Calendar.getInstance();
         formatter.setLenient(false);
         calendar.setTime(formatter.parse(time));
-        currentDate = calendar;
+        currentDate = (Calendar) calendar.clone();
         switchChecker.switchTimesBetweenDates();
     }
 
