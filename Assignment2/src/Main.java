@@ -12,8 +12,8 @@ public class Main {
     public static SwitchChecker switchChecker = new SwitchChecker();
     public static TimeChecker timeChecker = new TimeChecker();
     public static void main(String[] args) throws Exception {
-        String outputFile = "output.txt";
-        String inputFile = "input1.txt";
+        String outputFile = args[1];
+        String inputFile = args[0];
         OutputSender sender = new OutputSender(outputFile);
         try {
             InputReader.readInput(inputFile, sender);
