@@ -191,4 +191,17 @@ public class SwitchChecker {
         }
         return false;
     }
+
+    public void removeSwitch(Smart device) {
+        String name = device.getName();
+        for (Tuple<Smart, Calendar> switchTime : switchTimes) {
+            if (switchTime.getX() == null) continue;
+            if (switchTime.getX().getName().equals(name)) {
+                switchTime.setY(null);
+                updateSwitchTimes();
+                sortSwitchTimes();
+                return;
+            }
+        }
+    }
 }

@@ -723,6 +723,8 @@ public class InputReader{
                     if (device.isOn() == false) {
                         (device).setOn(true);
                         device.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
+                        device.switchTime = null;
+                        Main.switchChecker.removeSwitch(device);
                     }
                     else if (device.isOn() == true)
                         sender.switchErrorCommand("alreadyOn");
@@ -741,6 +743,8 @@ public class InputReader{
                             }
                         }
                         device.setLastSwitchedDate(Main.timeChecker.getCurrentDate());
+                        device.switchTime = null;
+                        Main.switchChecker.removeSwitch(device);
                     }
                     else if (device.isOn() == false)
                         sender.switchErrorCommand("alreadyOff");
