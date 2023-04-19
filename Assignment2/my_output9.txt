@@ -1,0 +1,6 @@
+COMMAND: SetInitialTime	2023-04-12_07:50:00
+SUCCESS: Time has been set to 2023-04-12_07:50:00!
+COMMAND: SetTime	2023-04-12_07:50:00
+ERROR: There is nothing to change!
+ZReport:
+Time is:	2023-04-12_07:50:00

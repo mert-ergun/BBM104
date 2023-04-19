@@ -110,6 +110,15 @@ public class OutputSender {
     }
 
     /**
+     * Sets an error command for time is equal to the current time.
+     * If skip time is equal to the current time there is nothing to skip.
+     * @throws Exception
+     */
+    public void timeEqualsError() throws Exception {
+        writer.writeOutput("ERROR: There is nothing to change!");
+    }
+
+    /**
      * Sets an error command for Nop command if there is nothing to switch.
      * @throws Exception If an error occurs while setting the NOP error command.
      */

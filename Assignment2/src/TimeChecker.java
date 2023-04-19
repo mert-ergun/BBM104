@@ -70,7 +70,7 @@ public class TimeChecker {
         formatter.setLenient(false);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(formatter.parse(time));
-        if (calendar.after(currentDate) || calendar.equals(currentDate)) {
+        if (calendar.after(currentDate)) {
             return true;
         }
         return false;

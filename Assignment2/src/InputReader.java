@@ -97,6 +97,12 @@ public class InputReader{
                 } 
                 try {
                     if (!Main.timeChecker.checkTime(split[1])) {  // check if the time is after the current time
+                        Calendar newTime = Calendar.getInstance();
+                        newTime.setTime(TimeChecker.formatter.parse(split[1]));
+                        if (Main.timeChecker.getCurrentDate().equals(newTime)) {  // check if the time is the same as the current time
+                            sender.timeEqualsError();
+                            break;
+                        }
                         sender.dateAfterError();
                         break;
                     } 
