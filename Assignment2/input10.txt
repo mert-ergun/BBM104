@@ -1,0 +1,17 @@
+SetInitialTime	2023-04-19_23:50:00
+Add	SmartPlug	Plug1	On	3
+Add	SmartPlug	Plug2	On	5
+Add	SmartPlug	Plug0	On	30
+Add	SmartPlug	Plug3	On	4
+ZReport
+SetSwitchTime	Plug2	2023-04-19_23:45:00
+ZReport
+SetSwitchTime	Plug1	2023-04-19_23:52:00
+ZReport
+SetSwitchTime	Plug3	2023-04-19_23:50:00
+ZReport
+SetSwitchTime	Plug2	2023-04-19_23:51:00
+ZReport
+Nop
+ZReport
+Nop

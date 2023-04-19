@@ -58,7 +58,7 @@ public class SwitchChecker {
     
         for (Tuple<Smart, Calendar> switchTime : new ArrayList<>(switchTimes)) {
             if (switchTime.getY() == null) continue;
-            if ((switchTime.getY().after(oldDate) && switchTime.getY().before(currentDate)) || switchTime.getY().equals(oldDate) || switchTime.getY().equals(currentDate)) {
+            if ((switchTime.getY().after(oldDate) && switchTime.getY().before(currentDate)) || (switchTime.getY().equals(oldDate)) || (switchTime.getY().equals(currentDate))) {
                 if (switchTime.getX().getLastSwitchedDate() != null) {
                     long diffInMillis = switchTime.getY().getTimeInMillis() - switchTime.getX().getLastSwitchedDate().getTimeInMillis();
                     double diffInHours = diffInMillis / (1000.0 * 60.0 * 60.0);
@@ -140,10 +140,10 @@ public class SwitchChecker {
             } 
         }
         if (smartDevice == null) return;
-        for (Tuple<Smart, Calendar> switchTimes : switchTimes) {
-            if (switchTimes.getX() == null) continue;
-            if (switchTimes.getX().getName().equals(smartDevice.getName())) {
-                switchTimes.setY((switchTimes.getX().switchTime == null) ? null : (Calendar) switchTimes.getX().switchTime.clone());
+        for (Tuple<Smart, Calendar> dev : switchTimes) {
+            if (dev.getX() == null) continue;
+            if (dev.getX().getName().equals(smartDevice.getName())) {
+                dev.setY((dev.getX().switchTime == null) ? null : (Calendar) dev.getX().switchTime.clone());
                 return;
             } 
         }

@@ -1,0 +1,55 @@
+COMMAND: SetInitialTime	2023-04-19_23:50:00
+SUCCESS: Time has been set to 2023-04-19_23:50:00!
+COMMAND: Add	SmartPlug	Plug1	On	3
+COMMAND: Add	SmartPlug	Plug2	On	5
+COMMAND: Add	SmartPlug	Plug0	On	30
+COMMAND: Add	SmartPlug	Plug3	On	4
+COMMAND: ZReport
+Time is:	2023-04-19_23:50:00
+Smart Plug Plug1 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug0 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+COMMAND: SetSwitchTime	Plug2	2023-04-19_23:45:00
+ERROR: Switch time cannot be in the past!
+COMMAND: ZReport
+Time is:	2023-04-19_23:50:00
+Smart Plug Plug1 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug0 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+COMMAND: SetSwitchTime	Plug1	2023-04-19_23:52:00
+COMMAND: ZReport
+Time is:	2023-04-19_23:50:00
+Smart Plug Plug1 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-04-19_23:52:00.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug0 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+COMMAND: SetSwitchTime	Plug3	2023-04-19_23:50:00
+COMMAND: ZReport
+Time is:	2023-04-19_23:50:00
+Smart Plug Plug1 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-04-19_23:52:00.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug0 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+COMMAND: SetSwitchTime	Plug2	2023-04-19_23:51:00
+COMMAND: ZReport
+Time is:	2023-04-19_23:50:00
+Smart Plug Plug2 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-04-19_23:51:00.
+Smart Plug Plug1 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-04-19_23:52:00.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug0 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+COMMAND: Nop
+COMMAND: ZReport
+Time is:	2023-04-19_23:51:00
+Smart Plug Plug1 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is 2023-04-19_23:52:00.
+Smart Plug Plug2 is off and consumed 18,33W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug0 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+COMMAND: Nop
+ZReport:
+Time is:	2023-04-19_23:52:00
+Smart Plug Plug1 is off and consumed 22,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug2 is off and consumed 18,33W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug3 is off and consumed 0,00W so far (excluding current device), and its time to switch its status is null.
+Smart Plug Plug0 is on and consumed 0,00W so far (excluding current device), and its time to switch its status is null.

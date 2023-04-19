@@ -181,12 +181,21 @@ public class InputReader{
                     sender.setTimeErrorCommand();
                     break;
                 }
-                Main.switchChecker.setSwitchTimes(split[1], switchDate);
+                if (switchDate.before(Main.timeChecker.getCurrentDate().clone())) {  // check if the time is before the current time
+                    sender.setSwitchPastErrorCommand();
+                    break;
+                }
                 for (Smart s : Main.smartList) {  // set the switch time for the device
                     if (s.name.equals(split[1])) {
                         s.switchTime = switchDate;
                     }
                 }
+                Main.switchChecker.setSwitchTimes(split[1], switchDate);
+                if (Main.timeChecker.getOldDate() == null) {  // check if the old date is null
+                    Main.timeChecker.setOldDate((Calendar) Main.timeChecker.getCurrentDate().clone());
+                }
+                Main.switchChecker.sortSwitchTimes();
+                Main.switchChecker.switchTimesBetweenDates();
                 break;
             case "Switch":
                 if (split.length != 3) {  // check if there is a device name and state after the command

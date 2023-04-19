@@ -135,6 +135,14 @@ public class OutputSender {
     }
 
     /**
+     * Sets an error command if the switch time is in the past.
+     * @throws Exception
+     */
+    public void setSwitchPastErrorCommand() throws Exception {
+        writer.writeOutput("ERROR: Switch time cannot be in the past!");
+    }
+
+    /**
      * Sets an error command if:
      * There is no device with the given name.
      * Device is already switched on.
