@@ -1,0 +1,44 @@
+Created new book: Printed [id: 1]
+Created new book: Printed [id: 2]
+Created new book: Handwritten [id: 3]
+Created new book: Handwritten [id: 4]
+Created new book: Printed [id: 5]
+Created new member: Student [id: 1]
+Created new member: Student [id: 2]
+Created new member: Academic [id: 3]
+Created new member: Academic [id: 4]
+The book [1] was borrowed by member [1] at 2023-04-07
+You can not read this book!
+The book [1] was returned by member [1] at 2023-04-15 Fee: 1
+Students can not read handwritten books!
+Created new book: Printed [id: 6]
+The book [2] was borrowed by member [2] at 2023-04-15
+The book [6] was borrowed by member [2] at 2023-04-15
+You have exceeded the borrowing limit!
+The book [3] was read in library by member [3] at 2023-04-15
+History of library:
+
+Number of students: 2
+Student [id: 1]
+Student [id: 2]
+
+Number of academics: 2
+Academic [id: 3]
+Academic [id: 4]
+
+Number of printed books: 4
+Printed [id: 1]
+Printed [id: 2]
+Printed [id: 5]
+Printed [id: 6]
+
+Number of handwritten books: 2
+Handwritten [id: 3]
+Handwritten [id: 4]
+
+Number of borrowed books: 2
+The book [2] was borrowed by member [2] at 2023-04-15
+The book [6] was borrowed by member [2] at 2023-04-15
+
+Number of books read in library: 1
+The book [3] was read in library by member [3] at 2023-04-15

@@ -1,0 +1,37 @@
+Created new book: Printed [id: 1]
+Created new book: Printed [id: 2]
+Created new book: Handwritten [id: 3]
+Created new book: Handwritten [id: 4]
+Created new book: Printed [id: 5]
+Created new member: Student [id: 1]
+Created new member: Student [id: 2]
+Created new member: Academic [id: 3]
+Created new member: Academic [id: 4]
+The book [1] was borrowed by member [1] at 2023-04-07
+You can not read this book!
+The deadline of book [1] was extended by member [1] at 2023-04-14
+New deadline of book [1] is 2023-04-21
+You cannot extend the deadline!
+The book [1] was returned by member [1] at 2023-04-18 Fee: 0
+History of library:
+
+Number of students: 2
+Student [id: 1]
+Student [id: 2]
+
+Number of academics: 2
+Academic [id: 3]
+Academic [id: 4]
+
+Number of printed books: 3
+Printed [id: 1]
+Printed [id: 2]
+Printed [id: 5]
+
+Number of handwritten books: 2
+Handwritten [id: 3]
+Handwritten [id: 4]
+
+Number of borrowed books: 0
+
+Number of books read in library: 0

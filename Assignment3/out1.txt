@@ -1,0 +1,42 @@
+Created new book: Printed [id: 1]
+Created new book: Printed [id: 2]
+Created new book: Handwritten [id: 3]
+Created new book: Handwritten [id: 4]
+Created new book: Printed [id: 5]
+Created new member: Student [id: 1]
+Created new member: Student [id: 2]
+Created new member: Academic [id: 3]
+Created new member: Academic [id: 4]
+The book [1] was borrowed by member [1] at 2023-04-07
+The book [2] was read in library by member [1] at 2023-04-13
+The book [2] was returned by member [1] at 2023-04-13 Fee: 0
+The book [1] was returned by member [1] at 2023-04-13 Fee: 0
+The book [2] was borrowed by member [2] at 2023-04-13
+The book [3] was read in library by member [3] at 2023-04-14
+The book [4] was read in library by member [4] at 2023-04-14
+The book [5] was read in library by member [4] at 2023-04-15
+The book [3] was returned by member [3] at 2023-04-14 Fee: 0
+The book [4] was returned by member [4] at 2023-04-15 Fee: 0
+History of library:
+
+Number of students: 2
+Student [id: 1]
+Student [id: 2]
+
+Number of academics: 2
+Academic [id: 3]
+Academic [id: 4]
+
+Number of printed books: 2
+Printed [id: 1]
+Printed [id: 2]
+
+Number of handwritten books: 2
+Handwritten [id: 3]
+Handwritten [id: 4]
+
+Number of borrowed books: 1
+The book [2] was borrowed by member [2] at 2023-04-14
+
+Number of books read in library: 1
+The book [5] was read in library by member [4] at 2023-04-15

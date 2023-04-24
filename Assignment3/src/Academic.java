@@ -19,4 +19,10 @@ public class Academic extends Member {
     public void addBook(int id) {
         books.add(id);
     }
+
+    public static void addMember() {
+        Academic member = new Academic();
+        Library.members.add(member);
+        Main.ow.writeOutput("Created new member: Academic [id: " + member.getId() + "]");
+    }
 }

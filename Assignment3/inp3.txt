@@ -1,0 +1,15 @@
+addBook	P
+addBook	P
+addBook	H
+addBook	H
+addBook	P
+addMember	S
+addMember	S
+addMember	A
+addMember	A
+borrowBook	1	1	2023-04-07
+readInLibrary	1	2	2023-04-07
+extendBook	1	1	2023-04-14
+extendBook	1	1	2023-04-20
+returnBook	1	1	2023-04-18
+getTheHistory
