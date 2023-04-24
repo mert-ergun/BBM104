@@ -1,9 +1,18 @@
 import java.util.ArrayList;
 
+/**
+ * The Library class represents a library that contains a list of members and books.
+ * It provides methods to retrieve a member or book by their ID, as well as a method to generate a history report of the library.
+ */
 public class Library {
-    public static ArrayList<Member> members = new ArrayList<Member>();
-    public static ArrayList<Book> books = new ArrayList<Book>();
+    public static ArrayList<Member> members = new ArrayList<Member>();  // List of members in the library
+    public static ArrayList<Book> books = new ArrayList<Book>();  // List of books in the library
 
+    /**
+     * Retrieves a member from the library by their ID.
+     * @param id The ID of the member to retrieve.
+     * @return The member with the specified ID, or null if no member with that ID exists in the library.
+     */
     public static Member getMemberById(int id) {
         for (Member member : members) {
             if (member.getId() == id) {
@@ -13,6 +22,11 @@ public class Library {
         return null;
     }
 
+    /**
+     * Returns the Book object with the specified ID.
+     * @param id The ID of the book to retrieve.
+     * @return The Book object with the specified ID, or null if no such book exists.
+     */
     public static Book getBookById(int id) {
         for (Book book : books) {
             if (book.getId() == id) {
@@ -22,6 +36,10 @@ public class Library {
         return null;
     }
 
+    /**
+     * Displays the history of the library, including the number of students and academics, the number of printed and handwritten books,
+     * the number of borrowed and reading books, and the details of each borrowed and reading book.
+     */
     public static void getHistory() {
         Main.ow.writeOutput("History of library:");
         Main.ow.writeOutput("");

@@ -1,7 +1,13 @@
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * The Book class represents a book in the library system. 
+ * It contains information about the book's ID, borrowable status, borrowed status, reading status, borrow date, return date, reading date, reading member ID, and time limits for borrowing. 
+ * It also provides methods for borrowing, returning, extending, and reading a book in the library.
+ */
 public abstract class Book {
+    // Class variables
     private int id;
     private static int nextId = 1;
     private boolean borrowable;
@@ -14,12 +20,22 @@ public abstract class Book {
     private int readingMemberId;
     private final int TIME_LIMIT_ACADEMIC = 14;
     private final int TIME_LIMIT_STUDENT = 7;
-    public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd"); 
+    public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");  // Date format for the library system
 
+    /**
+     * Constructor for objects of class Book with no parameters.
+     * Initializes the book's ID.
+     */
     public Book() {
         this.id = nextId++;
     }
 
+    /**
+     * Method for borrowing a book. Takes in a member ID and a date, and sets the book's borrow date, return date, and borrowed status accordingly. 
+     * Also adds the book to the member's list of borrowed books.
+     * @param memberId the ID of the member borrowing the book
+     * @param date the date the book is being borrowed
+     */
     public void borrowBook(int memberId, String date) {
         Calendar calendar = Calendar.getInstance();
         try {
@@ -65,6 +81,12 @@ public abstract class Book {
         Main.ow.writeOutput("The book [" + this.id + "] was borrowed by member [" + member.getId() + "] at " + date);
     }
 
+    /**
+     * Method for returning a book. Takes in a member ID and a date, and sets the book's borrowed status, borrow date, return date, and reading status accordingly. 
+     * Also removes the book from the member's list of borrowed books.
+     * @param memberId the ID of the member returning the book
+     * @param date the date the book is being returned
+     */
     public void returnBook(int memberId, String date) {
         if ((!this.borrowed) && (!this.reading)) {
             Main.ow.writeOutput("You cannot return this book!");
@@ -98,6 +120,12 @@ public abstract class Book {
         Main.ow.writeOutput("The book [" + this.id + "] was returned by member [" + member.getId() + "] at " + date + " Fee: " + fee);
     }
 
+    /**
+     * Method for extending the borrowing deadline of a book. Takes in a member ID and a date, and extends the book's return date accordingly. 
+     * Can only be done once per book borrowing.
+     * @param memberId the ID of the member extending the deadline
+     * @param date the date the deadline is being extended
+     */
     public void extendBook(int memberId, String date) {
         Calendar calendar = Calendar.getInstance();
         try {
@@ -119,6 +147,13 @@ public abstract class Book {
         Main.ow.writeOutput("New deadline of book [" + this.id + "] is "+ SDF.format(returnDate.getTime()));
     }
 
+    /**
+     * Method for reading a book in the library. 
+     * Takes in a member ID and a date, and sets the book's reading status and reading date accordingly. 
+     * Can only be done if the book is not currently borrowed.
+     * @param memberId the ID of the member reading the book
+     * @param date the date the book is being read
+     */
     public void readInLibrary(int memberId, String date) {
         if (this.borrowed) {
             Main.ow.writeOutput("You can not read this book!");
@@ -142,7 +177,8 @@ public abstract class Book {
         setReadingMemberId(memberId);
         Main.ow.writeOutput("The book [" + this.id + "] was read in library by member [" + member.getId() + "] at " + date);
     }
-
+    
+    // Getters and setters
     public int getId() {
         return id;
     }
