@@ -1,18 +1,3 @@
-## Getting Started
+# Introduction
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+In this project, you are expected to implement a simple library management system. You need to design a system that handles daily operations in the library. The main objective of the program is to analyze the incoming requests, which are provided in the form of an input list, and to take the necessary actions. The members of the library are students and academics. They can borrow books and return them before the specified deadline, otherwise they must pay a fee to borrow another book. It is also possible for a member to extend the deadline only once for each book. In addition, certain books cannot be taken out of the library, but can only be read within the library, since they are rarely found and only academics can get to them. Of course, members must be registered in the system before such operations, so that they can use the library’s services. Besides of the typical daily operations, the book collection can be enlarged by adding a new book.

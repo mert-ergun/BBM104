@@ -1,18 +1,7 @@
-## Getting Started
+# Introduction
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Humankind is a lazy thing indeed, according to our evolution progress, we always tried to do something with less and less effort. So, we invented many things to make our life easier, so that we can have more time to do "nothing". Automation is one of the things that we have done to feed this urge. So, smart home accessories is the one of the things that we have invented for the sake of automation. In short, we have done complex jobs to make our life easier, how ironic. In this project, you will be one of the people that tries to make our life easier for the sake of earning a bit more money, but with a "small" difference, unfortunately, you will not be paid for this project. So, enough with the story part, let’s talk about the real things. OOP is what Java is based on, and it has very straightforward rules to obey. They are called as four pillars of OOP: Inheritance, Polymorphism, Abstraction, Encapsulation. If one obeys these four pillars with taking care of trade-offs, then it can be said that he/she knows what OOP is in basic. In this project, you are assumed to implement a good OOP design for given sceneario and control the time flow.
 
-## Folder Structure
+# Description of the System
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+In this project, there are some smart home accessories as follows: Smart Lamp (with whiteambiance and color-white-ambiance variants), Smart Plug, and Smart Camera. Variant of the accessories have been kept low to make scenario easy to understand and avoid any kind of confusions. The task here is, controling these devices and time with respect to commands. Devices must be always in sorted order according to their switch times in ascending order. For exceptional situations, following rules will be applied: If there are two or more devices that have same switch time, their initial order (with respect to each other) will be preserved while sorting, if a device does not have any switch time, it will be considered as greater than all the devices. Note that, by default, each device is switched off and has no switch time at initialization if it is not stated otherwise. Moreover, switching the status of the device deletes switch time information.
