@@ -27,16 +27,17 @@ Number of academics: 2
 Academic [id: 3]
 Academic [id: 4]
 
-Number of printed books: 2
+Number of printed books: 3
 Printed [id: 1]
 Printed [id: 2]
+Printed [id: 5]
 
 Number of handwritten books: 2
 Handwritten [id: 3]
 Handwritten [id: 4]
 
 Number of borrowed books: 1
-The book [2] was borrowed by member [2] at 2023-04-14
+The book [2] was borrowed by member [2] at 2023-04-13
 
 Number of books read in library: 1
 The book [5] was read in library by member [4] at 2023-04-15

@@ -8,19 +8,11 @@ import java.util.Calendar;
  */
 public abstract class Book {
     // Class variables
-    private int id;
+    private int id, readingMemberId;
     private static int nextId = 1;
-    private boolean borrowable;
-    private boolean borrowed;
-    private boolean reading;
-    private boolean extended;
-    private Calendar borrowDate;
-    private Calendar returnDate;
-    private Calendar readingDate;
-    private int readingMemberId;
-    private final int TIME_LIMIT_ACADEMIC = 14;
-    private final int TIME_LIMIT_STUDENT = 7;
-    public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");  // Date format for the library system
+    private boolean borrowable, borrowed, reading, extended;
+    private Calendar borrowDate, returnDate, readingDate;
+    public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");  // The date format used for the borrow date, return date, and reading date.
 
     /**
      * Constructor for objects of class Book with no parameters.
@@ -28,7 +20,19 @@ public abstract class Book {
      */
     public Book() {
         this.id = nextId++;
+        this.borrowable = true;
+        this.borrowed = false;
+        this.reading = false;
+        this.extended = false;
+        this.borrowDate = null;
+        this.returnDate = null;
+        this.readingDate = null;
     }
+
+    /**
+     * Method to add a new book to the library.
+     */
+    public static void addBook() {}
 
     /**
      * Method for borrowing a book. Takes in a member ID and a date, and sets the book's borrow date, return date, and borrowed status accordingly. 
@@ -36,7 +40,7 @@ public abstract class Book {
      * @param memberId the ID of the member borrowing the book
      * @param date the date the book is being borrowed
      */
-    public void borrowBook(int memberId, String date) {
+    public final void borrowBook(int memberId, String date) {
         Calendar calendar = Calendar.getInstance();
         try {
             calendar.setTime(SDF.parse(date));
@@ -49,33 +53,36 @@ public abstract class Book {
             return;
         }
         Member member = Library.getMemberById(memberId);
-        boolean isAcademic = false;
-        if (member instanceof Academic) {
+        if (member == null) {
+            Main.ow.writeOutput("Member not found!");
+            return;
+        }
+        boolean isStudent = member instanceof Student;
+        if (this instanceof Handwritten && isStudent) {
+            Main.ow.writeOutput("You cannot borrow this book!");
+            return;
+        }
+        if (!isStudent) {
             Academic academic = (Academic) member;
-            isAcademic = true;
-            if (academic.getBooks().size() >= academic.MAX_BOOKS) {
+            if (academic.getBooks().size() >= academic.getMAX_BOOKS()) {
                 Main.ow.writeOutput("You have exceeded the borrowing limit!");
                 return;
             }
-        }
-        else if (member instanceof Student) {
+        } else {
             Student student = (Student) member;
-            isAcademic = false;
-            if (student.getBooks().size() >= student.MAX_BOOKS) {
+            if (student.getBooks().size() >= student.getMAX_BOOKS()) {
                 Main.ow.writeOutput("You have exceeded the borrowing limit!");
                 return;
             }
         }
         this.borrowed = true;
-        this.borrowDate = calendar;
-        this.returnDate = Calendar.getInstance();
-        long returnInMillis = 0;
-        returnInMillis = borrowDate.getTimeInMillis() + (member instanceof Academic ? TIME_LIMIT_ACADEMIC : TIME_LIMIT_STUDENT) * 24 * 60 * 60 * 1000;
-        returnDate.setTimeInMillis(returnInMillis);
-        if (isAcademic) {
-            ((Academic) member).addBook(this.id);
-        } else {
+        this.borrowDate = (Calendar) calendar.clone();
+        this.returnDate = (Calendar) calendar.clone();
+        this.returnDate.add(Calendar.DATE, member.getTIME_LIMIT());
+        if (isStudent) {
             ((Student) member).addBook(this.id);
+        } else {
+            ((Academic) member).addBook(this.id);
         }
         setReadingMemberId(memberId);
         Main.ow.writeOutput("The book [" + this.id + "] was borrowed by member [" + member.getId() + "] at " + date);
@@ -87,7 +94,7 @@ public abstract class Book {
      * @param memberId the ID of the member returning the book
      * @param date the date the book is being returned
      */
-    public void returnBook(int memberId, String date) {
+    public final void returnBook(int memberId, String date) {
         if ((!this.borrowed) && (!this.reading)) {
             Main.ow.writeOutput("You cannot return this book!");
             return;
@@ -101,22 +108,21 @@ public abstract class Book {
         }
         int fee = 0;
         if (calendar.after(this.returnDate)) {
-            fee = (int) ((calendar.getTimeInMillis() - this.returnDate.getTimeInMillis()) / (24 * 60 * 60 * 1000));
+            fee = (int) ((calendar.getTimeInMillis() - this.returnDate.getTimeInMillis()) / (1000 * 60 * 60 * 24));
         }
         Member member = Library.getMemberById(memberId);
+        if (member == null) {
+            Main.ow.writeOutput("Member not found!");
+            return;
+        }
         this.borrowed = false;
         this.borrowDate = null;
         this.returnDate = null;
         this.reading = false;
-        if (member instanceof Academic) {
-            Academic academic = (Academic) member;
-            academic.getBooks().remove((Integer) this.id);
-            setReadingMemberId(0);
-        } else if (member instanceof Student) {
-            Student student = (Student) member;
-            student.getBooks().remove((Integer) this.id);
-            setReadingMemberId(0);
-        }
+        this.readingDate = null;
+        this.extended = false;
+        setReadingMemberId(-1);
+        member.removeBook(this.id);
         Main.ow.writeOutput("The book [" + this.id + "] was returned by member [" + member.getId() + "] at " + date + " Fee: " + fee);
     }
 
@@ -126,7 +132,7 @@ public abstract class Book {
      * @param memberId the ID of the member extending the deadline
      * @param date the date the deadline is being extended
      */
-    public void extendBook(int memberId, String date) {
+    public final void extendBook(int memberId, String date) {
         Calendar calendar = Calendar.getInstance();
         try {
             calendar.setTime(SDF.parse(date));
@@ -134,14 +140,16 @@ public abstract class Book {
             Main.ow.writeOutput("Invalid date format.");
             return;
         }
-        if (!this.borrowed || this.extended) {
+        if ((!this.borrowed) && (!this.reading) && (this.extended)) {
             Main.ow.writeOutput("You cannot extend the deadline!");
             return;
         }
         Member member = Library.getMemberById(memberId);
-        long returnInMillis = ((Calendar) returnDate.clone()).getTimeInMillis();
-        returnInMillis += (member instanceof Academic ? TIME_LIMIT_ACADEMIC : TIME_LIMIT_STUDENT) * 24 * 60 * 60 * 1000;
-        returnDate.setTimeInMillis(returnInMillis);
+        if (member == null) {
+            Main.ow.writeOutput("Member not found!");
+            return;
+        }
+        returnDate.add(Calendar.DATE, member.getTIME_LIMIT());
         this.extended = true;
         Main.ow.writeOutput("The deadline of book [" + this.id + "] was extended by member [" + member.getId() + "] at " + date);
         Main.ow.writeOutput("New deadline of book [" + this.id + "] is "+ SDF.format(returnDate.getTime()));
@@ -154,13 +162,21 @@ public abstract class Book {
      * @param memberId the ID of the member reading the book
      * @param date the date the book is being read
      */
-    public void readInLibrary(int memberId, String date) {
+    public final void readInLibrary(int memberId, String date) {
         if (this.borrowed) {
             Main.ow.writeOutput("You can not read this book!");
             return;
         }
         Member member = Library.getMemberById(memberId);
+        if (member == null) {
+            Main.ow.writeOutput("Member not found!");
+            return;
+        }
         Book book = Library.getBookById(this.id);
+        if (book == null) {
+            Main.ow.writeOutput("Book not found!");
+            return;
+        }
         Calendar calendar = Calendar.getInstance();
         try {
             calendar.setTime(SDF.parse(date));
@@ -172,8 +188,12 @@ public abstract class Book {
             Main.ow.writeOutput("Students can not read handwritten books!");
             return;
         }
+        if (this.reading) {
+            Main.ow.writeOutput("You can not read this book!");
+            return;
+        }
         this.reading = true;
-        this.readingDate = calendar;
+        this.readingDate = (Calendar) calendar.clone();
         setReadingMemberId(memberId);
         Main.ow.writeOutput("The book [" + this.id + "] was read in library by member [" + member.getId() + "] at " + date);
     }
@@ -185,6 +205,14 @@ public abstract class Book {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getReadingMemberId() {
+        return readingMemberId;
+    }
+
+    public void setReadingMemberId(int readingMemberId) {
+        this.readingMemberId = readingMemberId;
     }
 
     public static int getNextId() {
@@ -203,20 +231,28 @@ public abstract class Book {
         this.borrowable = borrowable;
     }
 
-    public int getTIME_LIMIT_ACADEMIC() {
-        return TIME_LIMIT_ACADEMIC;
-    }
-
-    public int getTIME_LIMIT_STUDENT() {
-        return TIME_LIMIT_STUDENT;
-    }
-
     public boolean isBorrowed() {
         return borrowed;
     }
 
     public void setBorrowed(boolean borrowed) {
         this.borrowed = borrowed;
+    }
+
+    public boolean isReading() {
+        return reading;
+    }
+
+    public void setReading(boolean reading) {
+        this.reading = reading;
+    }
+
+    public boolean isExtended() {
+        return extended;
+    }
+
+    public void setExtended(boolean extended) {
+        this.extended = extended;
     }
 
     public Calendar getBorrowDate() {
@@ -233,26 +269,6 @@ public abstract class Book {
 
     public void setReturnDate(Calendar returnDate) {
         this.returnDate = returnDate;
-    }
-
-    public static SimpleDateFormat getSdf() {
-        return SDF;
-    }
-
-    public int getReadingMemberId() {
-        return readingMemberId;
-    }
-
-    public void setReadingMemberId(int readingMemberId) {
-        this.readingMemberId = readingMemberId;
-    }
-
-    public boolean isReading() {
-        return reading;
-    }
-
-    public void setReading(boolean reading) {
-        this.reading = reading;
     }
 
     public Calendar getReadingDate() {

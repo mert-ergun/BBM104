@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-
 /**
  * Represents an academic member of the library.
  * Extends the Member class and adds the ability to borrow up to 4 books.
  */
 public class Academic extends Member {
-    public final int MAX_BOOKS = 4; // The maximum number of books an academic member can borrow.
-    private ArrayList<Integer> books = new ArrayList<Integer>(MAX_BOOKS); // An ArrayList of book IDs that the academic member has borrowed.
+    private final int MAX_BOOKS = 4; // The maximum number of books an academic member can borrow.
+    private final int TIME_LIMIT = 14;  // The time limit for academic members to borrow a book.
 
     /**
      * Constructs a new Academic object.
@@ -17,27 +15,19 @@ public class Academic extends Member {
     }
 
     /**
-     * Returns the ArrayList of book IDs that the academic member has borrowed.
-     * @return The ArrayList of book IDs.
+     * Returns the maximum number of books an academic member can borrow.
+     * @return the maximum number of books an academic member can borrow.
      */
-    public ArrayList<Integer> getBooks() {
-        return books;
+    public int getMAX_BOOKS() {
+        return MAX_BOOKS;
     }
 
     /**
-     * Sets the ArrayList of book IDs that the academic member has borrowed.
-     * @param books The ArrayList of book IDs.
+     * Returns the time limit for academic members to borrow a book.
+     * @return the time limit for academic members to borrow a book.
      */
-    public void setBooks(ArrayList<Integer> books) {
-        this.books = books;
-    }
-
-    /**
-     * Adds a book ID to the ArrayList of book IDs that the academic member has borrowed.
-     * @param id The ID of the book to add.
-     */
-    public void addBook(int id) {
-        books.add(id);
+    public int getTIME_LIMIT() {
+        return TIME_LIMIT;
     }
 
     /**
@@ -46,8 +36,8 @@ public class Academic extends Member {
      * Writes a message to the output file indicating that a new member has been created.
      */
     public static void addMember() {
-        Academic member = new Academic();
-        Library.members.add(member);
-        Main.ow.writeOutput("Created new member: Academic [id: " + member.getId() + "]");
+        Academic academic = new Academic();
+        Library.members.add(academic);
+        Main.ow.writeOutput("Created new member: Academic [id: " + academic.getId() + "]");
     }
 }

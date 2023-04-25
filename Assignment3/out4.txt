@@ -40,5 +40,5 @@ Number of borrowed books: 2
 The book [2] was borrowed by member [2] at 2023-04-15
 The book [6] was borrowed by member [2] at 2023-04-15
 
-Number of books read in library: 3
+Number of books read in library: 1
 The book [3] was read in library by member [3] at 2023-04-15

@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-
 /**
  * This class represents a student member of the library.
  * It extends the Member class and has a maximum number of books that can be borrowed.
  */
 public class Student extends Member {
-    public final int MAX_BOOKS = 2;  // The maximum number of books a student can borrow.
-    private ArrayList<Integer> books = new ArrayList<Integer>(MAX_BOOKS);  // The list of books the student has borrowed.
+    private final int MAX_BOOKS = 2;  // The maximum number of books a student member can borrow.
+    private final int TIME_LIMIT = 7;  // The time limit for student members to borrow a book.
 
     /**
      * Default constructor for the Student class.
@@ -17,27 +15,19 @@ public class Student extends Member {
     }
 
     /**
-     * Getter method for the books ArrayList.
-     * @return The books ArrayList.
+     * Returns the maximum number of books a student member can borrow.
+     * @return the maximum number of books a student member can borrow.
      */
-    public ArrayList<Integer> getBooks() {
-        return books;
+    public int getMAX_BOOKS() {
+        return MAX_BOOKS;
     }
 
     /**
-     * Setter method for the books ArrayList.
-     * @param books The new books ArrayList.
+     * Returns the time limit for student members to borrow a book.
+     * @return the time limit for student members to borrow a book.
      */
-    public void setBooks(ArrayList<Integer> books) {
-        this.books = books;
-    }
-
-    /**
-     * Adds a book to the books ArrayList.
-     * @param id The ID of the book to be added.
-     */
-    public void addBook(int id) {
-        books.add(id);
+    public int getTIME_LIMIT() {
+        return TIME_LIMIT;
     }
 
     /**
@@ -46,8 +36,8 @@ public class Student extends Member {
      * and writes a message to the output file.
      */
     public static void addMember() {
-        Student member = new Student();
-        Library.members.add(member);
-        Main.ow.writeOutput("Created new member: Student [id: " + member.getId() + "]");
+        Student student = new Student();
+        Library.members.add(student);
+        Main.ow.writeOutput("Created new member: Student [id: " + student.getId() + "]");
     }
 }
