@@ -1,0 +1,6 @@
+The program is running correctly
+The input file should not be empty
+The input file should not contains unexpected characters
+The input file should not be empty
+There should be only 1 paremeter
+There should be an input file in the specified path

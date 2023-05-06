@@ -1,0 +1,8 @@
+Suppose you run your program for following commands on DEV server respectively ("..." indicates that your input file can be at any path):
+
+java Main .../file1/input.txt
+java Main .../file2/input.txt
+java Main .../file3/input.txt
+java Main .../file2/input.txt
+java Main .../file2/input.txt .../file1/input.txt
+java Main .../file4/input.txt
