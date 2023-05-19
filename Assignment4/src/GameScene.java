@@ -152,10 +152,13 @@ public class GameScene {
         foregroundImage = foregroundImageViews[backgroundIndex];
         crosshairImage = crosshairImageViews[crosshairIndex];
 
+        // Initalize the first level
+        ducks = initLevel(1);
+
         // Add the background and foreground image views to the scene
         StackPane root = new StackPane();
         root.getChildren().add(backgroundImage);
-        root.getChildren().add(foregroundImage);
+        root.getChildren().add(foregroundImage); 
 
         // Create the scene
         scene = new Scene(root, backgroundImage.getFitWidth(), backgroundImage.getFitHeight());
@@ -163,6 +166,7 @@ public class GameScene {
         // Create the crosshair as cursor
         scene.setCursor(new ImageCursor(crosshairImage.getImage()));
 
+        updateSceneForLevel();
 
         // Show the scene
         primaryStage.setScene(scene);
@@ -173,10 +177,86 @@ public class GameScene {
         return scene;
     }
 
-    public void initFirstLevel() {
-        numberOfDucks = 1;
-        ducks = new Duck[numberOfDucks];
-
-        
+    public Duck[] initLevel(int level) {
+        switch (level) {
+            case 1:
+                numberOfDucks = 1;
+                ducks = new Duck[numberOfDucks];
+                Duck duck = new Duck("red", 30, 20, 30, true, false, true);
+                ducks[0] = duck;
+                break;
+            case 2:
+                numberOfDucks = 2;
+                ducks = new Duck[numberOfDucks];
+                Duck duck1 = new Duck("blue", 10, 20, 40, true, false, true);
+                Duck duck2 = new Duck("red", -150, -200, 40, false, false, true);
+                ducks[0] = duck1;
+                ducks[1] = duck2;
+                break;
+            case 3:
+                numberOfDucks = 3;
+                ducks = new Duck[numberOfDucks];
+                Duck duck3 = new Duck("blue", 10, 20, 40, true, false, true);
+                Duck duck4 = new Duck("red", -150, -200, 40, false, false, true);
+                Duck duck5 = new Duck("black", 50, 20, 40, true, true, true);
+                ducks[0] = duck3;
+                ducks[1] = duck4;
+                ducks[2] = duck5;
+                break;
+            case 4:
+                numberOfDucks = 4;
+                ducks = new Duck[numberOfDucks];
+                Duck duck6 = new Duck("blue", 10, 20, 40, true, false, true);
+                Duck duck7 = new Duck("red", -150, -200, 40, false, false, true);
+                Duck duck8 = new Duck("black", 50, 20, 40, false, true, false);
+                ducks[0] = duck6;
+                ducks[1] = duck7;
+                ducks[2] = duck8;
+                break;
+            case 5:
+                numberOfDucks = 5;
+                ducks = new Duck[numberOfDucks];
+                Duck duck9 = new Duck("blue", 10, 20, 40, true, true, true);
+                Duck duck10 = new Duck("red", -150, -200, 40, false, false, true);
+                Duck duck11 = new Duck("black", 50, 20, 40, false, true, false);
+                Duck duck12 = new Duck("blue", 70, 20, 40, true, true, true);
+                ducks[0] = duck9;
+                ducks[1] = duck10;
+                ducks[2] = duck11;
+                ducks[3] = duck12;
+                break;
+            case 6:
+                numberOfDucks = 6;
+                ducks = new Duck[numberOfDucks];
+                Duck duck13 = new Duck("blue", 10, 20, 40, true, true, true);
+                Duck duck14 = new Duck("red", -150, -200, 40, false, false, true);
+                Duck duck15 = new Duck("black", 50, 20, 40, false, true, false);
+                Duck duck16 = new Duck("blue", 70, 20, 40, true, true, true);
+                Duck duck17 = new Duck("red", 90, 20, 40, false, true, true);
+                ducks[0] = duck13;
+                ducks[1] = duck14;
+                ducks[2] = duck15;
+                ducks[3] = duck16;
+                ducks[4] = duck17;
+                break;
+        }
+        return ducks;
     }
+    
+    public void updateSceneForLevel() {
+        // Clear the existing scene
+        StackPane root = (StackPane) scene.getRoot();
+        root.getChildren().clear();
+    
+        // Add the new level's elements to the scene
+        root.getChildren().add(backgroundImage);
+        for (Duck duck : ducks) {
+            root.getChildren().add(duck.getCurrentImage());
+            duck.getCurrentImage().setTranslateX(duck.getX());
+            duck.getCurrentImage().setTranslateY(duck.getY());
+        }
+        root.getChildren().add(foregroundImage);
+    }
+    
+
 }

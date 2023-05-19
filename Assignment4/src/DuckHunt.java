@@ -1,5 +1,4 @@
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class DuckHunt extends Application{
@@ -17,7 +16,7 @@ public class DuckHunt extends Application{
         launch(args);
     }
     
-    public static TitleScene getTitleScene(Stage primaryStage) {
+    public static TitleScene getTitleScene() {
         return titleScene;
     }
 }

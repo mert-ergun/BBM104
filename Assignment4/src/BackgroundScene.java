@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -206,6 +205,13 @@ public class BackgroundScene {
                 }
                 crosshairPane.getChildren().clear();
                 crosshairPane.getChildren().add(crosshairViews[crosshairIndex]);
+                for (int i = 0; i < crosshairViews.length; i++) {
+                    if (i == crosshairIndex) {
+                        crosshairViews[i].setVisible(true);
+                    } else {
+                        crosshairViews[i].setVisible(false);
+                    }
+                }
             } else if (event.getCode() == KeyCode.DOWN) {
                 // Move to the next crosshair image view
                 crosshairIndex++;
@@ -214,13 +220,20 @@ public class BackgroundScene {
                 }
                 crosshairPane.getChildren().clear();
                 crosshairPane.getChildren().add(crosshairViews[crosshairIndex]);
+                for (int i = 0; i < crosshairViews.length; i++) {
+                    if (i == crosshairIndex) {
+                        crosshairViews[i].setVisible(true);
+                    } else {
+                        crosshairViews[i].setVisible(false);
+                    }
+                }
             } else if (event.getCode() == KeyCode.ESCAPE) {
                 // Return to the Title screen
-                TitleScene titleScreen = DuckHunt.getTitleScene(primaryStage);
+                TitleScene titleScreen = DuckHunt.getTitleScene();
                 primaryStage.setScene(titleScreen.getScene());
             } else if (event.getCode() == KeyCode.ENTER) {
                 // Start the game
-                DuckHunt.getTitleScene(primaryStage).stopMusic();
+                DuckHunt.getTitleScene().stopMusic();
                 Media introMusic = new Media(new File("src/assets/effects/Intro.mp3").toURI().toString());
                 MediaPlayer introPlayer = new MediaPlayer(introMusic);
                 introPlayer.setOnEndOfMedia(() -> {
