@@ -1,9 +1,21 @@
+import java.io.File;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class GameScene {
     private Scene scene;
@@ -20,6 +32,7 @@ public class GameScene {
     private Duck[] ducks;
     private int numberOfBullets;
     private int level;
+    private boolean levelCompleted;
 
     public GameScene(Stage primaryStage, int backgroundIndex, int crosshairIndex) {
         // Load the background images
@@ -152,13 +165,8 @@ public class GameScene {
         foregroundImage = foregroundImageViews[backgroundIndex];
         crosshairImage = crosshairImageViews[crosshairIndex];
 
-        // Initalize the first level
-        ducks = initLevel(1);
-
         // Add the background and foreground image views to the scene
         StackPane root = new StackPane();
-        root.getChildren().add(backgroundImage);
-        root.getChildren().add(foregroundImage); 
 
         // Create the scene
         scene = new Scene(root, backgroundImage.getFitWidth(), backgroundImage.getFitHeight());
@@ -166,7 +174,9 @@ public class GameScene {
         // Create the crosshair as cursor
         scene.setCursor(new ImageCursor(crosshairImage.getImage()));
 
-        updateSceneForLevel();
+        // Initalize the first level
+        ducks = initLevel(1);
+        updateSceneForLevel(primaryStage);
 
         // Show the scene
         primaryStage.setScene(scene);
@@ -184,6 +194,7 @@ public class GameScene {
                 ducks = new Duck[numberOfDucks];
                 Duck duck = new Duck("red", 30, 20, 30, true, false, true);
                 ducks[0] = duck;
+                this.level = 1;
                 break;
             case 2:
                 numberOfDucks = 2;
@@ -192,6 +203,7 @@ public class GameScene {
                 Duck duck2 = new Duck("red", -150, -200, 40, false, false, true);
                 ducks[0] = duck1;
                 ducks[1] = duck2;
+                this.level = 2;
                 break;
             case 3:
                 numberOfDucks = 3;
@@ -202,9 +214,10 @@ public class GameScene {
                 ducks[0] = duck3;
                 ducks[1] = duck4;
                 ducks[2] = duck5;
+                this.level = 3;
                 break;
             case 4:
-                numberOfDucks = 4;
+                numberOfDucks = 3;
                 ducks = new Duck[numberOfDucks];
                 Duck duck6 = new Duck("blue", 10, 20, 40, true, false, true);
                 Duck duck7 = new Duck("red", -150, -200, 40, false, false, true);
@@ -212,9 +225,10 @@ public class GameScene {
                 ducks[0] = duck6;
                 ducks[1] = duck7;
                 ducks[2] = duck8;
+                this.level = 4;
                 break;
             case 5:
-                numberOfDucks = 5;
+                numberOfDucks = 4;
                 ducks = new Duck[numberOfDucks];
                 Duck duck9 = new Duck("blue", 10, 20, 40, true, true, true);
                 Duck duck10 = new Duck("red", -150, -200, 40, false, false, true);
@@ -224,26 +238,30 @@ public class GameScene {
                 ducks[1] = duck10;
                 ducks[2] = duck11;
                 ducks[3] = duck12;
+                this.level = 5;
                 break;
             case 6:
-                numberOfDucks = 6;
+                numberOfDucks = 5;
                 ducks = new Duck[numberOfDucks];
                 Duck duck13 = new Duck("blue", 10, 20, 40, true, true, true);
                 Duck duck14 = new Duck("red", -150, -200, 40, false, false, true);
                 Duck duck15 = new Duck("black", 50, 20, 40, false, true, false);
-                Duck duck16 = new Duck("blue", 70, 20, 40, true, true, true);
+                Duck duck16 = new Duck("blue", 70, -30, 40, true, true, true);
                 Duck duck17 = new Duck("red", 90, 20, 40, false, true, true);
                 ducks[0] = duck13;
                 ducks[1] = duck14;
                 ducks[2] = duck15;
                 ducks[3] = duck16;
                 ducks[4] = duck17;
+                this.level = 6;
                 break;
         }
+        numberOfBullets = numberOfDucks * 3;
         return ducks;
     }
     
-    public void updateSceneForLevel() {
+    public void updateSceneForLevel(Stage primaryStage) {
+        levelCompleted = false;
         // Clear the existing scene
         StackPane root = (StackPane) scene.getRoot();
         root.getChildren().clear();
@@ -256,7 +274,192 @@ public class GameScene {
             duck.getCurrentImage().setTranslateY(duck.getY());
         }
         root.getChildren().add(foregroundImage);
+
+        // Add the level text
+        Text levelText = new Text("Level " + level + "/6");
+        levelText.setFont(Font.font("Verdana", FontWeight.BOLD, 6 * SCALE));
+        levelText.setFill(Color.ORANGE);
+        levelText.setTranslateX(0);
+        levelText.setTranslateY(-110 * SCALE);
+        root.getChildren().add(levelText);
+
+        // Add the bullets remaining text
+        Text bulletsText = new Text("Ammo Left: " + numberOfBullets);
+        bulletsText.setFont(Font.font("Verdana", FontWeight.BOLD, 6 * SCALE));
+        bulletsText.setFill(Color.ORANGE);
+        bulletsText.setTranslateX(100 * SCALE);
+        bulletsText.setTranslateY(-110 * SCALE);
+        root.getChildren().add(bulletsText);
+
+        scene.setOnMouseClicked(event -> {
+            if (!levelCompleted) {
+                if (numberOfBullets > 0) {
+                    numberOfBullets--;
+                    bulletsText.setText("Ammo Left: " + numberOfBullets);
+                    Media sound = new Media(new File("src/assets/effects/Gunshot.mp3").toURI().toString());
+                    MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                    mediaPlayer.setVolume(VOLUME);
+                    mediaPlayer.play();
+                    int ducksKilled = 0;
+
+                    for (Duck duck : ducks) {
+                        if (duck.isAlive && duck.getCurrentImage().getBoundsInParent().contains(event.getX(), event.getY())) {
+                            duck.die();
+                        }
+                        if (!duck.isAlive) {
+                            ducksKilled++;
+                        }
+                        if (ducksKilled == numberOfDucks) {
+                            if (level != 6) {
+                                Media levelup = new Media(new File("src/assets/effects/LevelCompleted.mp3").toURI().toString());
+                                MediaPlayer levelupplayer = new MediaPlayer(levelup);
+                                levelupplayer.setVolume(VOLUME);
+                                levelupplayer.play();
+                                Text levelCompletedText = new Text("YOU WIN!");
+                                levelCompletedText.setFont(Font.font("Verdana", FontWeight.BOLD, 15 * SCALE));
+                                levelCompletedText.setFill(Color.ORANGE);
+                                levelCompletedText.setTranslateX(0);
+                                levelCompletedText.setTranslateY(0);
+                                Text levelCompletedText2 = new Text("Press ENTER to play next level");
+                                levelCompletedText2.setFont(Font.font("Verdana", FontWeight.BOLD, 10 * SCALE));
+                                levelCompletedText2.setFill(Color.ORANGE);
+                                levelCompletedText2.setTranslateX(0);
+                                levelCompletedText2.setTranslateY(20 * SCALE);
+                                // Make levelcompletedtext2 flashing
+                                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), evt -> {
+                                    if (levelCompletedText2.getFill() == Color.ORANGE) {
+                                        levelCompletedText2.setFill(Color.TRANSPARENT);
+                                    } else {
+                                        levelCompletedText2.setFill(Color.ORANGE);
+                                    }
+                                }));
+                                timeline.setCycleCount(Timeline.INDEFINITE);
+                                timeline.play();
+                                root.getChildren().add(levelCompletedText);
+                                root.getChildren().add(levelCompletedText2);
+                                levelCompleted = true;
+                                scene.setOnKeyPressed(event2 -> {
+                                    if (event2.getCode() == KeyCode.ENTER) {
+                                        level += 1;
+                                        levelupplayer.stop();
+                                        root.getChildren().clear();
+                                        initLevel(level);
+                                        updateSceneForLevel(primaryStage);
+                                    }
+                                });
+                            } else {
+                                Media gamecompleted = new Media(new File("src/assets/effects/GameCompleted.mp3").toURI().toString());
+                                MediaPlayer gamecompletedplayer = new MediaPlayer(gamecompleted);
+                                gamecompletedplayer.setVolume(VOLUME);
+                                gamecompletedplayer.play();
+                                Text gameCompletedText = new Text("You have completed the game!");
+                                gameCompletedText.setFont(Font.font("Verdana", FontWeight.BOLD, 13 * SCALE));
+                                gameCompletedText.setFill(Color.ORANGE);
+                                gameCompletedText.setTranslateX(0);
+                                gameCompletedText.setTranslateY(0);
+                                Text gameCompletedText2 = new Text("Press ENTER to play again");
+                                gameCompletedText2.setFont(Font.font("Verdana", FontWeight.BOLD, 10 * SCALE));
+                                gameCompletedText2.setFill(Color.ORANGE);
+                                gameCompletedText2.setTranslateX(0);
+                                gameCompletedText2.setTranslateY(20 * SCALE);
+                                Text gameCompletedText3 = new Text("Press ESC to exit");
+                                gameCompletedText3.setFont(Font.font("Verdana", FontWeight.BOLD, 10 * SCALE));
+                                gameCompletedText3.setFill(Color.ORANGE);
+                                gameCompletedText3.setTranslateX(0);
+                                gameCompletedText3.setTranslateY(40 * SCALE);
+                                // Make gamecompletedtext2 and gamecompletedtext3 flashing
+                                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), evt -> {
+                                    if (gameCompletedText2.getFill() == Color.ORANGE) {
+                                        gameCompletedText2.setFill(Color.TRANSPARENT);
+                                        gameCompletedText3.setFill(Color.TRANSPARENT);
+                                    } else {
+                                        gameCompletedText2.setFill(Color.ORANGE);
+                                        gameCompletedText3.setFill(Color.ORANGE);
+                                    }
+                                }));
+                                timeline.setCycleCount(Timeline.INDEFINITE);
+                                timeline.play();
+                                root.getChildren().add(gameCompletedText);
+                                root.getChildren().add(gameCompletedText2);
+                                root.getChildren().add(gameCompletedText3);
+                                levelCompleted = true;
+                                scene.setOnKeyPressed(event2 -> {
+                                    if (event2.getCode() == KeyCode.ENTER) {
+                                        gamecompletedplayer.stop();
+                                        root.getChildren().clear();
+                                        initLevel(1);
+                                        updateSceneForLevel(primaryStage);
+                                    } else if (event2.getCode() == KeyCode.ESCAPE) {
+                                        // Return to title screen
+                                        gamecompletedplayer.stop();
+                                        root.getChildren().clear();
+                                        TitleScene titleScene = new TitleScene(primaryStage);
+                                        primaryStage.setScene(titleScene.getScene());
+                                    }
+                                });
+                            }
+                        }
+                    }
+
+                    if (numberOfBullets == 0) {
+                        int ducksAlive = 0;
+                        for (Duck duck : ducks) {
+                            if (duck.isAlive) {
+                                ducksAlive++;
+                            }
+                        }
+                        if (ducksAlive > 0) {
+                            Media gameover = new Media(new File("src/assets/effects/GameOver.mp3").toURI().toString());
+                            MediaPlayer gameoverplayer = new MediaPlayer(gameover);
+                            gameoverplayer.setVolume(VOLUME);
+                            gameoverplayer.play();
+                            Text gameOverText = new Text("GAME OVER!");
+                            gameOverText.setFont(Font.font("Verdana", FontWeight.BOLD, 15 * SCALE));
+                            gameOverText.setFill(Color.ORANGE);
+                            gameOverText.setTranslateX(0);
+                            gameOverText.setTranslateY(0);
+                            Text gameOverText2 = new Text("Press ENTER to play again");
+                            gameOverText2.setFont(Font.font("Verdana", FontWeight.BOLD, 15 * SCALE));
+                            gameOverText2.setFill(Color.ORANGE);
+                            gameOverText2.setTranslateX(0);
+                            gameOverText2.setTranslateY(20 * SCALE);
+                            Text gameOverText3 = new Text("Press ESC to exit");
+                            gameOverText3.setFont(Font.font("Verdana", FontWeight.BOLD, 15 * SCALE));
+                            gameOverText3.setFill(Color.ORANGE);
+                            gameOverText3.setTranslateX(0);
+                            gameOverText3.setTranslateY(40 * SCALE);
+                            // Make gamovertext2 and 3 flashing
+                            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), evt -> {
+                                gameOverText2.setVisible(!gameOverText2.isVisible());
+                                gameOverText3.setVisible(!gameOverText3.isVisible());
+                            }));
+                            timeline.setCycleCount(Timeline.INDEFINITE);
+                            timeline.play();
+                            root.getChildren().add(gameOverText);
+                            root.getChildren().add(gameOverText2);
+                            root.getChildren().add(gameOverText3);
+
+                            // Add the event handler for the ENTER and ESC keys
+                            scene.setOnKeyPressed(event2 -> {
+                                if (event2.getCode() == KeyCode.ENTER) {
+                                    root.getChildren().clear();
+                                    initLevel(1);
+                                    updateSceneForLevel(primaryStage);
+                                } else if (event2.getCode() == KeyCode.ESCAPE) {
+                                    // Go to title screen
+                                    root.getChildren().clear();
+                                    TitleScene titleScene = new TitleScene(primaryStage);
+                                    primaryStage.setScene(titleScene.getScene());
+                                }
+                            });
+                        }
+                    }
+                }
+            
+            }
+        });
+        
+        
     }
     
-
 }

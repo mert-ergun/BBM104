@@ -1,12 +1,17 @@
+import java.io.File;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 public class Duck {
     private final int SCALE = DuckHunt.SCALE;
+    private final double VOLUME = DuckHunt.VOLUME;
     private String color;
     private double startX;
     private double startY;
@@ -18,11 +23,12 @@ public class Duck {
     private Image shotImage;
     private Image fallingImage;
     private ImageView currentImage;
-    private boolean isAlive;
+    public boolean isAlive;
     private boolean isFlyingRight;
     private boolean isFlyingCross;
     private boolean isFlyingUp;
     private boolean isFalling;
+    private Timeline timeline;
 
     public Duck(String color, double startX, double startY, double speed, boolean isFlyingRight, boolean isFlyingCross, boolean isFlyingUp) {
         switch (color) {
@@ -76,7 +82,7 @@ public class Duck {
         this.x = startX;
         this.y = startY;
         this.isFlyingRight = isFlyingRight;
-        this.speed = isFlyingRight ? speed : -speed;
+        this.speed = isFlyingRight ? speed * SCALE/3 : -speed * SCALE/3;
         this.isAlive = true;
         this.isFalling = false;
         this.isFlyingCross = isFlyingCross;
@@ -91,7 +97,7 @@ public class Duck {
         if (!isAlive) {
             return;
         }
-        Timeline timeline = new Timeline();
+        timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
 
         if (isFlyingRight && isFlyingCross && isFlyingUp) {
@@ -229,7 +235,8 @@ public class Duck {
             }
             isColliding = true;
             isFlyingUp = true;
-            y -= currentImage.getFitHeight() / 2;
+            y -= currentImage.getFitHeight() / 2 * SCALE / 3;
+            currentImage.setScaleY(1);
         } else if (duckBounds.getMinY() < sceneBounds.getMinY()) {
             if (!isFlyingUp) {
                 // Quit from method
@@ -237,7 +244,8 @@ public class Duck {
             }
             isColliding = true;
             isFlyingUp = false;
-            y += currentImage.getFitHeight() / 2;
+            y += currentImage.getFitHeight() / 2 * SCALE / 3;
+            currentImage.setScaleY(-1);
         }
 
         if (duckBounds.getMaxX() > sceneBounds.getMaxX()) {
@@ -248,7 +256,8 @@ public class Duck {
             isColliding = true;
             isFlyingRight = false;
             speed = -speed;
-            x -= currentImage.getFitWidth() / 2;
+            x -= currentImage.getFitWidth() / 2 * SCALE / 3;
+            currentImage.setScaleX(-1);
         } else if (duckBounds.getMinX() < sceneBounds.getMinX()) {
             if (isFlyingRight) {
                 // Quit from method
@@ -257,7 +266,8 @@ public class Duck {
             isColliding = true;
             isFlyingRight = true;
             speed = -speed;
-            x += currentImage.getFitWidth() / 2;
+            x += currentImage.getFitWidth() / 2 * SCALE / 3;
+            currentImage.setScaleX(1);
         }
 
         return isColliding;
@@ -278,19 +288,25 @@ public class Duck {
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.2), e -> {
-            y += 10;
+            y += 20 * SCALE;
             if (y > DuckHunt.getTitleScene().getScene().getRoot().getBoundsInParent().getMaxY()) {
                 timeline.stop();
                 DuckHunt.getTitleScene().getScene().getRoot().getChildrenUnmodifiable().remove(currentImage);
             }
+            currentImage.setTranslateY(y);
         });
         timeline.getKeyFrames().add(keyFrame);
         timeline.play();
+        Media media = new Media(new File("src/assets/effects/DuckFalls.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(VOLUME);
+        mediaPlayer.play();
     }
 
     public void die() {
         this.isAlive = false;
         this.speed = 0;
+        timeline.stop();
         if (isFlyingRight) {
             currentImage.setImage(shotImage);
             this.scale();
@@ -299,7 +315,13 @@ public class Duck {
             this.scale();
             currentImage.setScaleX(-1);
         }
-        this.fall();
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(1);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), e -> {
+            this.fall();
+        });
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.play();    
     }
 
     public ImageView getCurrentImage() {

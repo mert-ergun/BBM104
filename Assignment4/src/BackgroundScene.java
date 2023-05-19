@@ -242,7 +242,7 @@ public class BackgroundScene {
                     primaryStage.setScene(gameScreen.getScene());
                 });
                 introPlayer.setVolume(VOLUME);
-                introPlayer.play();     
+                introPlayer.play();
             }
         });
     }
