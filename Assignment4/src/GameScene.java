@@ -380,6 +380,9 @@ public class GameScene {
                                     if (event2.getCode() == KeyCode.ENTER) {
                                         level += 1;
                                         levelupplayer.stop();
+                                        for (Duck duck2 : ducks) {
+                                            duck2.stopFallSound();
+                                        }
                                         root.getChildren().clear();
                                         initLevel(level);
                                         updateSceneForLevel(primaryStage);

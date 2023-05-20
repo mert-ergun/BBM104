@@ -35,6 +35,7 @@ public class Duck {
     private boolean isFlyingUp;  // A boolean to check if the duck is flying up
     private boolean isFalling;  // A boolean to check if the duck is falling
     private Timeline timeline;  // The timeline of the duck's fly animation
+    private MediaPlayer fallSound;  // The sound effect of the duck falling
 
     /**
      * Creates a duck with the given color, starting x-coordinate, starting y-coordinate, speed, and direction.
@@ -91,6 +92,7 @@ public class Duck {
                 this.fallingImage = new Image("assets/duck_black/8.png");
                 break;
         }
+        this.fallSound = new MediaPlayer(new Media(new File("src/assets/effects/DuckFalls.mp3").toURI().toString()));
 
         this.color = color;
         this.startX = startX * SCALE / 3;
@@ -354,10 +356,8 @@ public class Duck {
         });
         timeline.getKeyFrames().add(keyFrame);
         timeline.play();
-        Media media = new Media(new File("src/assets/effects/DuckFalls.mp3").toURI().toString());  // Play the sound effect
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setVolume(VOLUME);
-        mediaPlayer.play();
+        fallSound.setVolume(VOLUME);
+        fallSound.play();
     }
 
     /**
@@ -401,6 +401,14 @@ public class Duck {
         currentImage.setFitWidth(currentImage.getImage().getWidth() * SCALE);
         currentImage.setFitHeight(currentImage.getImage().getHeight() * SCALE);
     }
+    
+    /**
+     * Stops the fallsound.
+     * Called when player advances to next level.
+     */
+    public void stopFallSound() {
+        fallSound.stop();
+    }
 
     public double getX() {
         return x;
@@ -409,4 +417,5 @@ public class Duck {
     public double getY() {
         return y;
     }
+
 }
