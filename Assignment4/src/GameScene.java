@@ -17,23 +17,36 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * The GameScene class represents the game's main scene.
+ * It sets up the game's graphics, text, and sound effects, and handles user input.
+ * It also handles the game's logic.
+ * Main game loop is in this class.
+ */
 public class GameScene {
-    private Scene scene;
-    private static final int SCALE = DuckHunt.SCALE;
-    private static final double VOLUME = DuckHunt.VOLUME;
-    private ImageView backgroundImage;
-    private ImageView foregroundImage;
-    private ImageView crosshairImage;
-    private ImageView[] backgroundImageViews;
-    private ImageView[] foregroundImageViews;
-    private ImageView[] crosshairImageViews;
+    private Scene scene;  // The game's main scene
+    private static final int SCALE = DuckHunt.SCALE;  // The scale of the game, got from DuckHunt class
+    private static final double VOLUME = DuckHunt.VOLUME;  // The volume of the game's sound effects and music (0.0 - 1.0)
+    private ImageView backgroundImage;  // The background image view
+    private ImageView foregroundImage;  // The foreground image view
+    private ImageView crosshairImage;  // The crosshair image view
+    private ImageView[] backgroundImageViews;  // The array of background image views
+    private ImageView[] foregroundImageViews;  // The array of foreground image views
+    private ImageView[] crosshairImageViews;  // The array of crosshair image views
 
-    private int numberOfDucks;
-    private Duck[] ducks;
-    private int numberOfBullets;
-    private int level;
-    private boolean levelCompleted;
+    private int numberOfDucks;  // The number of ducks in the level
+    private Duck[] ducks;  // The array of ducks in the level
+    private int numberOfBullets;  // The number of bullets in the level
+    private int level;  // The level of the game
+    private boolean levelCompleted;  // Whether the level is completed or not
 
+    /**
+     * Creates a new GameScene object.
+     * Sets up the game's graphics, text, and sound effects, and handles user input.
+     * @param primaryStage the stage to set the scene on
+     * @param backgroundIndex the index of the background image to use, got from BackgroundScene class
+     * @param crosshairIndex the index of the crosshair image to use, got from BackgroundScene class
+     */
     public GameScene(Stage primaryStage, int backgroundIndex, int crosshairIndex) {
         // Load the background images
         Image background1 = new Image("assets/background/1.png");
@@ -165,10 +178,10 @@ public class GameScene {
         foregroundImage = foregroundImageViews[backgroundIndex];
         crosshairImage = crosshairImageViews[crosshairIndex];
 
-        // Add the background and foreground image views to the scene
+        // Create the root pane to hold the background, crosshair, and foreground
         StackPane root = new StackPane();
 
-        // Create the scene
+        // Create the scene with the root pane and scale
         scene = new Scene(root, backgroundImage.getFitWidth(), backgroundImage.getFitHeight());
         
         // Create the crosshair as cursor
@@ -183,43 +196,52 @@ public class GameScene {
         primaryStage.show();
     }
 
+    /**
+     * Get the scene of the game
+     * @return the scene of the game
+     */
     public Scene getScene() {
         return scene;
     }
 
+    /**
+     * Initialize the given level with ducks
+     * @param level the level to initialize
+     * @return the ducks in the level
+     */
     public Duck[] initLevel(int level) {
         switch (level) {
-            case 1:
+            case 1:  // Initialize level 1
                 numberOfDucks = 1;
                 ducks = new Duck[numberOfDucks];
-                Duck duck = new Duck("red", 30, 20, 30, true, false, true);
+                Duck duck = new Duck("red", 30, -50, 30, true, false, true);
                 ducks[0] = duck;
                 this.level = 1;
                 break;
-            case 2:
+            case 2:  // Initialize level 2
                 numberOfDucks = 2;
                 ducks = new Duck[numberOfDucks];
-                Duck duck1 = new Duck("blue", 10, 20, 40, true, false, true);
+                Duck duck1 = new Duck("blue", 10, -80, 50, true, false, true);
                 Duck duck2 = new Duck("red", -150, -200, 40, false, false, true);
                 ducks[0] = duck1;
                 ducks[1] = duck2;
                 this.level = 2;
                 break;
-            case 3:
+            case 3:  // Initialize level 3
                 numberOfDucks = 3;
                 ducks = new Duck[numberOfDucks];
-                Duck duck3 = new Duck("blue", 10, 20, 40, true, false, true);
+                Duck duck3 = new Duck("blue", -60, -60, 50, true, false, true);
                 Duck duck4 = new Duck("red", -150, -200, 40, false, false, true);
-                Duck duck5 = new Duck("black", 50, 20, 40, true, true, true);
+                Duck duck5 = new Duck("black", 50, -30, 40, true, true, true);
                 ducks[0] = duck3;
                 ducks[1] = duck4;
                 ducks[2] = duck5;
                 this.level = 3;
                 break;
-            case 4:
+            case 4:  // Initialize level 4
                 numberOfDucks = 3;
                 ducks = new Duck[numberOfDucks];
-                Duck duck6 = new Duck("blue", 10, 20, 40, true, false, true);
+                Duck duck6 = new Duck("blue", 10, 20, 40, true, true, true);
                 Duck duck7 = new Duck("red", -150, -200, 40, false, false, true);
                 Duck duck8 = new Duck("black", 50, 20, 40, false, true, false);
                 ducks[0] = duck6;
@@ -227,27 +249,27 @@ public class GameScene {
                 ducks[2] = duck8;
                 this.level = 4;
                 break;
-            case 5:
+            case 5:  // Initialize level 5
                 numberOfDucks = 4;
                 ducks = new Duck[numberOfDucks];
-                Duck duck9 = new Duck("blue", 10, 20, 40, true, true, true);
+                Duck duck9 = new Duck("blue", 10, -110, 40, true, true, true);
                 Duck duck10 = new Duck("red", -150, -200, 40, false, false, true);
-                Duck duck11 = new Duck("black", 50, 20, 40, false, true, false);
-                Duck duck12 = new Duck("blue", 70, 20, 40, true, true, true);
+                Duck duck11 = new Duck("black", 50, -90, 40, false, true, false);
+                Duck duck12 = new Duck("blue", 70, 20, 40, false, true, true);
                 ducks[0] = duck9;
                 ducks[1] = duck10;
                 ducks[2] = duck11;
                 ducks[3] = duck12;
                 this.level = 5;
                 break;
-            case 6:
+            case 6:  // Initialize level 6
                 numberOfDucks = 5;
                 ducks = new Duck[numberOfDucks];
-                Duck duck13 = new Duck("blue", 10, 20, 40, true, true, true);
+                Duck duck13 = new Duck("blue", 10, -110, 40, true, true, true);
                 Duck duck14 = new Duck("red", -150, -200, 40, false, false, true);
                 Duck duck15 = new Duck("black", 50, 20, 40, false, true, false);
-                Duck duck16 = new Duck("blue", 70, -30, 40, true, true, true);
-                Duck duck17 = new Duck("red", 90, 20, 40, false, true, true);
+                Duck duck16 = new Duck("blue", 70, -30, 40, false, true, true);
+                Duck duck17 = new Duck("red", 90, 200, 40, false, true, true);
                 ducks[0] = duck13;
                 ducks[1] = duck14;
                 ducks[2] = duck15;
@@ -256,28 +278,32 @@ public class GameScene {
                 this.level = 6;
                 break;
         }
-        if (TitleScene.cheatObtained) {
+        if (TitleScene.cheatObtained) {  // If the cheat is obtained, give the player 999 bullets
             numberOfBullets = 999;
-        } else {
+        } else {  // Otherwise, give the player 3 bullets per duck
             numberOfBullets = numberOfDucks * 3;
         }
         return ducks;
     }
     
+    /**
+     * Update the scene for the given level by adding the ducks and level text, adding the background and foreground, and bullets.
+     * @param primaryStage the stage to update
+     */
     public void updateSceneForLevel(Stage primaryStage) {
-        levelCompleted = false;
+        levelCompleted = false;  // Reset the level completed boolean
         // Clear the existing scene
         StackPane root = (StackPane) scene.getRoot();
         root.getChildren().clear();
     
-        // Add the new level's elements to the scene
+        // Add the new level's elements to the scene, ducks will be between the background and foreground
         root.getChildren().add(backgroundImage);
         for (Duck duck : ducks) {
             root.getChildren().add(duck.getCurrentImage());
             duck.getCurrentImage().setTranslateX(duck.getX());
             duck.getCurrentImage().setTranslateY(duck.getY());
         }
-        root.getChildren().add(foregroundImage);
+        root.getChildren().add(foregroundImage);  
 
         // Add the level text
         Text levelText = new Text("Level " + level + "/6");
@@ -295,7 +321,16 @@ public class GameScene {
         bulletsText.setTranslateY(-110 * SCALE);
         root.getChildren().add(bulletsText);
 
-        scene.setOnMouseClicked(event -> {
+        // If the level is not completed, make enter key do nothing
+        scene.setOnKeyPressed(event -> {
+            if (!levelCompleted) {
+                if (event.getCode() == KeyCode.ENTER) {
+                }
+            }
+        });
+
+        // If the level is not completed, make mouse clicks shoot bullets
+        scene.setOnMouseClicked(event -> {  
             if (!levelCompleted) {
                 if (numberOfBullets > 0) {
                     numberOfBullets--;
@@ -313,8 +348,8 @@ public class GameScene {
                         if (!duck.isAlive) {
                             ducksKilled++;
                         }
-                        if (ducksKilled == numberOfDucks) {
-                            if (level != 6) {
+                        if (ducksKilled == numberOfDucks) {  // If all the ducks are dead, the level is completed
+                            if (level != 6) {  // If the level is not the last level, show the level completed text
                                 Media levelup = new Media(new File("src/assets/effects/LevelCompleted.mp3").toURI().toString());
                                 MediaPlayer levelupplayer = new MediaPlayer(levelup);
                                 levelupplayer.setVolume(VOLUME);
@@ -329,7 +364,6 @@ public class GameScene {
                                 levelCompletedText2.setFill(Color.ORANGE);
                                 levelCompletedText2.setTranslateX(0);
                                 levelCompletedText2.setTranslateY(20 * SCALE);
-                                // Make levelcompletedtext2 flashing
                                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), evt -> {
                                     if (levelCompletedText2.getFill() == Color.ORANGE) {
                                         levelCompletedText2.setFill(Color.TRANSPARENT);
@@ -351,7 +385,7 @@ public class GameScene {
                                         updateSceneForLevel(primaryStage);
                                     }
                                 });
-                            } else {
+                            } else {  // If the level is the last level, show the game completed text
                                 Media gamecompleted = new Media(new File("src/assets/effects/GameCompleted.mp3").toURI().toString());
                                 MediaPlayer gamecompletedplayer = new MediaPlayer(gamecompleted);
                                 gamecompletedplayer.setVolume(VOLUME);
@@ -371,7 +405,6 @@ public class GameScene {
                                 gameCompletedText3.setFill(Color.ORANGE);
                                 gameCompletedText3.setTranslateX(0);
                                 gameCompletedText3.setTranslateY(40 * SCALE);
-                                // Make gamecompletedtext2 and gamecompletedtext3 flashing
                                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), evt -> {
                                     if (gameCompletedText2.getFill() == Color.ORANGE) {
                                         gameCompletedText2.setFill(Color.TRANSPARENT);
@@ -405,7 +438,7 @@ public class GameScene {
                         }
                     }
 
-                    if (numberOfBullets == 0) {
+                    if (numberOfBullets == 0) {  // If the player has no bullets left and there are still ducks alive, the game is over
                         int ducksAlive = 0;
                         for (Duck duck : ducks) {
                             if (duck.isAlive) {
@@ -462,8 +495,6 @@ public class GameScene {
             
             }
         });
-        
-        
     }
     
 }

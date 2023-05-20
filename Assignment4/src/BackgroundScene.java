@@ -14,16 +14,32 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 
+/**
+ * The BackgroundScene class represents the game's background selection screen.
+ * It sets up the background selection screen's graphics, text, and sound effects, and handles user input.
+ * It also handles the background music.
+ *
+ * User can change the background by pressing the left and right arrow keys.
+ * User can change the crosshair by pressing the up and down arrow keys.
+ * User can return to the title screen by pressing the escape key.
+ * User can select the background by pressing the enter key.
+ */
 public class BackgroundScene {
     private Scene scene;
     private static final int SCALE = DuckHunt.SCALE;
     private static final double VOLUME = DuckHunt.VOLUME;
-    private int backgroundIndex = 0;
-    private int crosshairIndex = 0;
-    private javafx.scene.image.ImageView[] backgroundViews;
-    private javafx.scene.image.ImageView[] crosshairViews;
+    private int backgroundIndex = 0;  // The index of the current background
+    private int crosshairIndex = 0;  // The index of the current crosshair
+    private javafx.scene.image.ImageView[] backgroundViews;  // An array of the background image views
+    private javafx.scene.image.ImageView[] crosshairViews;  // An array of the crosshair image views
     private Pane crosshairPane;
 
+    /**
+     * The BackgroundScene constructor sets up the game's background selection screen.
+     * It loads the background selection screen's graphics, text, and sound effects, and handles user input.
+     * It also handles the background music.
+     * @param primaryStage The primary stage of the game.
+     */
     public BackgroundScene(Stage primaryStage) {
         // Load the background images
         Image background1 = new Image("assets/background/1.png");
@@ -114,13 +130,13 @@ public class BackgroundScene {
         crosshairPane = new Pane();
         crosshairPane.getChildren().addAll(crosshairViews);
 
-        // Create a VBox to hold the text Labels
+        // Create a VBox to hold the text Labels and set its properties
         javafx.scene.layout.VBox textContainer = new javafx.scene.layout.VBox();
         textContainer.setAlignment(Pos.TOP_CENTER);
         textContainer.setSpacing(10);
         textContainer.setPadding(new javafx.geometry.Insets(10 * SCALE, 0, 0, 0));
 
-        // Create the text Labels
+        // Create the text Labels 
         Label navLabel = new Label("USE ARROW KEYS TO NAVIGATE");
         Label startLabel = new Label("PRESS ENTER TO START");
         Label exitLabel = new Label("PRESS ESC TO EXIT");
@@ -152,9 +168,11 @@ public class BackgroundScene {
             crosshairViews[i].setVisible(false);
         }
         
-        // Create the scene and set it on the stage
+        // Create the scene and set it on the stage 
         scene = new Scene(root, background1.getWidth() * SCALE, background1.getHeight() * SCALE);
         primaryStage.setScene(scene);
+
+        // Set the title of the stage
         primaryStage.setTitle("HUBBM Duck Hunt");
         
         // Set the favicon
@@ -169,7 +187,7 @@ public class BackgroundScene {
         // Show the stage
         primaryStage.show();
 
-        // Add event handler 
+        // Add event handler to check if the user presses the arrow keys or the enter key
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.LEFT) {
                 // Move to the previous background image view
@@ -233,11 +251,11 @@ public class BackgroundScene {
                 primaryStage.setScene(titleScreen.getScene());
             } else if (event.getCode() == KeyCode.ENTER) {
                 // Start the game
-                DuckHunt.getTitleScene().stopMusic();
-                Media introMusic = new Media(new File("src/assets/effects/Intro.mp3").toURI().toString());
+                DuckHunt.getTitleScene().stopMusic();  // Stop the Title screen music
+                Media introMusic = new Media(new File("src/assets/effects/Intro.mp3").toURI().toString());  // Load the intro music
                 MediaPlayer introPlayer = new MediaPlayer(introMusic);
-                introPlayer.setOnEndOfMedia(() -> {
-                    // Start the game
+                introPlayer.setOnEndOfMedia(() -> {  
+                    // Start the game after the intro music ends
                     GameScene gameScreen = new GameScene(primaryStage, backgroundIndex, crosshairIndex);
                     primaryStage.setScene(gameScreen.getScene());
                 });
@@ -247,6 +265,10 @@ public class BackgroundScene {
         });
     }
 
+    /**
+     * Returns the Scene object of the Game screen
+     * @return the Scene object of the Game screen
+     */
     public Scene getScene() {
         return scene;
     }

@@ -12,23 +12,32 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * The TitleScene class represents the game's title screen. 
+ * It sets up the title screen's graphics, text, and sound effects, and handles user input.
+ */
 public class TitleScene {
-    private Scene scene;
-    private static final int SCALE = DuckHunt.SCALE;
-    private static final double VOLUME = DuckHunt.VOLUME;
-    public static boolean cheatObtained = false;
+    private Scene scene;  // The title scene of the game
+    private static final int SCALE = DuckHunt.SCALE;  // The scale of the game, got from DuckHunt class
+    private static final double VOLUME = DuckHunt.VOLUME;  // The volume of the game's sound effects and music (0.0 - 1.0)
+    public static boolean cheatObtained = false;  // A boolean to check if the cheat is obtained
 
+    /**
+     * The TitleScene constructor sets up the game's title screen. 
+     * It loads the title screen's graphics, text, and sound effects, and handles user input.
+     * @param primaryStage The primary stage of the game.
+     */
     public TitleScene(Stage primaryStage) {
-        // Load the welcome image
+        // Load the welcome image and create an ImageView to hold it
         Image welcomeImage = new Image("assets/welcome/1.png");
         ImageView imageView = new ImageView(welcomeImage);
-        imageView.setFitWidth(welcomeImage.getWidth() * SCALE);
+        imageView.setFitWidth(welcomeImage.getWidth() * SCALE);  // Scale the image
         imageView.setFitHeight(welcomeImage.getHeight() * SCALE);
 
-        // Create the text
+        // Create the text to be displayed on the screen
         Text line1 = new Text("PRESS ENTER TO PLAY");
         Text line2 = new Text("PRESS ESC TO EXIT");
-        line1.setFont(Font.font("Verdana",FontWeight.BOLD, 18 * SCALE));
+        line1.setFont(Font.font("Verdana",FontWeight.BOLD, 18 * SCALE));  // Scale the text
         line1.setFill(javafx.scene.paint.Color.ORANGE);
         line2.setFont(Font.font("Verdana",FontWeight.BOLD, 18 * SCALE));
         line2.setFill(javafx.scene.paint.Color.ORANGE);
@@ -37,30 +46,32 @@ public class TitleScene {
         javafx.scene.layout.VBox vBox = new javafx.scene.layout.VBox();
         vBox.getChildren().addAll(line1, line2);
         vBox.setAlignment(javafx.geometry.Pos.CENTER);
-        vBox.setSpacing(5 * SCALE);
-        vBox.setPadding(new javafx.geometry.Insets(90 * SCALE, 0, 0, 0));
+        vBox.setSpacing(5 * SCALE);  // Scale the spacing
+        vBox.setPadding(new javafx.geometry.Insets(90 * SCALE, 0, 0, 0));  // Scale the padding
 
         // Create a ScaleTransition to scale the VBox
         javafx.animation.ScaleTransition scaleTransition = new javafx.animation.ScaleTransition(Duration.ZERO, vBox);
         scaleTransition.setToX(SCALE);
         scaleTransition.setToY(SCALE);
 
-        // Create a Timeline to flash the text
+        // Create a Timeline to flash the text 
         Timeline timeline = new Timeline(
             new javafx.animation.KeyFrame(Duration.seconds(0.5), e -> {
                 line1.setVisible(!line1.isVisible());
                 line2.setVisible(!line2.isVisible());
             })
         );
-        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setCycleCount(Timeline.INDEFINITE);  // Make the Timeline repeat infinitely
         
         // Create a StackPane to hold the image
         StackPane root = new StackPane();
-        root.getChildren().addAll(imageView, vBox);
+        root.getChildren().addAll(imageView, vBox);  // Add the image and VBox to the StackPane
 
         // Create the scene and set it on the stage
         scene = new Scene(root, welcomeImage.getWidth() * SCALE, welcomeImage.getHeight() * SCALE);
         primaryStage.setScene(scene);
+
+        // Set the title of the stage
         primaryStage.setTitle("HUBBM Duck Hunt");
 
         // Set the favicon
@@ -69,33 +80,35 @@ public class TitleScene {
         // Show the stage
         primaryStage.show();
 
-        // Play the fade transition and scale transition
+        // Play the blink transition and scale transition
         timeline.play();
         scaleTransition.play();
 
-        // Load and play the title sound
+        // Load and play the title sound effect in loop
         AudioClip titleSound = new AudioClip(getClass().getResource("assets/effects/Title.mp3").toString());
         titleSound.setVolume(VOLUME);
         titleSound.setCycleCount(AudioClip.INDEFINITE);
         titleSound.play();
         
+        // Create a string to hold the keys pressed to check for the cheat
         String[] keysPressed = {""};
+
         // Set the key listeners
         scene.setOnKeyPressed(e -> {
             switch (e.getCode()) {
-                case ENTER:
+                case ENTER:  // If the enter key is pressed, start the game
                     // Set scene to BackgroundScene
                     BackgroundScene backgroundScene = new BackgroundScene(primaryStage);
                     primaryStage.setScene(backgroundScene.getScene());
                     break;
-                case ESCAPE:
+                case ESCAPE:  // If the escape key is pressed, exit the game
                     // Stop the title sound
                     titleSound.stop();
 
                     // Exit the game
                     primaryStage.close();
                     break;
-                default:
+                default:  // If any other key is pressed, add it to the string and check for the cheat
                     keysPressed[0] += e.getCode().toString();
                     if (keysPressed[0].contains("UP") && keysPressed[0].contains("UP") && keysPressed[0].contains("DOWN") && keysPressed[0].contains("DOWN") && keysPressed[0].contains("LEFT") && keysPressed[0].contains("RIGHT") && keysPressed[0].contains("LEFT") && keysPressed[0].contains("RIGHT") && keysPressed[0].contains("B") && keysPressed[0].contains("A")) {
                         cheatObtained = true;
@@ -126,10 +139,17 @@ public class TitleScene {
         
     }
 
+    /**
+     * The getScene method returns the scene of the TitleScene.
+     * @return The scene of the TitleScene.
+     */
     public Scene getScene() {
         return scene;
     }
 
+    /**
+     * The stopMusic method stops the title sound effect.
+     */
     public void stopMusic() {
         // Stop the title sound
         AudioClip titleSound = new AudioClip(getClass().getResource("assets/effects/Title.mp3").toString());
