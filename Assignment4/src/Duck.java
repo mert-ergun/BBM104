@@ -18,9 +18,6 @@ import javafx.util.Duration;
 public class Duck {
     private final int SCALE = DuckHunt.SCALE;
     private final double VOLUME = DuckHunt.VOLUME;
-    private String color;  // The color of the duck
-    private double startX;  // The starting x-coordinate of the duck
-    private double startY;  // The starting y-coordinate of the duck
     private double x;  // The current x-coordinate of the duck
     private double y;  // The current y-coordinate of the duck 
     private double speed;  // The speed of the duck
@@ -33,7 +30,6 @@ public class Duck {
     private boolean isFlyingRight;  // A boolean to check if the duck is flying right
     private boolean isFlyingCross;  // A boolean to check if the duck is flying cross
     private boolean isFlyingUp;  // A boolean to check if the duck is flying up
-    private boolean isFalling;  // A boolean to check if the duck is falling
     private Timeline timeline;  // The timeline of the duck's fly animation
     private MediaPlayer fallSound;  // The sound effect of the duck falling
 
@@ -94,15 +90,11 @@ public class Duck {
         }
         this.fallSound = new MediaPlayer(new Media(new File("src/assets/effects/DuckFalls.mp3").toURI().toString()));
 
-        this.color = color;
-        this.startX = startX * SCALE / 3;
-        this.startY = startY * SCALE / 3;
         this.x = startX;
         this.y = startY;
         this.isFlyingRight = isFlyingRight;
         this.speed = isFlyingRight ? speed * SCALE/3 : -speed * SCALE/3;
         this.isAlive = true;
-        this.isFalling = false;
         this.isFlyingCross = isFlyingCross;
         this.isFlyingUp = isFlyingUp;
         this.currentImage = new ImageView();
@@ -334,7 +326,6 @@ public class Duck {
      * The duck will fall down until it reaches the bottom of the screen.
      */
     public void fall() {
-        this.isFalling = true;  // The duck is falling
         this.isAlive = false;  // The duck is dead
         if (isFlyingRight) {  // If the duck is flying right, it will fall while facing right
             currentImage.setImage(fallingImage);
