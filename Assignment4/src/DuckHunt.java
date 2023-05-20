@@ -2,7 +2,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class DuckHunt extends Application{
-    public static final int SCALE = 2;
+    public static final int SCALE = 3;
     public static final double VOLUME = 0.2;
     public static TitleScene titleScene;
 

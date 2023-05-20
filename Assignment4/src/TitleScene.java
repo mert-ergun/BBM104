@@ -4,6 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -14,6 +16,7 @@ public class TitleScene {
     private Scene scene;
     private static final int SCALE = DuckHunt.SCALE;
     private static final double VOLUME = DuckHunt.VOLUME;
+    public static boolean cheatObtained = false;
 
     public TitleScene(Stage primaryStage) {
         // Load the welcome image
@@ -75,7 +78,8 @@ public class TitleScene {
         titleSound.setVolume(VOLUME);
         titleSound.setCycleCount(AudioClip.INDEFINITE);
         titleSound.play();
-
+        
+        String[] keysPressed = {""};
         // Set the key listeners
         scene.setOnKeyPressed(e -> {
             switch (e.getCode()) {
@@ -92,9 +96,34 @@ public class TitleScene {
                     primaryStage.close();
                     break;
                 default:
+                    keysPressed[0] += e.getCode().toString();
+                    if (keysPressed[0].contains("UP") && keysPressed[0].contains("UP") && keysPressed[0].contains("DOWN") && keysPressed[0].contains("DOWN") && keysPressed[0].contains("LEFT") && keysPressed[0].contains("RIGHT") && keysPressed[0].contains("LEFT") && keysPressed[0].contains("RIGHT") && keysPressed[0].contains("B") && keysPressed[0].contains("A")) {
+                        cheatObtained = true;
+                        // Add a flashing text to the scene to indicate that the cheat has been obtained
+                        Text cheatObtainedText = new Text("CHEAT ACTIVATED!!!");
+                        cheatObtainedText.setFont(Font.font("Verdana",FontWeight.BOLD, 18 * SCALE));
+                        cheatObtainedText.setFill(javafx.scene.paint.Color.RED);
+                        cheatObtainedText.setX(100 * SCALE);
+                        cheatObtainedText.setY(100 * SCALE);
+                        Timeline cheatObtainedTimeline = new Timeline(
+                            new javafx.animation.KeyFrame(Duration.seconds(0.5), e2 -> {
+                                cheatObtainedText.setVisible(!cheatObtainedText.isVisible());
+                            })
+                        );
+                        cheatObtainedTimeline.setCycleCount(Timeline.INDEFINITE);
+                        cheatObtainedTimeline.play();
+                        root.getChildren().add(cheatObtainedText);
+                        Media media = new Media(getClass().getResource("assets/effects/GameCompleted.mp3").toString());
+                        MediaPlayer mediaPlayer = new MediaPlayer(media);
+                        mediaPlayer.setVolume(VOLUME);
+                        mediaPlayer.play();
+                    }
+                    
                     break;
             }
         });
+
+        
     }
 
     public Scene getScene() {

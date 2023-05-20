@@ -256,7 +256,11 @@ public class GameScene {
                 this.level = 6;
                 break;
         }
-        numberOfBullets = numberOfDucks * 3;
+        if (TitleScene.cheatObtained) {
+            numberOfBullets = 999;
+        } else {
+            numberOfBullets = numberOfDucks * 3;
+        }
         return ducks;
     }
     
