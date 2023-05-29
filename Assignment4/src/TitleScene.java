@@ -22,6 +22,8 @@ public class TitleScene {
     private static final double VOLUME = DuckHunt.VOLUME;  // The volume of the game's sound effects and music (0.0 - 1.0)
     public static boolean cheatObtained = false;  // A boolean to check if the cheat is obtained
 
+    private BackgroundScene backgroundScene;  // A reference to the game's background scene
+
     /**
      * The TitleScene constructor sets up the game's title screen. 
      * It loads the title screen's graphics, text, and sound effects, and handles user input.
@@ -101,7 +103,7 @@ public class TitleScene {
             switch (e.getCode()) {
                 case ENTER:  // If the enter key is pressed, start the game
                     // Set scene to BackgroundScene
-                    BackgroundScene backgroundScene = new BackgroundScene(primaryStage);
+                    backgroundScene = new BackgroundScene(primaryStage);
                     primaryStage.setScene(backgroundScene.getScene());
                     break;
                 case ESCAPE:  // If the escape key is pressed, exit the game
@@ -157,5 +159,9 @@ public class TitleScene {
         // Stop the title sound
         AudioClip titleSound = new AudioClip(getClass().getResource("assets/effects/Title.mp3").toString());
         titleSound.stop();
+    }
+
+    public GameScene getGameScene() {
+        return backgroundScene.getGameScene();
     }
 }

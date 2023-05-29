@@ -33,6 +33,7 @@ public class BackgroundScene {
     private javafx.scene.image.ImageView[] backgroundViews;  // An array of the background image views
     private javafx.scene.image.ImageView[] crosshairViews;  // An array of the crosshair image views
     private Pane crosshairPane;
+    private GameScene gameScene;  // A reference to the game's game scene
 
     /**
      * The BackgroundScene constructor sets up the game's background selection screen.
@@ -259,8 +260,8 @@ public class BackgroundScene {
                 MediaPlayer introPlayer = new MediaPlayer(introMusic);
                 introPlayer.setOnEndOfMedia(() -> {  
                     // Start the game after the intro music ends
-                    GameScene gameScreen = new GameScene(primaryStage, backgroundIndex, crosshairIndex);
-                    primaryStage.setScene(gameScreen.getScene());
+                    gameScene = new GameScene(primaryStage, backgroundIndex, crosshairIndex);
+                    primaryStage.setScene(gameScene.getScene());
                 });
                 introPlayer.setVolume(VOLUME);
                 introPlayer.play();
@@ -274,5 +275,9 @@ public class BackgroundScene {
      */
     public Scene getScene() {
         return scene;
+    }
+
+    public GameScene getGameScene() {
+        return gameScene;
     }
 }

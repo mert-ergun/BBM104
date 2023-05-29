@@ -34,4 +34,8 @@ public class DuckHunt extends Application{
     public static TitleScene getTitleScene() {
         return titleScene;
     }
+
+    public static GameScene getGameScene() {
+        return titleScene.getGameScene();
+    }
 }

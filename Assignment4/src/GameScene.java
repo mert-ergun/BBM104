@@ -1,5 +1,6 @@
 import java.io.File;
 
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
@@ -34,6 +35,14 @@ public class GameScene {
     private ImageView[] backgroundImageViews;  // The array of background image views
     private ImageView[] foregroundImageViews;  // The array of foreground image views
     private ImageView[] crosshairImageViews;  // The array of crosshair image views
+    private ImageView bgImage1;
+    private ImageView bgImage2;
+    private ImageView bgImage3;
+    private ImageView fgImage1;
+    private ImageView fgImage2;
+    private ImageView fgImage3;
+    private double cameraX = 0.0;  // The x position of the camera
+    private double mouseX;
 
     private int numberOfDucks;  // The number of ducks in the level
     private Duck[] ducks;  // The array of ducks in the level
@@ -209,7 +218,23 @@ public class GameScene {
         scene.setOnMouseMoved(event -> {
             crossPane.setTranslateX(event.getSceneX());
             crossPane.setTranslateY(event.getSceneY());
+
+            mouseX = event.getSceneX();
         });
+
+        // Camera mover to move the camera when the mouse is at the edge of the screen
+        AnimationTimer cameraMoveTimer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if (mouseX < primaryStage.getWidth() / 5 ) {
+                    cameraX = Math.max(cameraX - 5, -primaryStage.getWidth());
+                } else if (mouseX > primaryStage.getWidth() * 4 / 5) {
+                    cameraX = Math.min(cameraX + 5, primaryStage.getWidth());
+                }
+                updatePositions(primaryStage);
+            }
+        };
+        cameraMoveTimer.start();  // Start the camera mover
     }
 
     /**
@@ -311,15 +336,44 @@ public class GameScene {
         // Clear the existing scene
         StackPane root = (StackPane) scene.getRoot();
         root.getChildren().clear();
+        cameraX = 0;  // Reset the camera position
+
+        // Set images
+        bgImage1 = new ImageView(backgroundImage.getImage());
+        bgImage2 = new ImageView(backgroundImage.getImage());
+        bgImage3 = new ImageView(backgroundImage.getImage());
+
+        fgImage2 = new ImageView(foregroundImage.getImage());
+        fgImage3 = new ImageView(foregroundImage.getImage());
+        fgImage1 = new ImageView(foregroundImage.getImage());
+
+        // Scale the images to the size of the window
+        bgImage1.setFitWidth(primaryStage.getWidth());
+        bgImage1.setFitHeight(primaryStage.getHeight());
+        bgImage2.setFitWidth(primaryStage.getWidth());
+        bgImage2.setFitHeight(primaryStage.getHeight());
+        bgImage3.setFitWidth(primaryStage.getWidth());
+        bgImage3.setFitHeight(primaryStage.getHeight());
+
+        fgImage1.setFitWidth(primaryStage.getWidth());
+        fgImage1.setFitHeight(primaryStage.getHeight());
+        fgImage2.setFitWidth(primaryStage.getWidth());
+        fgImage2.setFitHeight(primaryStage.getHeight());
+        fgImage3.setFitWidth(primaryStage.getWidth());
+        fgImage3.setFitHeight(primaryStage.getHeight());
     
         // Add the new level's elements to the scene, ducks will be between the background and foreground
-        root.getChildren().add(backgroundImage);
+        root.getChildren().addAll(bgImage1, bgImage2, bgImage3);
+        bgImage2.setTranslateX(primaryStage.getWidth());
+        bgImage3.setTranslateX(primaryStage.getWidth() * 2);
         for (Duck duck : ducks) {
             root.getChildren().add(duck.getCurrentImage());
             duck.getCurrentImage().setTranslateX(duck.getX());
             duck.getCurrentImage().setTranslateY(duck.getY());
         }
-        root.getChildren().add(foregroundImage);  
+        root.getChildren().addAll(fgImage1, fgImage2, fgImage3);
+        fgImage2.setTranslateX(primaryStage.getWidth());
+        fgImage3.setTranslateX(primaryStage.getWidth() * 2);  
         root.getChildren().add(crossPane);
 
         // Add the level text
@@ -516,5 +570,23 @@ public class GameScene {
             }
         });
     }
-    
+
+    /**
+     * Updates the positions of the ducks and the background images based on the camera position
+     * Used for horizontal scrolling
+     * @param primaryStage The stage
+     */
+    public void updatePositions(Stage primaryStage) {
+        for (Duck duck : ducks) {
+            ImageView duckImage = duck.getCurrentImage();
+            duckImage.setTranslateX(duck.getX() - cameraX);
+            duckImage.setTranslateY(duck.getY());
+        }
+        bgImage1.setTranslateX(-primaryStage.getWidth() - cameraX);
+        bgImage2.setTranslateX(-cameraX);
+        bgImage3.setTranslateX(primaryStage.getWidth() - cameraX);
+        fgImage1.setTranslateX(-primaryStage.getWidth() - cameraX);
+        fgImage2.setTranslateX(-cameraX);
+        fgImage3.setTranslateX(primaryStage.getWidth() - cameraX);
+    }
 }

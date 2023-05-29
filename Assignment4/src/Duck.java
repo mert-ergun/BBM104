@@ -266,12 +266,15 @@ public class Duck {
     public boolean isColliding() {
         Bounds duckBounds = currentImage.getBoundsInLocal();  // Get the bounds of the duck
         duckBounds = currentImage.localToScene(duckBounds);  // Convert the bounds to the scene
-        Bounds sceneBounds = DuckHunt.getTitleScene().getScene().getRoot().getBoundsInParent();  // Get the bounds of the scene
+
+        GameScene gameScene = DuckHunt.getGameScene();  // Get the game scene
+        double sceneWidth = gameScene.getScene().getWidth();  // Get the width of the scene
+        double sceneHeight = gameScene.getScene().getHeight();  // Get the height of the scene
 
         boolean isColliding = false;  // Whether the duck is colliding with the edges of the screen
 
         // If the duck is flying down, it can collide with the bottom of the screen
-        if (duckBounds.getMaxY() > sceneBounds.getMaxY()) {
+        if (duckBounds.getMaxY() > sceneHeight) {
             if (isFlyingUp) {  // If the duck is flying up, it can't collide with the bottom of the screen
                 // Quit from method
                 return false;
@@ -282,7 +285,7 @@ public class Duck {
             currentImage.setScaleY(1);
         } 
         // If the duck is flying up, it can collide with the top of the screen
-        else if (duckBounds.getMinY() < sceneBounds.getMinY()) {
+        else if (duckBounds.getMinY() < 0) {
             if (!isFlyingUp) {  // If the duck is flying down, it can't collide with the top of the screen
                 // Quit from method
                 return false;
@@ -294,7 +297,7 @@ public class Duck {
         }
 
         // If the duck is flying right, it can collide with the right side of the screen
-        if (duckBounds.getMaxX() > sceneBounds.getMaxX()) {
+        if (duckBounds.getMaxX() > 2 * sceneWidth) {
             if (!isFlyingRight) {
                 // Quit from method
                 return false;
@@ -306,7 +309,7 @@ public class Duck {
             currentImage.setScaleX(-1);
         }
         // If the duck is flying left, it can collide with the left side of the screen 
-        else if (duckBounds.getMinX() < sceneBounds.getMinX()) {
+        else if (duckBounds.getMinX() < -sceneWidth) {
             if (isFlyingRight) {
                 // Quit from method
                 return false;
