@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * @version 1.0
  */
 public class DuckHunt extends Application{
-    public static final int SCALE = 4;  // The scale of the game, used to scale the game's images and text
+    public static final int SCALE = 3;  // The scale of the game, used to scale the game's images and text
     public static final double VOLUME = 0.2;  // The volume of the game's sound effects and music (0.0 - 1.0)
     public static TitleScene titleScene;  // A reference to the game's title scene
 

@@ -88,7 +88,7 @@ public class Duck {
                 this.fallingImage = new Image("assets/duck_black/8.png");
                 break;
         }
-        this.fallSound = new MediaPlayer(new Media(new File("src/assets/effects/DuckFalls.mp3").toURI().toString()));
+        this.fallSound = new MediaPlayer(new Media(new File("assets/effects/DuckFalls.mp3").toURI().toString()));
 
         this.x = startX;
         this.y = startY;

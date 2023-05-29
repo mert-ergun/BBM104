@@ -183,6 +183,9 @@ public class BackgroundScene {
         crosshairTranslate.setX(scene.getWidth() / 2 - crosshairView1.getFitWidth() / 2);
         crosshairTranslate.setY(scene.getHeight() / 2 - crosshairView1.getFitHeight() / 2);
         crosshairPane.getTransforms().add(crosshairTranslate);
+
+        // Set the stage to not be resizable
+        primaryStage.setResizable(false);
         
         // Show the stage
         primaryStage.show();
@@ -252,7 +255,7 @@ public class BackgroundScene {
             } else if (event.getCode() == KeyCode.ENTER) {
                 // Start the game
                 DuckHunt.getTitleScene().stopMusic();  // Stop the Title screen music
-                Media introMusic = new Media(new File("src/assets/effects/Intro.mp3").toURI().toString());  // Load the intro music
+                Media introMusic = new Media(new File("assets/effects/Intro.mp3").toURI().toString());  // Load the intro music
                 MediaPlayer introPlayer = new MediaPlayer(introMusic);
                 introPlayer.setOnEndOfMedia(() -> {  
                     // Start the game after the intro music ends

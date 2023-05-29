@@ -77,6 +77,9 @@ public class TitleScene {
         // Set the favicon
         primaryStage.getIcons().add(new Image("assets/favicon/1.png"));
 
+        // Set the stage to not be resizable
+        primaryStage.setResizable(false);
+
         // Show the stage
         primaryStage.show();
 

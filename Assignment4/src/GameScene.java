@@ -2,7 +2,7 @@ import java.io.File;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.ImageCursor;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +30,7 @@ public class GameScene {
     private ImageView backgroundImage;  // The background image view
     private ImageView foregroundImage;  // The foreground image view
     private ImageView crosshairImage;  // The crosshair image view
+    private StackPane crossPane;  // The pane to hold the crosshair image view
     private ImageView[] backgroundImageViews;  // The array of background image views
     private ImageView[] foregroundImageViews;  // The array of foreground image views
     private ImageView[] crosshairImageViews;  // The array of crosshair image views
@@ -184,16 +185,31 @@ public class GameScene {
         // Create the scene with the root pane and scale
         scene = new Scene(root, backgroundImage.getFitWidth(), backgroundImage.getFitHeight());
         
-        // Create the crosshair as cursor
-        scene.setCursor(new ImageCursor(crosshairImage.getImage()));
+        // Set cursor as none to hide it
+        scene.setCursor(javafx.scene.Cursor.NONE);
+
+        // Add crosshair to stack pane and set it to the top left
+        crossPane = new StackPane(crosshairImage);
+        crossPane.setAlignment(Pos.TOP_LEFT);
+        root.getChildren().add(crossPane);
 
         // Initalize the first level
         ducks = initLevel(1);
         updateSceneForLevel(primaryStage);
 
+
+        // Set stage not resizable
+        primaryStage.setResizable(false);
+
         // Show the scene
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        // Set the crosshair to follow the mouse
+        scene.setOnMouseMoved(event -> {
+            crossPane.setTranslateX(event.getSceneX());
+            crossPane.setTranslateY(event.getSceneY());
+        });
     }
 
     /**
@@ -304,6 +320,7 @@ public class GameScene {
             duck.getCurrentImage().setTranslateY(duck.getY());
         }
         root.getChildren().add(foregroundImage);  
+        root.getChildren().add(crossPane);
 
         // Add the level text
         Text levelText = new Text("Level " + level + "/6");
@@ -335,7 +352,7 @@ public class GameScene {
                 if (numberOfBullets > 0) {
                     numberOfBullets--;
                     bulletsText.setText("Ammo Left: " + numberOfBullets);
-                    Media sound = new Media(new File("src/assets/effects/Gunshot.mp3").toURI().toString());
+                    Media sound = new Media(new File("assets/effects/Gunshot.mp3").toURI().toString());
                     MediaPlayer mediaPlayer = new MediaPlayer(sound);
                     mediaPlayer.setVolume(VOLUME);
                     mediaPlayer.play();
@@ -350,7 +367,7 @@ public class GameScene {
                         }
                         if (ducksKilled == numberOfDucks) {  // If all the ducks are dead, the level is completed
                             if (level != 6) {  // If the level is not the last level, show the level completed text
-                                Media levelup = new Media(new File("src/assets/effects/LevelCompleted.mp3").toURI().toString());
+                                Media levelup = new Media(new File("assets/effects/LevelCompleted.mp3").toURI().toString());
                                 MediaPlayer levelupplayer = new MediaPlayer(levelup);
                                 levelupplayer.setVolume(VOLUME);
                                 levelupplayer.play();
@@ -389,7 +406,7 @@ public class GameScene {
                                     }
                                 });
                             } else {  // If the level is the last level, show the game completed text
-                                Media gamecompleted = new Media(new File("src/assets/effects/GameCompleted.mp3").toURI().toString());
+                                Media gamecompleted = new Media(new File("assets/effects/GameCompleted.mp3").toURI().toString());
                                 MediaPlayer gamecompletedplayer = new MediaPlayer(gamecompleted);
                                 gamecompletedplayer.setVolume(VOLUME);
                                 gamecompletedplayer.play();
@@ -449,7 +466,7 @@ public class GameScene {
                             }
                         }
                         if (ducksAlive > 0) {
-                            Media gameover = new Media(new File("src/assets/effects/GameOver.mp3").toURI().toString());
+                            Media gameover = new Media(new File("assets/effects/GameOver.mp3").toURI().toString());
                             MediaPlayer gameoverplayer = new MediaPlayer(gameover);
                             gameoverplayer.setVolume(VOLUME);
                             gameoverplayer.play();
