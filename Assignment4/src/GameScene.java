@@ -226,10 +226,10 @@ public class GameScene {
         AnimationTimer cameraMoveTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (mouseX < primaryStage.getWidth() / 5 ) {
-                    cameraX = Math.max(cameraX - 5, -primaryStage.getWidth());
-                } else if (mouseX > primaryStage.getWidth() * 4 / 5) {
-                    cameraX = Math.min(cameraX + 5, primaryStage.getWidth());
+                if (mouseX < primaryStage.getWidth() / 8 ) {
+                    cameraX = Math.max(cameraX - 5 * SCALE/3, -primaryStage.getWidth());
+                } else if (mouseX > primaryStage.getWidth() * 7 / 8) {
+                    cameraX = Math.min(cameraX + 5 * SCALE/3, primaryStage.getWidth());
                 }
                 updatePositions(primaryStage);
             }
@@ -506,6 +506,7 @@ public class GameScene {
                                         root.getChildren().clear();
                                         TitleScene titleScene = new TitleScene(primaryStage);
                                         primaryStage.setScene(titleScene.getScene());
+                                        TitleScene.cheatObtained = false;
                                     }
                                 });
                             }
@@ -561,12 +562,12 @@ public class GameScene {
                                     root.getChildren().clear();
                                     TitleScene titleScene = new TitleScene(primaryStage);
                                     primaryStage.setScene(titleScene.getScene());
+                                    TitleScene.cheatObtained = false;
                                 }
                             });
                         }
                     }
                 }
-            
             }
         });
     }

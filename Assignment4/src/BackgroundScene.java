@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  * The BackgroundScene class represents the game's background selection screen.
  * It sets up the background selection screen's graphics, text, and sound effects, and handles user input.
  * It also handles the background music.
- *
+ * <p>
  * User can change the background by pressing the left and right arrow keys.
  * User can change the crosshair by pressing the up and down arrow keys.
  * User can return to the title screen by pressing the escape key.
