@@ -1,0 +1,16 @@
+Equivalent of 0 (base 10) in base 2 is: 0
+"kapak" is a palindrome.
+Counting from 1 up to 9 in binary:	1	10	11	100	101	110	111	1000	1001
+Counting from 1 up to 1 in binary:	1
+"([)]" is not a valid expression.
+"({[([{}])]})" is a valid expression.
+Equivalent of 7 (base 10) in base 2 is: 111
+Counting from 1 up to 0 in binary:
+"Cigar? Toss it in a can. It is so tragic." is a palindrome.
+"Al kazık çak karaya kayarak kaç kızakla." is a palindrome.
+Equivalent of 37 (base 10) in base 2 is: 100101
+"Ah adi demir, erimedi daha." is a palindrome.
+"(){[([{}])]})" is not a valid expression.
+Equivalent of 52 (base 10) in base 2 is: 110100
+"432(543{XYZ['''(^^^[---{??   }**]___)   --]!!}ééé)    " is a valid expression.
+Counting from 1 up to 13 in binary:	1	10	11	100	101	110	111	1000	1001	1010	1011	1100	1101

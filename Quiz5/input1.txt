@@ -1,0 +1,12 @@
+Convert from Base 10 to Base 2:	26
+Count from 1 up to n in binary:	15
+Check if following is palindrome or not:	abcba
+Check if following expression is valid or not:	[{[([])]}]
+Check if following is palindrome or not:	ABCcba
+Convert from Base 10 to Base 2:	31
+Check if following is palindrome or not:	kayak
+Count from 1 up to n in binary:	10
+Check if following expression is valid or not:	aabb[12313{cds[FDS(fsdf[5345]FSDFSD)]}]
+Check if following is palindrome or not:	Ey Edip Adana'da pide ye!
+Convert from Base 10 to Base 2:	19
+Check if following expression is valid or not:	aabb[12313[cds{FDS(fsdf[5345]FSDFSD)]}]

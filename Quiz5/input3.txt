@@ -1,0 +1,10 @@
+Convert from Base 10 to Base 2:	43
+Check if following expression is valid or not:	({[([{[}])]})
+Count from 1 up to n in binary:	17
+Count from 1 up to n in binary:	9
+Check if following expression is valid or not:	[()]{}{[()()]()}
+Convert from Base 10 to Base 2:	123456789
+Check if following is palindrome or not:	Paper? Toss it in a can. It is so tragic.
+Count from 1 up to n in binary:	100
+Check if following is palindrome or not:	I made border bard's drowsy swords; drab, red robed am I.
+Convert from Base 10 to Base 2:	17

@@ -1,0 +1,16 @@
+Convert from Base 10 to Base 2:	0
+Check if following is palindrome or not:	kapak
+Count from 1 up to n in binary:	9
+Count from 1 up to n in binary:	1
+Check if following expression is valid or not:	([)]
+Check if following expression is valid or not:	({[([{}])]})
+Convert from Base 10 to Base 2:	7
+Count from 1 up to n in binary:	0
+Check if following is palindrome or not:	Cigar? Toss it in a can. It is so tragic.
+Check if following is palindrome or not:	Al kazık çak karaya kayarak kaç kızakla.
+Convert from Base 10 to Base 2:	37
+Check if following is palindrome or not:	Ah adi demir, erimedi daha.
+Check if following expression is valid or not:	(){[([{}])]})
+Convert from Base 10 to Base 2:	52
+Check if following expression is valid or not:	432(543{XYZ['''(^^^[---{??   }**]___)   --]!!}ééé)    
+Count from 1 up to n in binary:	13

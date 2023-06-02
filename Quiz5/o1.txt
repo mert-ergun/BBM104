@@ -1,0 +1,12 @@
+Equivalent of 26 (base 10) in base 2 is: 11010
+Counting from 1 up to 15 in binary:	1	10	11	100	101	110	111	1000	1001	1010	1011	1100	1101	1110	1111
+"abcba" is a palindrome.
+"[{[([])]}]" is a valid expression.
+"ABCcba" is a palindrome.
+Equivalent of 31 (base 10) in base 2 is: 11111
+"kayak" is a palindrome.
+Counting from 1 up to 10 in binary:	1	10	11	100	101	110	111	1000	1001	1010
+"aabb[12313{cds[FDS(fsdf[5345]FSDFSD)]}]" is a valid expression.
+"Ey Edip Adana'da pide ye!" is a palindrome.
+Equivalent of 19 (base 10) in base 2 is: 10011
+"aabb[12313[cds{FDS(fsdf[5345]FSDFSD)]}]" is not a valid expression.

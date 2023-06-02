@@ -1,0 +1,17 @@
+Check if following is palindrome or not:	Al kızak çak karaya kayarak kaç kızakla.
+Check if following expression is valid or not:	{[(])}
+Convert from Base 10 to Base 2:	-55
+Check if following expression is valid or not:	{(x+y)*(z)
+Convert from Base 10 to Base 2:	-11
+Check if following expression is valid or not:	[[[]]
+Check if following is palindrome or not:	Ey Türk gençliği! Birinci vazifen; Türk istiklalini, Türk cumhuriyetini, ilelebet muhafaza ve müdafaa etmektir.
+Convert from Base 10 to Base 2:	-3456
+Check if following expression is valid or not:	{(A+B)+(C+D)}
+Check if following expression is valid or not:	{{[[(())]]}}
+Count from 1 up to n in binary:	-5
+Check if following is palindrome or not:	Mevcudiyetinin ve istikbalinin yegane temeli budur.
+Check if following expression is valid or not:	(<)
+Check if following expression is valid or not:	[2*3]+(A)]
+Check if following is palindrome or not:	Muhtaç olduğun kudret, damarlarındaki asil kanda mevcuttur.
+Check if following expression is valid or not:	(A+B)
+Count from 1 up to n in binary:	300
