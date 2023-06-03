@@ -1,3 +1,5 @@
+import java.io.BufferedWriter;
+
 /**
  * Balanced Parenthesis class to check if the given expression has balanced parenthesis or not.
  * Uses a stack to check if the parenthesis are balanced or not.
@@ -26,5 +28,14 @@ public class BalancedParenthesis {
             }
         }
         return stack.isEmpty();
+    }
+
+    public static void writeOutput(String argument, boolean isValid, BufferedWriter writer) {
+        try {
+            writer.write("\"" + argument + "\" is " + (isValid ? "" : "not ") + "a valid expression.");
+            writer.newLine();
+        } catch (Exception e) {
+            System.out.println("Error writing output.");
+        }
     }
 }

@@ -1,3 +1,4 @@
+import java.io.BufferedWriter;
 import java.util.Locale;
 
 /**
@@ -26,5 +27,14 @@ public class Palindrome {
             }
         }
         return true;
+    }
+
+    public static void writeOutput(String argument, boolean isPalindrome, BufferedWriter writer) {
+        try {
+            writer.write("\"" + argument + "\" is " + (isPalindrome ? "" : "not ") + "a palindrome.");
+            writer.newLine();
+        } catch (Exception e) {
+            System.out.println("Error writing output.");
+        }
     }
 }

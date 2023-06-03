@@ -25,5 +25,14 @@ public class BinaryCounter {
             queue.enqueue(s1 + "0"); // Enqueue the dequeued element with 0 appended to it
             queue.enqueue(s2 + "1"); // Enqueue the dequeued element with 1 appended to it
         }
+        writer.newLine(); // Write a new line
+    }
+
+    public static void writeOutput(int number, BufferedWriter writer) {
+        try {
+            writer.write("Counting from 1 up to " + number + " in binary:");  // Write to output file
+        } catch (Exception e) {
+            System.out.println("Error writing output.");
+        }
     }
 }

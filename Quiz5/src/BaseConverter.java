@@ -1,3 +1,5 @@
+import java.io.BufferedWriter;
+
 /**
  * BaseConverter class that converts a number from base 10 to base 2.
  * @see Stack
@@ -33,5 +35,14 @@ public class BaseConverter {
             result = "-" + result;
         }
         return result;
+    }
+
+    public static void writeOutput(int number, String binary, BufferedWriter writer) {
+        try {
+            writer.write("Equivalent of " + number + " (base 10) in base 2 is: " + binary);  // Write to output file
+            writer.newLine();  // Write a new line
+        } catch (Exception e) {
+            System.out.println("Error writing output.");
+        }
     }
 }

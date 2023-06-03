@@ -28,24 +28,20 @@ public class Main {
                 case "Convert from Base 10 to Base 2:":
                     int number = Integer.parseInt(argument);  // Convert argument to integer
                     String binary = BaseConverter.convert(number);  // Convert number to binary using BaseConverter
-                    writer.write("Equivalent of " + number + " (base 10) in base 2 is: " + binary);  // Write to output file
-                    writer.newLine();  // Write a new line
+                    BaseConverter.writeOutput(number, binary, writer);  // Write output using BaseConverter
                     break; 
                 case "Count from 1 up to n in binary:":
                     int n = Integer.parseInt(argument);  
-                    writer.write("Counting from 1 up to " + n + " in binary:"); 
+                    BinaryCounter.writeOutput(n, writer);  // Write output using BinaryCounter
                     BinaryCounter.countTo(n, writer);  // Count from 1 up to n in binary using BinaryCounter
-                    writer.newLine();
                     break;
                 case "Check if following is palindrome or not:":
                     boolean isPalindrome = Palindrome.isPalindrome(argument);  // Check if argument is palindrome using Palindrome
-                    writer.write("\"" + argument + "\" is " + (isPalindrome ? "" : "not ") + "a palindrome.");
-                    writer.newLine();
+                    Palindrome.writeOutput(argument, isPalindrome, writer);
                     break;
                 case "Check if following expression is valid or not:":
                     boolean isValid = BalancedParenthesis.isBalanced(argument);  // Check if argument is valid expression using BalancedParenthesis
-                    writer.write("\"" + argument + "\" is " + (isValid ? "" : "not ") + "a valid expression.");
-                    writer.newLine();
+                    BalancedParenthesis.writeOutput(argument, isValid, writer);
                     break;
             }
         }
