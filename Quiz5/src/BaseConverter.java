@@ -37,6 +37,12 @@ public class BaseConverter {
         return result;
     }
 
+    /**
+     * Writes the output to the output file.
+     * @param number The number in base 10.
+     * @param binary The number in base 2.
+     * @param writer The BufferedWriter to write to the output file.
+     */
     public static void writeOutput(int number, String binary, BufferedWriter writer) {
         try {
             writer.write("Equivalent of " + number + " (base 10) in base 2 is: " + binary);  // Write to output file

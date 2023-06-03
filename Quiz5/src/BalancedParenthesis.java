@@ -30,6 +30,12 @@ public class BalancedParenthesis {
         return stack.isEmpty();
     }
 
+    /**
+     * Writes the output to the output file.
+     * @param argument The argument to write.
+     * @param isValid Whether the argument is valid or not.
+     * @param writer The BufferedWriter to write to.
+     */
     public static void writeOutput(String argument, boolean isValid, BufferedWriter writer) {
         try {
             writer.write("\"" + argument + "\" is " + (isValid ? "" : "not ") + "a valid expression.");

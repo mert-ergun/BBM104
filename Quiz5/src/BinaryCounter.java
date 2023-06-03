@@ -28,6 +28,11 @@ public class BinaryCounter {
         writer.newLine(); // Write a new line
     }
 
+    /**
+     * Writes the output to the output file.
+     * @param number The number to count up to.
+     * @param writer The BufferedWriter to write to the output file.
+     */
     public static void writeOutput(int number, BufferedWriter writer) {
         try {
             writer.write("Counting from 1 up to " + number + " in binary:");  // Write to output file

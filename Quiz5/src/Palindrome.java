@@ -29,6 +29,12 @@ public class Palindrome {
         return true;
     }
 
+    /**
+     * Writes the output to the output file.
+     * @param argument The argument to write.
+     * @param isPalindrome Whether the argument is palindrome or not.
+     * @param writer The BufferedWriter to write to.
+     */
     public static void writeOutput(String argument, boolean isPalindrome, BufferedWriter writer) {
         try {
             writer.write("\"" + argument + "\" is " + (isPalindrome ? "" : "not ") + "a palindrome.");
