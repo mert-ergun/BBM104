@@ -90,8 +90,8 @@ public class Duck {
         }
         this.fallSound = new MediaPlayer(new Media(new File("assets/effects/DuckFalls.mp3").toURI().toString()));
 
-        this.x = startX;
-        this.y = startY;
+        this.x = startX * SCALE/3;
+        this.y = startY * SCALE/3;
         this.isFlyingRight = isFlyingRight;
         this.speed = isFlyingRight ? speed * SCALE/3 : -speed * SCALE/3;
         this.isAlive = true;
