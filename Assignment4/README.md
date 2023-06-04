@@ -1,7 +1,7 @@
 ### Location of my implementation to compile
 
-> - My code files are at [src/][src/]
-> - My code should be compiled at [src/][src/]
+> - My code files are at [src/](src/)
+> - My code should be compiled at [src/](src/)
 
 ---
 
@@ -23,7 +23,7 @@ java DuckHunt
 
 ### Location of my assets folder
 
-> - My assets folder should be inserted at [src/][src/]
+> - My assets folder should be inserted at [src/](src/)
 >
 > - After insertion src/ folder should look like:
 >
