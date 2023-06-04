@@ -262,8 +262,8 @@ public class GameScene {
             case 2:  // Initialize level 2
                 numberOfDucks = 2;
                 ducks = new Duck[numberOfDucks];
-                Duck duck1 = new Duck("blue", 10, -80, 50, true, false, true);
-                Duck duck2 = new Duck("red", -150, -200, 40, false, false, true);
+                Duck duck1 = new Duck("blue", 10, -200, 40, false, false, true);
+                Duck duck2 = new Duck("red", -150, -200, 40, true, false, true);
                 ducks[0] = duck1;
                 ducks[1] = duck2;
                 this.level = 2;
@@ -271,9 +271,9 @@ public class GameScene {
             case 3:  // Initialize level 3
                 numberOfDucks = 3;
                 ducks = new Duck[numberOfDucks];
-                Duck duck3 = new Duck("blue", -60, -60, 50, true, false, true);
-                Duck duck4 = new Duck("red", -150, -200, 40, false, false, true);
-                Duck duck5 = new Duck("black", 50, -30, 40, true, true, true);
+                Duck duck3 = new Duck("blue", -60, -60, 30, true, false, true);
+                Duck duck4 = new Duck("red", -150, -200, 35, false, false, true);
+                Duck duck5 = new Duck("black", 50, -30, 35, true, true, true);
                 ducks[0] = duck3;
                 ducks[1] = duck4;
                 ducks[2] = duck5;
@@ -282,9 +282,9 @@ public class GameScene {
             case 4:  // Initialize level 4
                 numberOfDucks = 3;
                 ducks = new Duck[numberOfDucks];
-                Duck duck6 = new Duck("blue", 10, 20, 40, true, true, true);
-                Duck duck7 = new Duck("red", -150, -200, 40, false, false, true);
-                Duck duck8 = new Duck("black", 50, 20, 40, false, true, false);
+                Duck duck6 = new Duck("blue", 10, 20, 35, true, true, true);
+                Duck duck7 = new Duck("red", -150, -200, 35, false, false, true);
+                Duck duck8 = new Duck("black", 50, 20, 35, false, true, false);
                 ducks[0] = duck6;
                 ducks[1] = duck7;
                 ducks[2] = duck8;
@@ -293,10 +293,10 @@ public class GameScene {
             case 5:  // Initialize level 5
                 numberOfDucks = 4;
                 ducks = new Duck[numberOfDucks];
-                Duck duck9 = new Duck("blue", 10, -110, 40, true, true, true);
-                Duck duck10 = new Duck("red", -150, -200, 40, false, false, true);
-                Duck duck11 = new Duck("black", 50, -90, 40, false, true, false);
-                Duck duck12 = new Duck("blue", 70, 20, 40, false, true, true);
+                Duck duck9 = new Duck("blue", 10, -110, 30, true, true, true);
+                Duck duck10 = new Duck("red", -150, -200, 35, false, false, true);
+                Duck duck11 = new Duck("black", 50, -90, 35, false, true, false);
+                Duck duck12 = new Duck("blue", 70, 20, 30, false, true, true);
                 ducks[0] = duck9;
                 ducks[1] = duck10;
                 ducks[2] = duck11;
@@ -306,11 +306,11 @@ public class GameScene {
             case 6:  // Initialize level 6
                 numberOfDucks = 5;
                 ducks = new Duck[numberOfDucks];
-                Duck duck13 = new Duck("blue", 10, -110, 40, true, true, true);
-                Duck duck14 = new Duck("red", -150, -200, 40, false, false, true);
-                Duck duck15 = new Duck("black", 50, 20, 40, false, true, false);
-                Duck duck16 = new Duck("blue", 70, -30, 40, false, true, true);
-                Duck duck17 = new Duck("red", 90, 200, 40, false, true, true);
+                Duck duck13 = new Duck("blue", 10, -110, 30, true, true, true);
+                Duck duck14 = new Duck("red", -150, -200, 30, false, false, true);
+                Duck duck15 = new Duck("black", 50, 20, 30, false, true, false);
+                Duck duck16 = new Duck("blue", 70, -30, 30, false, true, true);
+                Duck duck17 = new Duck("red", 90, 200, 30, false, true, true);
                 ducks[0] = duck13;
                 ducks[1] = duck14;
                 ducks[2] = duck15;
